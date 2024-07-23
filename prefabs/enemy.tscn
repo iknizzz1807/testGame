@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpmyml0l0oxys"]
+[gd_scene load_steps=4 format=3 uid="uid://ci5yan50uk3dn"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_u5mtw"]
 [ext_resource type="Texture2D" uid="uid://lpo7pbv5dynb" path="res://icon.svg" id="2_dv1sa"]
@@ -10,9 +10,9 @@ size = Vector2(128, 127)
 script = ExtResource("1_u5mtw")
 SPEED = 10.0
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dv1sa")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1q4d1")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dv1sa")

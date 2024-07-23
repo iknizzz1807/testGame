@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc4ttnmfvxx7n"]
+[gd_scene load_steps=4 format=3 uid="uid://cc4ttnmfvxx7n"]
 
-[ext_resource type="PackedScene" uid="uid://dv67yriotadpu" path="res://prefabs/player.tscn" id="1_k8vlk"]
-[ext_resource type="PackedScene" uid="uid://bpmyml0l0oxys" path="res://prefabs/enemy.tscn" id="2_yxnfk"]
+[ext_resource type="PackedScene" uid="uid://b8thr11yjtsdy" path="res://prefabs/player.tscn" id="1_k8vlk"]
+[ext_resource type="PackedScene" uid="uid://ci5yan50uk3dn" path="res://prefabs/enemy.tscn" id="2_yxnfk"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_7rjo7"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource("2_yxnfk")]
+position = Vector2(-643, -389)
 SPEED = 100.0
 
 [node name="Player" parent="." instance=ExtResource("1_k8vlk")]
+position = Vector2(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_7rjo7")
+
+[connection signal="shoot" from="Player" to="Camera2D" method="_on_player_shoot"]

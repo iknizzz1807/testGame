@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var direction = Vector2(0, 0);
-var speed = 80000;
+var speed = 400000;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +15,4 @@ func _process(delta):
 	
 	
 	pass
+
