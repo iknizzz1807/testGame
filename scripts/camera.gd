@@ -30,3 +30,4 @@ func randomOffset() -> Vector2:
 
 func _on_player_shoot():
 	apply_shake();
+

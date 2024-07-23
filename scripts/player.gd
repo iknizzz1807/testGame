@@ -1,4 +1,7 @@
 extends CharacterBody2D
+
+class_name Player
+
 const bulletPrefab = preload("res://prefabs/bullet.tscn");
 signal shoot;
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +18,7 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input();
-	move_and_slide();
+	move_and_collide(velocity);
 
 
 
@@ -25,10 +28,11 @@ func bulletOut():
 	get_parent().add_child(bullet);
 	bullet.position = position;
 	bullet.look_at(get_global_mouse_position());
-	shoot.emit();
+	#shoot.emit();
 	bullet.direction = get_global_mouse_position() - bullet.position;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		bulletOut();
+
