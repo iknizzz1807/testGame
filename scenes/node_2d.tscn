@@ -10,13 +10,16 @@
 position = Vector2(-376, -175)
 SPEED = 100.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_7rjo7")
-
 [node name="Enemy2" parent="." instance=ExtResource("2_yxnfk")]
 position = Vector2(-378, -36)
 SPEED = 100.0
 
 [node name="Player" parent="." instance=ExtResource("1_k8vlk")]
 
-[connection signal="shoot" from="Player" to="Camera2D" method="_on_player_shoot"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_speed = 80.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("3_7rjo7")
+
+[connection signal="shoot" from="Player" to="Player/Camera2D" method="_on_player_shoot"]

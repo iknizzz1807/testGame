@@ -28,7 +28,7 @@ func bulletOut():
 	get_parent().add_child(bullet);
 	bullet.position = position;
 	bullet.look_at(get_global_mouse_position());
-	#shoot.emit();
+	shoot.emit();
 	bullet.direction = get_global_mouse_position() - bullet.position;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
