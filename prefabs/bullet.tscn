@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_hx08n"]
 [ext_resource type="Texture2D" uid="uid://d0fjf108yvlkv" path="res://bullet.svg" id="2_b1ksx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnndn"]
-size = Vector2(14.7043, 11.2774)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wn7u"]
+size = Vector2(23.9998, 9.00556)
 
 [node name="bullet" type="Node2D"]
 
@@ -13,14 +13,14 @@ gravity_scale = 0.0
 script = ExtResource("1_hx08n")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(-4.41074e-06, 0)
-rotation = 0.786673
-scale = Vector2(0.0143621, 0.0139167)
+position = Vector2(-5.96046e-08, -1.19209e-07)
+rotation = 0.783593
+scale = Vector2(0.026255, 0.0254408)
 texture = ExtResource("2_b1ksx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(1.14441e-05, -1.00001)
+position = Vector2(1.99702, -0.508537)
 rotation = -0.00570198
 scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_xnndn")
+shape = SubResource("RectangleShape2D_1wn7u")
 disabled = true
