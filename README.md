@@ -1,2 +1,2 @@
-# testGame
+# Test Game
 Game with bro
