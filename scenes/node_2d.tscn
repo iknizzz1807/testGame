@@ -6,6 +6,12 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 40.0
+editor_draw_limits = true
+script = ExtResource("3_7rjo7")
+OFFSET_MAX_DIST = 200
+
 [node name="Enemy" parent="." instance=ExtResource("2_yxnfk")]
 position = Vector2(-376, -175)
 SPEED = 100.0
@@ -16,10 +22,4 @@ SPEED = 100.0
 
 [node name="Player" parent="." instance=ExtResource("1_k8vlk")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_speed = 80.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-script = ExtResource("3_7rjo7")
-
-[connection signal="shoot" from="Player" to="Player/Camera2D" method="_on_player_shoot"]
+[connection signal="shoot" from="Player" to="Camera2D" method="_on_player_shoot"]
