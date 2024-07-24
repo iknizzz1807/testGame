@@ -1,17 +1,17 @@
 extends Node2D
 
-class_name gun;
+class_name Gun;
 
 const bulletPrefab = preload("res://prefabs/bullet.tscn");
 
 enum GUNS {AK47 = 3, PISTOL = 1, M4 = 2};
-@export var GUN_TYPE: GUNS; #
+@export var GUN_TYPE: GUNS = GUNS.AK47; #
+@onready var sprite : Sprite2D = $AK47;
 
 func _ready():
 	pass
 
 func get_damage() -> int:
-	gun_init();
 	match GUN_TYPE:
 		GUNS.AK47:
 			return GUNS.AK47;
@@ -23,6 +23,11 @@ func get_damage() -> int:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	rotation = (get_global_mouse_position() - global_position).angle();
+	if (abs(rotation_degrees) <= 90):
+		sprite.scale.y = abs(sprite.scale.y) * 1;
+	else:
+		sprite.scale.y = abs(sprite.scale.y) * -1;
 	pass
 	
 func bulletOut():
@@ -31,6 +36,7 @@ func bulletOut():
 	bullet.position = get_parent().position;
 	bullet.look_at(get_global_mouse_position());
 	bullet.direction = get_global_mouse_position() - bullet.position;
+	bullet.damage = get_damage();
 
 func _on_player_shoot():
 	bulletOut();

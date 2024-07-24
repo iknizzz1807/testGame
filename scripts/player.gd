@@ -9,7 +9,6 @@ func _ready():
 	pass
 
 func get_input():
-	look_at(get_global_mouse_position());
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown");
 	velocity = input_direction * speed;
 
