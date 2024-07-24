@@ -40,7 +40,6 @@ func get_mouse_position_in_world() -> Vector2:
 	mousePos = get_canvas_transform().affine_inverse() * mousePos;
 	return mousePos;
 	
-	
 func get_mouse_position_in_viewport() -> Vector2:
 	var mousePos = get_viewport().get_mouse_position();
 	mousePos = mousePos.clamp(Vector2.ZERO, get_viewport_rect().size);
@@ -50,12 +49,9 @@ func get_mouse_position_in_viewport() -> Vector2:
 func apply_shake():
 	shakeStrength = randomStrength;
 
-
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shakeStrength, shakeStrength),
 	 rng.randf_range(-shakeStrength, shakeStrength));
 
-
 func _on_player_shoot():
 	apply_shake();
-
