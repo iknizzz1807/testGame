@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0f5ast5hqdga"]
+[gd_resource type="Resource" script_class="GunType" load_steps=6 format=3 uid="uid://bsehp7go47ecx"]
 
-[ext_resource type="Script" path="res://scripts/gun.gd" id="1_ogx2h"]
-[ext_resource type="Resource" uid="uid://bsehp7go47ecx" path="res://scripts/guntypes.tres" id="2_1fsm0"]
-[ext_resource type="Texture2D" uid="uid://dxiwddj14wxbl" path="res://ak47.png" id="2_064ej"]
+[ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_yiwww"]
+[ext_resource type="Texture2D" uid="uid://dxiwddj14wxbl" path="res://ak47.png" id="3_xj7gk"]
 
 [sub_resource type="Animation" id="Animation_xhdwv"]
 resource_name = "recoil"
@@ -33,13 +32,25 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:recoilPosY")
+tracks/2/path = NodePath("..:recoilRot")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(2, 0, 0, 0, 0, 2),
-"points": PackedFloat32Array(0, 0, 0, 0.0290514, -0.984573, -1.34041, -0.0230703, 0.0970474, 0.0220249, 0.481227, 1.02107, -0.0202896, -0.0323491, 0.040189, 0, -0.790478, -0.0623751, -0.0323492, 0.0435771, 0.0323492, -0.240542, -0.0640841, 0.161746, 0.0632296, -0.0970475, 0, -0.0451437, -0.0400904, 0, 0),
-"times": PackedFloat32Array(0, 0.0700652, 0.219595, 0.527198, 0.78268, 1.05354)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:recoilPosX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_el4bg"]
@@ -47,19 +58,24 @@ _data = {
 "recoil": SubResource("Animation_xhdwv")
 }
 
-[node name="gun" type="Node2D"]
-script = ExtResource("1_ogx2h")
-type = ExtResource("2_1fsm0")
-
-[node name="AK47" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_064ej")
-offset = Vector2(107.225, -35.08)
-
-[node name="BulletSpawnPoint" type="Node2D" parent="AK47"]
-position = Vector2(530, -40)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
+[sub_resource type="PackedScene" id="PackedScene_fj1pi"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("AnimationPlayer", "libraries"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 1, 1, 0, 0),
+"variants": [{
 "": SubResource("AnimationLibrary_el4bg")
+}],
+"version": 3
 }
+
+[resource]
+script = ExtResource("1_yiwww")
+damage = 6.0
+fireRate = 0.1
+animator = SubResource("PackedScene_fj1pi")
+sprite = ExtResource("3_xj7gk")

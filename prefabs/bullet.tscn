@@ -9,7 +9,7 @@ size = Vector2(17.125, 4)
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_hiuoh")
-speed = 4009
+speed = 5000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 0.785398
