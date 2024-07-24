@@ -18,7 +18,6 @@ func _physics_process(delta):
 	
 	move_and_collide(velocity)
 
-
 func hit() -> void:
 	flash();
 
