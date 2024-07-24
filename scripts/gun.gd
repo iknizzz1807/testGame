@@ -6,7 +6,13 @@ const bulletPrefab = preload("res://prefabs/bullet.tscn");
 
 enum GUNS {AK47 = 3, PISTOL = 1, M4 = 2};
 @export var GUN_TYPE: GUNS = GUNS.AK47; #
+
+@export var recoilRot: float = 0;
+@export var recoilPosX: float = 0;
+@export var recoilPosY: float = 0;
+
 @onready var sprite : Sprite2D = $AK47;
+@onready var animation : AnimationPlayer = $AnimationPlayer;
 
 func _ready():
 	pass
@@ -28,6 +34,9 @@ func _process(_delta):
 		sprite.scale.y = abs(sprite.scale.y) * 1;
 	else:
 		sprite.scale.y = abs(sprite.scale.y) * -1;
+	sprite.position = Vector2(recoilPosX, recoilPosY);
+	sprite.rotation_degrees = rotation + recoilRot * sign(sprite.scale.y);
+	
 	pass
 	
 func bulletOut():
@@ -40,6 +49,8 @@ func bulletOut():
 
 func _on_player_shoot():
 	bulletOut();
+	animation.stop();
+	animation.play("recoil");
 	pass
 
 func gun_init():
