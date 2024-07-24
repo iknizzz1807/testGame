@@ -18,7 +18,8 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	print("collider")
+	#print("collider")
 	if (body != null) and (body is Enemy):
 		body.hit();
-		queue_free();
+		body.takeDamage(2); # Replace the damage deal base on the gun stat
+		queue_free(); # Remove the bullet
