@@ -12,14 +12,11 @@ const bulletPrefab = preload("res://prefabs/bullet.tscn");
 
 @onready var bulletSpawnPoint : Node2D = $AK47/BulletSpawnPoint;
 @onready var sprite : Sprite2D = $AK47;
-@onready var animation : AnimationPlayer;
+@onready var animation : AnimationPlayer = $AnimationPlayer;
 
 var fireRateCounter: float = 0;
 
 func _ready():
-	sprite.texture = type.sprite;
-	animation = type.animator.instantiate();
-	add_child(animation);
 	pass
 '''
 func get_damage() -> int:
@@ -60,7 +57,7 @@ func _on_player_shoot() -> void:
 		return;
 	bulletOut();
 	fireRateCounter = type.fireRate;
-	animation.stop();
+	animation.stop(true);
 	animation.play("recoil");
 	pass
 
