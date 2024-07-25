@@ -36,4 +36,5 @@ curve = SubResource("Curve2D_21631")
 position = Vector2(-623, -379)
 rotation = -0.00490593
 
+[connection signal="shootEvent" from="Player" to="Camera2D" method="_on_player_shoot_event"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

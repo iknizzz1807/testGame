@@ -14,4 +14,4 @@ class_name GunType;
 @export_category("Setup")
 @export var bulletPrefab : Resource;
 @export var animator : Resource;
-@export var sprite: Texture2D;
+@export var sprite: Resource;

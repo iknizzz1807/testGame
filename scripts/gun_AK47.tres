@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=4 format=3 uid="uid://bsehp7go47ecx"]
+[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://bsehp7go47ecx"]
 
 [ext_resource type="PackedScene" uid="uid://dmt4m7ycxujf8" path="res://prefabs/bullet.tscn" id="1_rotqs"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="2_ui87e"]
-[ext_resource type="Texture2D" uid="uid://dxiwddj14wxbl" path="res://ak47.png" id="3_mjm6a"]
 
 [resource]
 script = ExtResource("2_ui87e")
@@ -16,4 +15,3 @@ spreadNumber = 1
 burstAmount = 1
 burstDelay = 0.0
 bulletPrefab = ExtResource("1_rotqs")
-sprite = ExtResource("3_mjm6a")

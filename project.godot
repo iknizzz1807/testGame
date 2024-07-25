@@ -15,10 +15,6 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg")
-
 [input]
 
 shoot={
@@ -55,3 +51,7 @@ moveDown={
 
 2d_physics/layer_1="Default"
 2d_physics/layer_2="Bullet"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

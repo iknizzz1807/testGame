@@ -52,6 +52,3 @@ func apply_shake():
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shakeStrength, shakeStrength),
 	 rng.randf_range(-shakeStrength, shakeStrength));
-
-func _on_player_shoot():
-	apply_shake();
