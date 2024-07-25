@@ -75,7 +75,7 @@ _bundled = {
 
 [resource]
 script = ExtResource("1_yiwww")
-damage = 6.0
+damage = 5.0
 fireRate = 0.1
 animator = SubResource("PackedScene_fj1pi")
 sprite = ExtResource("3_xj7gk")

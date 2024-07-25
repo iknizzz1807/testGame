@@ -4,7 +4,7 @@ class_name Enemy
 @export var SPEED : float = 300.0
 @export var KNOCKBACK_STRENGTH : float = 800;
 @onready var sprite : Sprite2D = $Sprite2D;
-@export var HP : int = 10; # Change on different types of enemies
+@export var HP : int = 100; # Change on different types of enemies
 
 var knockbackStrength : Vector2 = Vector2.ZERO;
 var playerRef : Node2D;

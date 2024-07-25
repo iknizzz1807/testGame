@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc4ttnmfvxx7n"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_h2utm"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_x3oay"]
+[ext_resource type="PackedScene" uid="uid://bpmyml0l0oxys" path="res://prefabs/enemy.tscn" id="3_qr7hq"]
+[ext_resource type="PackedScene" uid="uid://b8thr11yjtsdy" path="res://prefabs/player.tscn" id="4_6y770"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_h2utm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 40.0
+editor_draw_limits = true
+script = ExtResource("2_x3oay")
+OFFSET_MAX_DIST = 200
+
+[node name="Enemy" parent="." instance=ExtResource("3_qr7hq")]
+position = Vector2(-376, -175)
+SPEED = 100.0
+
+[node name="Enemy2" parent="." instance=ExtResource("3_qr7hq")]
+position = Vector2(-378, -36)
+SPEED = 100.0
+
+[node name="Player" parent="." instance=ExtResource("4_6y770")]
+
+[connection signal="shoot" from="Player" to="Camera2D" method="_on_player_shoot"]
