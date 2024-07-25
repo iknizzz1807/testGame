@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc4ttnmfvxx7n"]
+[gd_scene load_steps=6 format=3 uid="uid://b1ifro1d7axiu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_h2utm"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_x3oay"]
@@ -36,5 +36,4 @@ curve = SubResource("Curve2D_21631")
 position = Vector2(-623, -379)
 rotation = -0.00490593
 
-[connection signal="shoot" from="Player" to="Camera2D" method="_on_player_shoot"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

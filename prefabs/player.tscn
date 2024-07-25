@@ -18,6 +18,6 @@ texture = ExtResource("2_s7gm6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iwipn")
 
-[node name="gun" parent="." instance=ExtResource("3_tw1ej")]
+[node name="Gun" parent="." instance=ExtResource("3_tw1ej")]
 
-[connection signal="shoot" from="." to="gun" method="_on_player_shoot"]
+[connection signal="shootEvent" from="." to="Gun" method="_on_player_shoot_event"]

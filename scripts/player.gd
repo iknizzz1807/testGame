@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 class_name Player
 
-signal shoot;
+signal shootEvent;
 @export var speed = 400
+@onready var gun : Gun = $Gun;
 
 func _ready():
 	pass
@@ -18,5 +19,10 @@ func _physics_process(_delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_pressed("shoot"):
-		shoot.emit();
+	var canShoot : bool = false;
+	if (gun.type.automatic):
+		canShoot = Input.is_action_pressed("shoot");
+	else:
+		canShoot = Input.is_action_just_pressed("shoot");
+	if canShoot:
+		shootEvent.emit();

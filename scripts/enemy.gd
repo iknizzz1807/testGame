@@ -36,5 +36,4 @@ func flash()->void:
 func takeDamage(damage):
 	HP -= damage;
 	if(HP <= 0):
-		print(name + " died");
 		queue_free(); # Remove the enemy

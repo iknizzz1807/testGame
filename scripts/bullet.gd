@@ -6,6 +6,7 @@ var direction = Vector2(0, 0);
 
 @export var speed = 400000;
 var damage : float = 0;
+var fireRate: float = 0;
 
 
 # Called when the node enters the scene tree for the first time.

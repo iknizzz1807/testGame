@@ -1,8 +1,6 @@
 extends Node2D
 class_name Gun;
 
-const bulletPrefab = preload("res://prefabs/bullet.tscn");
-
 #enum GUNS {AK47 = 3, PISTOL = 1, M4 = 2};
 @export var type : GunType;
 
@@ -14,21 +12,14 @@ const bulletPrefab = preload("res://prefabs/bullet.tscn");
 @onready var sprite : Sprite2D = $AK47;
 @onready var animation : AnimationPlayer = $AnimationPlayer;
 
+var ammoCounter : int;
 var fireRateCounter: float = 0;
+var reloading : bool = false;
+
 
 func _ready():
+	ammoCounter = type.ammo;
 	pass
-'''
-func get_damage() -> int:
-	match GUN_TYPE:
-		GUNS.AK47:
-			return GUNS.AK47;
-		GUNS.PISTOL:
-			return GUNS.PISTOL;
-		GUNS.M4:
-			return GUNS.M4;
-	return 0;
-'''
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -39,28 +30,47 @@ func _process(delta):
 		sprite.scale.y = abs(sprite.scale.y) * -1;
 	sprite.position = Vector2(recoilPosX, recoilPosY);
 	sprite.rotation_degrees = rotation + recoilRot * sign(sprite.scale.y);
-	print(fireRateCounter);
 	if (fireRateCounter > 0):
 		fireRateCounter -= delta;
 	pass
 	
 func bulletOut() -> void:
-	var bullet = bulletPrefab.instantiate();
-	get_tree().root.add_child(bullet);
-	bullet.global_position = bulletSpawnPoint.global_position;
-	bullet.look_at(get_global_mouse_position());
-	bullet.direction = get_global_mouse_position() - bullet.position;
-	bullet.damage = type.damage;
+	# clamp: max(1, min(type.burstAmount, ammoCounter):
+	for i in range(0, clamp(type.burstAmount, 1, ammoCounter)):
+		if (is_instance_valid(self) == null): return;
+		spawnBullet();
+		animation.stop(true);
+		animation.play("recoil");
+		# gun
+		ammoCounter -= 1;
+		await get_tree().create_timer(type.burstDelay).timeout;
 
-func _on_player_shoot() -> void:
-	if (fireRateCounter > 0):
+func spawnBullet() -> void:
+	for i in range(0, max(1, type.spreadNumber)):
+		var spread = randf_range(-type.spreadAngle, type.spreadAngle);
+		# Setup
+		var bullet = type.bulletPrefab.instantiate() as Bullet;
+		get_tree().root.add_child(bullet);
+		
+		bullet.global_position = bulletSpawnPoint.global_position;
+		
+		bullet.look_at(get_global_mouse_position());
+		bullet.rotation_degrees += spread + sprite.rotation_degrees;
+		bullet.direction = Vector2.from_angle(bullet.rotation);
+		bullet.damage = type.damage;
+		bullet.fireRate = type.fireRate;
+
+func _on_player_shoot_event():
+	if (fireRateCounter > 0 || reloading):
 		return;
 	bulletOut();
-	fireRateCounter = type.fireRate;
-	animation.stop(true);
-	animation.play("recoil");
-	pass
+	fireRateCounter = type.fireRate + type.burstAmount * type.burstDelay;
+	if (ammoCounter <= 0):
+		reload();
 
-func gun_init():
-	pass
-	#GUN_TYPE = GUNS.PISTOL; # Replace this
+func reload() -> void:
+	reloading = true;
+	await get_tree().create_timer(type.reloadSpeed).timeout;
+	ammoCounter = type.ammo;
+	fireRateCounter = 0;
+	reloading = false;
