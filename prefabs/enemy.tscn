@@ -15,8 +15,6 @@ size = Vector2(128, 127)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_u5mtw")
-SPEED = 10.0
-KNOCKBACK_STRENGTH = 2000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_kafah")

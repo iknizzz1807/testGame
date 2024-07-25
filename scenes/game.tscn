@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc4ttnmfvxx7n"]
+[gd_scene load_steps=6 format=3 uid="uid://cc4ttnmfvxx7n"]
 
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_h2utm"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_h2utm"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_x3oay"]
 [ext_resource type="PackedScene" uid="uid://bpmyml0l0oxys" path="res://prefabs/enemy.tscn" id="3_qr7hq"]
 [ext_resource type="PackedScene" uid="uid://b8thr11yjtsdy" path="res://prefabs/player.tscn" id="4_6y770"]
 
+[sub_resource type="Curve2D" id="Curve2D_21631"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -623, -379, 0, 0, 0, 0, 600, -385, 0, 0, 0, 0, 608, 391, 0, 0, 0, 0, -627, 387, 0, 0, 0, 0, -623, -379)
+}
+point_count = 5
+
 [node name="game" type="Node2D"]
 script = ExtResource("1_h2utm")
+mob_scene = ExtResource("3_qr7hq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 40.0
@@ -16,12 +23,18 @@ OFFSET_MAX_DIST = 200
 
 [node name="Enemy" parent="." instance=ExtResource("3_qr7hq")]
 position = Vector2(-376, -175)
-SPEED = 100.0
-
-[node name="Enemy2" parent="." instance=ExtResource("3_qr7hq")]
-position = Vector2(-378, -36)
-SPEED = 100.0
 
 [node name="Player" parent="." instance=ExtResource("4_6y770")]
 
+[node name="MobTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_21631")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-623, -379)
+rotation = -0.00490593
+
 [connection signal="shoot" from="Player" to="Camera2D" method="_on_player_shoot"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

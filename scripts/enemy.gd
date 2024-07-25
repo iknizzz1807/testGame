@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var SPEED : float = 300.0
+@export var SPEED : float = 100.0
 @export var KNOCKBACK_STRENGTH : float = 800;
 @onready var sprite : Sprite2D = $Sprite2D;
 @export var HP : int = 100; # Change on different types of enemies
@@ -17,7 +17,6 @@ func _physics_process(delta):
 	if playerRef != null:
 		var playerDir = playerRef.position - position;
 		velocity = playerDir.normalized() * SPEED;
-		
 	velocity += knockbackStrength;
 	knockbackStrength = Vector2.ZERO;
 	move_and_collide(velocity * delta)
