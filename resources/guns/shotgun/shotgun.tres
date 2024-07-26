@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=2 format=3 uid="uid://dld335de2qati"]
+[gd_resource type="Resource" script_class="GunType" load_steps=4 format=3 uid="uid://dld335de2qati"]
 
+[ext_resource type="PackedScene" uid="uid://dmt4m7ycxujf8" path="res://prefabs/bullet.tscn" id="1_3nqr3"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_trgs4"]
+[ext_resource type="PackedScene" uid="uid://dmwnpl87caq4" path="res://resources/guns/shotgun/shotgun.tscn" id="3_rdtxl"]
 
 [resource]
 script = ExtResource("1_trgs4")
+bulletPrefab = ExtResource("1_3nqr3")
+sprite = ExtResource("3_rdtxl")
 automatic = false
-damage = 0.0
-fireRate = 0.02
-ammo = 30
-reloadSpeed = 1.0
-spreadAngle = 0.0
-spreadNumber = 0
+damage = 8.0
+fireRate = 1.2
+ammo = 8
+reloadSpeed = 2.0
+spreadAngle = 30.0
+spreadNumber = 10
 burstAmount = 0
 burstDelay = 0.0

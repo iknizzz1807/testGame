@@ -9,10 +9,10 @@
 script = ExtResource("1_n6rqh")
 automatic = true
 damage = 10.0
-fireRate = 0.02
+fireRate = 0.05
 ammo = 30
 reloadSpeed = 0.75
-spreadAngle = 0.0
+spreadAngle = 10.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0

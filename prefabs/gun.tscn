@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0f5ast5hqdga"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_ogx2h"]
-[ext_resource type="Resource" uid="uid://b683ulmkfq678" path="res://resources/guns/assault_rifle/assault_rifle.tres" id="2_82m1m"]
+[ext_resource type="Resource" uid="uid://be37uumcnqxp4" path="res://resources/guns/pistol/pistol.tres" id="2_lr8lr"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_ogx2h")
-type = ExtResource("2_82m1m")
+type = ExtResource("2_lr8lr")
