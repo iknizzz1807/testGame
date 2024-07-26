@@ -76,7 +76,5 @@ func _on_area_2d_body_entered(body):
 		state = PlayerState.idle;
 		#takeDamage(1);
 
-
-
 func knockback(dir: Vector2) -> void:
 	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;

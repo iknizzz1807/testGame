@@ -21,6 +21,7 @@ func _physics_process(delta):
 	velocity += knockbackStrength;
 	knockbackStrength = Vector2.ZERO;
 	move_and_collide(velocity * delta)
+	print(HP);
 
 
 func knockback(dir: Vector2) -> void:
@@ -30,11 +31,16 @@ func hit() -> void:
 	flash();
 
 func flash()->void:
+	sprite.material.set_shader_parameter("flash_color", Color.WHITE);
 	sprite.material.set_shader_parameter("flash_value", 1);
-	await get_tree().create_timer(0.1).timeout;
+	await get_tree().create_timer(0.1).timeout; 
+	sprite.material.set_shader_parameter("flash_color", Color.WHITE);
 	sprite.material.set_shader_parameter("flash_value", 0);
 
 func takeDamage(damage):
 	HP -= damage;
 	if(HP <= 0):
 		queue_free(); # Remove the enemy
+
+func getSprite():
+	return sprite;

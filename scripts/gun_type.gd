@@ -2,7 +2,7 @@ extends Resource
 class_name GunType;
 
 @export_category("Setup")
-@export var sprite: Resource;
+@export var sprite: PackedScene;
 @export_category("Properties")
 @export var automatic : bool = false;
 @export var damage: float = 0;
@@ -13,11 +13,7 @@ class_name GunType;
 @export_range(1, 999999) var spreadNumber : int = 0;
 @export_range(1, 999999) var burstAmount : int = 0;
 @export var burstDelay : float = 0;
-
-func _init():
-	# assert(sprite != null, resource_name + " doesn't has a sprite");
-	# assert(bulletPrefab != null, resource_name + " doesn't has a bullet");
-	pass
+@export var effects : Array[Resource];
 
 func _get_configuration_warning():
 	if (sprite != null):

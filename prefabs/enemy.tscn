@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpmyml0l0oxys"]
+[gd_scene load_steps=7 format=3 uid="uid://bpmyml0l0oxys"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_u5mtw"]
 [ext_resource type="Texture2D" uid="uid://lpo7pbv5dynb" path="res://sprites/icon.svg" id="2_dv1sa"]
 [ext_resource type="Shader" path="res://shader/flash.gdshader" id="2_le52c"]
+[ext_resource type="PackedScene" uid="uid://bvm1eckewgy1t" path="res://scripts/effects/Effect.tscn" id="4_1khos"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kafah"]
 resource_local_to_scene = true
@@ -23,3 +24,5 @@ texture = ExtResource("2_dv1sa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1q4d1")
+
+[node name="Effect" parent="." instance=ExtResource("4_1khos")]

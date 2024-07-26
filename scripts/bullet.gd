@@ -7,8 +7,8 @@ var direction = Vector2(0, 0);
 @export var speed = 400000;
 var damage : float = 0;
 var fireRate: float = 0;
-var lifeTime : float = 5;
-
+var lifeTime : float = 3;
+var effects : Array[Resource];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +28,11 @@ func _on_area_2d_body_entered(body):
 	#print("collider")
 	if (body != null) and (body is Enemy):
 		body.knockback(direction);
+		for effect in effects:
+			var effectNode : Node2D = Node2D.new();
+			effectNode.set_script(effect);
+			body.add_child(effectNode);
+
 		body.hit();
 		body.takeDamage(damage);
 		queue_free(); # Remove the bullet

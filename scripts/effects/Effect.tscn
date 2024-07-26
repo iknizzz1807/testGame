@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvm1eckewgy1t"]
+
+[ext_resource type="Script" path="res://scripts/effects/Effect_Burn.gd" id="1_4o4ek"]
+
+[node name="Effect" type="Node2D"]
+script = ExtResource("1_4o4ek")

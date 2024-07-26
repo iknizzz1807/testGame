@@ -2,8 +2,10 @@ extends Node2D
 
 @export var mob_scene: PackedScene
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_on_mob_timer_timeout();
 	pass # Replace with function body.
 
 

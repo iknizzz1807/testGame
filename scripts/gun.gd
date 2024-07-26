@@ -84,6 +84,7 @@ func spawnBullet() -> void:
 		bullet.direction = Vector2.from_angle(bullet.rotation);
 		bullet.damage = type.damage;
 		bullet.fireRate = type.fireRate;
+		bullet.effects = type.effects;
 
 func _on_player_shoot_event():
 	if (fireRateCounter > 0 || reloading):
