@@ -10,7 +10,7 @@ class_name Gun;
 var bulletSpawnPoint : Node2D;
 var sprite : Sprite2D;
 var spriteAnimator : AnimationTree;
-var gunAnimator : AnimationPlayer;
+var recoilAnimator : AnimationPlayer;
 
 var ammoCounter : int;
 var fireRateCounter: float = 0;
@@ -22,13 +22,13 @@ func _ready():
 	add_child(sprite);
 	
 	bulletSpawnPoint = sprite.get_node(sprite.get_meta("BulletSpawnPoint"));
-	assert(bulletSpawnPoint != null, "This gun has no bulletSpawnPoint wtf");
+	assert(bulletSpawnPoint != null, name + " has no bulletSpawnPoint wtf");
 	
 	spriteAnimator = sprite.get_node(sprite.get_meta("Animator"));
-	assert(spriteAnimator != null, "This gun has no animator wtf");
+	assert(spriteAnimator != null, name + " has no animator wtf");
 	
-	gunAnimator = type.animator.instantiate();
-	add_child(gunAnimator);
+	recoilAnimator = sprite.get_node(sprite.get_meta("RecoilAnimator"));
+	assert(recoilAnimator != null, name + " has no recoil animator wtf");
 	
 	ammoCounter = type.ammo;
 	pass
@@ -42,8 +42,8 @@ func _process(delta):
 		sprite.scale.y = abs(sprite.scale.y) * 1;
 	else:
 		sprite.scale.y = abs(sprite.scale.y) * -1;
-	sprite.position = Vector2(recoilPosX, recoilPosY);
-	sprite.rotation_degrees = rotation + recoilRot * sign(sprite.scale.y);
+	sprite.position = sprite.posOffset + Vector2(sprite.recoilPosX, sprite.recoilPosY);
+	sprite.rotation_degrees = rotation + sprite.recoilRot * sign(sprite.scale.y);
 	if (fireRateCounter > 0):
 		fireRateCounter -= delta;
 	
@@ -57,10 +57,10 @@ func bulletOut() -> void:
 	for i in range(0, clamp(type.burstAmount, 1, ammoCounter)):
 		if (is_instance_valid(self) == null): return;
 		spawnBullet();
-		gunAnimator.stop(true);
-		gunAnimator.play("recoil");
+		recoilAnimator.stop(true);
+		recoilAnimator.play("recoil");
 		spriteAnimator.set("parameters/conditions/shooting", true);
-		spriteAnimator.get("parameters/playback").travel("shoot");
+		try_travel_animation(spriteAnimator, "shoot");
 		# gun
 		ammoCounter -= 1;
 		await get_tree().create_timer(type.burstDelay).timeout;
@@ -92,8 +92,14 @@ func _on_player_shoot_event():
 func reload() -> void:
 	reloading = true;
 	spriteAnimator.set("parameters/conditions/reloading", true);
-	spriteAnimator.get("parameters/playback").travel("reload");
+	try_travel_animation(spriteAnimator, "reload");
 	await get_tree().create_timer(type.reloadSpeed).timeout;
 	ammoCounter = type.ammo;
 	fireRateCounter = 0;
 	reloading = false;
+
+
+func try_travel_animation(animator : AnimationTree, animation_name : String):
+	if (animator.has_animation(animation_name)):
+		animator.get("parameters/playback").travel(animation_name);
+	pass

@@ -1,17 +1,20 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://be37uumcnqxp4"]
+[gd_resource type="Resource" script_class="GunType" load_steps=4 format=3 uid="uid://be37uumcnqxp4"]
 
+[ext_resource type="PackedScene" uid="uid://bg2hg5f1sv8nj" path="res://resources/guns/pistol/pistol_animation.tscn" id="1_c4mty"]
 [ext_resource type="PackedScene" uid="uid://dmt4m7ycxujf8" path="res://prefabs/bullet.tscn" id="1_f2fif"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_fi1qc"]
 
 [resource]
 script = ExtResource("1_fi1qc")
 automatic = false
-damage = 0.0
-fireRate = 0.02
-ammo = 30
+damage = 7.0
+fireRate = 0.1
+ammo = 10
 reloadSpeed = 1.0
-spreadAngle = 0.0
+spreadAngle = 5.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
 bulletPrefab = ExtResource("1_f2fif")
+animator = ExtResource("1_c4mty")
+sprite = ExtResource("1_c4mty")
