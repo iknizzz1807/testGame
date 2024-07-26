@@ -18,6 +18,7 @@ signal shootEvent;
 @export var KNOCKBACK_STRENGTH : float = 200;
 var knockbackStrength : Vector2 = Vector2.ZERO;
 var HP : int = 5;
+signal dieEvent;
 
 func _ready():
 	pass
@@ -25,7 +26,6 @@ func _ready():
 func get_input():
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown");
 	velocity = input_direction * speed;
-	
 
 func _physics_process(_delta):
 	if (state != PlayerState.hit):
@@ -53,12 +53,13 @@ func _process(_delta):
 
 func die() -> void:
 	print("You died");
-	get_tree().paused = true;
+	dieEvent.emit();
 
-#func takeDamage(damage) ->void:
-	#HP -= damage;
-	#if(HP <= 0):
-		#die();
+func takeDamage(damage) ->void:
+	#print("You took damage");
+	HP -= damage;
+	if(HP <= 0):
+		die();
 
 func flash()->void:
 	sprite.material.set_shader_parameter("flash_value", 1);
@@ -67,14 +68,13 @@ func flash()->void:
 
 func _on_area_2d_body_entered(body):
 	if (body != null) and (body is Enemy):
-		#await get_tree().create_timer(0.2).timeout;
 		flash();
 		state = PlayerState.hit;
 		animator.get("parameters/playback").travel("hit");
 		knockback((position - body.position));
+		takeDamage(1); # Change this
 		await get_tree().create_timer(0.4).timeout;
 		state = PlayerState.idle;
-		#takeDamage(1);
 
 func knockback(dir: Vector2) -> void:
 	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;

@@ -21,7 +21,7 @@ func _physics_process(delta):
 	velocity += knockbackStrength;
 	knockbackStrength = Vector2.ZERO;
 	move_and_collide(velocity * delta)
-	print(HP);
+	#print(HP);
 
 
 func knockback(dir: Vector2) -> void:
