@@ -20,4 +20,10 @@ shape = SubResource("RectangleShape2D_iwipn")
 
 [node name="Gun" parent="." instance=ExtResource("3_tw1ej")]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_iwipn")
+
 [connection signal="shootEvent" from="." to="Gun" method="_on_player_shoot_event"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

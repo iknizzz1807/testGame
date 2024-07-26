@@ -10,6 +10,7 @@ var knockbackStrength : Vector2 = Vector2.ZERO;
 var playerRef : Node2D;
 
 func _ready():
+	name = "Enemy";
 	playerRef = get_tree().get_first_node_in_group("player")
 	hit();
 

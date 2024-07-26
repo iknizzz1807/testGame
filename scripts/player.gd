@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var sprite : Sprite2D = $Sprite2D;
 signal shootEvent;
 @export var speed = 400
 @onready var gun : Gun = $Gun;
+var HP : int = 5;
 
 func _ready():
 	pass
@@ -26,3 +28,22 @@ func _process(_delta):
 		canShoot = Input.is_action_just_pressed("shoot");
 	if canShoot:
 		shootEvent.emit();
+
+func die() -> void:
+	print("You died");
+	get_tree().paused = true;
+
+func takeDamage(damage) ->void:
+	HP -= damage;
+	if(HP <= 0):
+		die();
+
+func flash()->void:
+	sprite.material.set_shader_parameter("flash_value", 1);
+	await get_tree().create_timer(0.1).timeout;
+	sprite.material.set_shader_parameter("flash_value", 0);
+
+func _on_area_2d_body_entered(body):
+	if (body != null) and (body is Enemy):
+		flash();
+		takeDamage(1); # Asume the enemy deals 1 damage when collide
