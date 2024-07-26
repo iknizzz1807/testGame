@@ -1,13 +1,13 @@
+[gd_scene load_steps=23 format=3 uid="uid://b8thr11yjtsdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nchtj"]
 [ext_resource type="Shader" path="res://shader/flash.gdshader" id="2_3liv7"]
 [ext_resource type="Texture2D" uid="uid://drfamii7pxoh" path="res://sprites/player/DinoSprites - vita.png" id="2_rr7v6"]
 [ext_resource type="PackedScene" uid="uid://c0f5ast5hqdga" path="res://prefabs/gun.tscn" id="3_tw1ej"]
-[ext_resource type="Resource" uid="uid://dld335de2qati" path="res://resources/guns/shotgun/shotgun.tres" id="4_hcxj0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvdph"]
 shader = ExtResource("2_3liv7")
-shader_parameter/flash_color = null
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwipn"]
@@ -58,7 +58,7 @@ states/idle/position = Vector2(299, 55)
 states/run/node = SubResource("AnimationNodeAnimation_odjj7")
 states/run/position = Vector2(465, 202)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_j8c48"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_x17rj"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_u46gf"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_gc7kf"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_eahcj"), "hit", "run", SubResource("AnimationNodeStateMachineTransition_niqfl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ejgqr")]
-graph_offset = Vector2(-113, -7)
+graph_offset = Vector2(109, -22)
 
 [sub_resource type="Animation" id="Animation_w7b6r"]
 length = 0.001
@@ -77,7 +77,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6jouo"]
 resource_name = "hit"
-length = 2.00001
+length = 0.200005
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +86,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [13, 14, 15, 16]
@@ -135,7 +136,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_nchtj")
-speed = 10
+KNOCKBACK_STRENGTH = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_rvdph")
@@ -145,9 +146,9 @@ hframes = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iwipn")
+disabled = true
 
 [node name="Gun" parent="." instance=ExtResource("3_tw1ej")]
-type = ExtResource("4_hcxj0")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_xx4dj")

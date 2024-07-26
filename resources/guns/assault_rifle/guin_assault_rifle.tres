@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="GunType" load_steps=5 format=3 uid="uid://b683ulmkfq678"]
 
-[ext_resource type="PackedScene" uid="uid://dnufmcc34sx4p" path="res://resources/guns/assault_rifle/assault_rifle_animator.tscn" id="1_70iey"]
+[ext_resource type="PackedScene" uid="uid://c7qq0v5na3uys" path="res://resources/guns/assault_rifle/assault_rifle_animator.tscn" id="1_70iey"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_n6rqh"]
 [ext_resource type="PackedScene" uid="uid://dmt4m7ycxujf8" path="res://prefabs/bullet.tscn" id="1_wdtov"]
-[ext_resource type="PackedScene" uid="uid://eglst85n47p8" path="res://resources/guns/assault_rifle/assault_rifle.tscn" id="3_xdq5u"]
+[ext_resource type="PackedScene" uid="uid://eglst85n47p8" path="res://resources/guns/assault_rifle/gun_assault_rifle.tscn" id="3_xdq5u"]
 
 [resource]
 script = ExtResource("1_n6rqh")

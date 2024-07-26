@@ -2,7 +2,6 @@ extends Resource
 class_name GunType;
 
 @export_category("Setup")
-@export var bulletPrefab : Resource;
 @export var sprite: Resource;
 @export_category("Properties")
 @export var automatic : bool = false;

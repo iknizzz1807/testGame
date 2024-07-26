@@ -1,6 +1,8 @@
 extends Node2D
 class_name Gun;
 
+var bulletPrefab = preload("res://prefabs/bullet.tscn");
+
 @export var type : GunType;
 
 @export var recoilRot: float = 0;
@@ -38,11 +40,14 @@ func _process(delta):
 	
 	
 	rotation = (get_global_mouse_position() - global_position).angle();
+	var sprPosOffset = sprite.posOffset;
 	if (abs(rotation_degrees) <= 90):
 		sprite.scale.y = abs(sprite.scale.y) * 1;
+		sprPosOffset.y *= 1;
 	else:
 		sprite.scale.y = abs(sprite.scale.y) * -1;
-	sprite.position = sprite.posOffset + Vector2(sprite.recoilPosX, sprite.recoilPosY);
+		sprPosOffset.y *= -1;
+	sprite.position = sprPosOffset + Vector2(sprite.recoilPosX, sprite.recoilPosY);
 	sprite.rotation_degrees = rotation + sprite.recoilRot * sign(sprite.scale.y);
 	if (fireRateCounter > 0):
 		fireRateCounter -= delta;
@@ -69,7 +74,7 @@ func spawnBullet() -> void:
 	for i in range(0, max(1, type.spreadNumber)):
 		var spread = randf_range(-type.spreadAngle, type.spreadAngle);
 		# Setup
-		var bullet = type.bulletPrefab.instantiate() as Bullet;
+		var bullet = bulletPrefab.instantiate() as Bullet;
 		get_tree().root.add_child(bullet);
 		
 		bullet.global_position = bulletSpawnPoint.global_position;

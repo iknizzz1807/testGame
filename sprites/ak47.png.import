@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxiwddj14wxbl"
-path="res://.godot/imported/ak47.png-3d73ed77251c71bec6016e1b9f03ad3f.ctex"
+path="res://.godot/imported/ak47.png-1314f385a0052b511cbd99214600310b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ak47.png"
-dest_files=["res://.godot/imported/ak47.png-3d73ed77251c71bec6016e1b9f03ad3f.ctex"]
+source_file="res://sprites/ak47.png"
+dest_files=["res://.godot/imported/ak47.png-1314f385a0052b511cbd99214600310b.ctex"]
 
 [params]
 

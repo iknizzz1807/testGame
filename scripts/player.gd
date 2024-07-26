@@ -28,26 +28,28 @@ func get_input():
 	
 
 func _physics_process(_delta):
-	get_input();
-	if (sign(velocity.length()) > 0):
-		state = PlayerState.run;
-	else:
-		state = PlayerState.idle;
-	if (velocity != Vector2.ZERO):
-		sprite.flip_h = velocity.x < 0;
+	if (state != PlayerState.hit):
+		if (sign(velocity.length()) > 0):
+			state = PlayerState.run;
+		else:
+			state = PlayerState.idle;
+		if (velocity != Vector2.ZERO):
+			sprite.flip_h = velocity.x < 0;
+		get_input();
 	velocity += knockbackStrength;
 	knockbackStrength = Vector2.ZERO;
-	move_and_collide(velocity);
+	move_and_collide(velocity * _delta);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	var canShoot : bool = false;
-	if (gun.type.automatic):
-		canShoot = Input.is_action_pressed("shoot");
-	else:
-		canShoot = Input.is_action_just_pressed("shoot");
-	if canShoot:
-		shootEvent.emit();
+	if (state != PlayerState.hit):
+		var canShoot : bool = false;
+		if (gun.type.automatic):
+			canShoot = Input.is_action_pressed("shoot");
+		else:
+			canShoot = Input.is_action_just_pressed("shoot");
+		if canShoot:
+			shootEvent.emit();
 
 func die() -> void:
 	print("You died");
@@ -67,8 +69,14 @@ func _on_area_2d_body_entered(body):
 	if (body != null) and (body is Enemy):
 		#await get_tree().create_timer(0.2).timeout;
 		flash();
+		state = PlayerState.hit;
+		animator.get("parameters/playback").travel("hit");
 		knockback((position - body.position));
+		await get_tree().create_timer(0.4).timeout;
+		state = PlayerState.idle;
 		#takeDamage(1);
-		
+
+
+
 func knockback(dir: Vector2) -> void:
 	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
