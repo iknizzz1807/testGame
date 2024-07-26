@@ -15,6 +15,9 @@ signal shootEvent;
 @onready var gun : Gun = $Gun;
 @onready var sprite : Sprite2D = $Sprite2D;
 @onready var animator : AnimationTree = $AnimationTree;
+@export var KNOCKBACK_STRENGTH : float = 200;
+var knockbackStrength : Vector2 = Vector2.ZERO;
+var HP : int = 5;
 
 func _ready():
 	pass
@@ -32,6 +35,8 @@ func _physics_process(_delta):
 		state = PlayerState.idle;
 	if (velocity != Vector2.ZERO):
 		sprite.flip_h = velocity.x < 0;
+	velocity += knockbackStrength;
+	knockbackStrength = Vector2.ZERO;
 	move_and_collide(velocity);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,10 +53,10 @@ func die() -> void:
 	print("You died");
 	get_tree().paused = true;
 
-func takeDamage(damage) ->void:
-	HP -= damage;
-	if(HP <= 0):
-		die();
+#func takeDamage(damage) ->void:
+	#HP -= damage;
+	#if(HP <= 0):
+		#die();
 
 func flash()->void:
 	sprite.material.set_shader_parameter("flash_value", 1);
@@ -60,5 +65,10 @@ func flash()->void:
 
 func _on_area_2d_body_entered(body):
 	if (body != null) and (body is Enemy):
+		#await get_tree().create_timer(0.2).timeout;
 		flash();
-		takeDamage(1); # Asume the enemy deals 1 damage when collide
+		knockback((position - body.position));
+		#takeDamage(1);
+		
+func knockback(dir: Vector2) -> void:
+	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
