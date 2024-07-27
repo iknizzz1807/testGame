@@ -15,4 +15,4 @@ spreadAngle = 30.0
 spreadNumber = 10
 burstAmount = 0
 burstDelay = 0.0
-effectNames = PackedStringArray("Burn")
+effects = Array[Resource]([])

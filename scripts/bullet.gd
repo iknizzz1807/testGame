@@ -29,7 +29,7 @@ func _on_area_2d_body_entered(body):
 	if (body != null) and (body is Enemy):
 		body.knockback(direction);
 		for effect in effects:
-			var effectNode : Node2D = Node2D.new();
+			var effectNode : Effect = Effect.new();
 			effectNode.set_script(effect);
 			body.add_child(effectNode);
 

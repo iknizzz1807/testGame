@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GunType" load_steps=4 format=3 uid="uid://b683ulmkfq678"]
 
-[ext_resource type="Script" path="res://scripts/effects/Effect_Burn.gd" id="1_4q4gg"]
+[ext_resource type="Script" path="res://scripts/effects/EffectBurn.gd" id="1_iqd12"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_n6rqh"]
 [ext_resource type="PackedScene" uid="uid://eglst85n47p8" path="res://resources/guns/assault_rifle/gun_assault_rifle.tscn" id="3_xdq5u"]
 
@@ -16,4 +16,4 @@ spreadAngle = 10.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
-effects = Array[Resource]([ExtResource("1_4q4gg")])
+effects = Array[Resource]([ExtResource("1_iqd12")])

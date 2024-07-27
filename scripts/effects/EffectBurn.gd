@@ -1,9 +1,10 @@
 extends Effect
-class_name Effect_Burn
+class_name EffectBurn
 
-@export var damagePerHit : float = 2;
-@export var delayPerHit : float = 0.7;
-@export var numberOfHit : int = 7;
+func _init():
+	numberOfHit = 7;
+	delayPerHit = 0.7;
+	damagePerHit = 7;
 
 func apply_effect():
 	super.apply_effect();
@@ -12,7 +13,7 @@ func apply_effect():
 		# effect
 		if parent == null:
 			break;
-		parent.HP -= damagePerHit;
+		parent.takeDamage(damagePerHit);
 		
 		# effect visual
 		parent.sprite.material.set_shader_parameter("flash_color", Color.RED);
