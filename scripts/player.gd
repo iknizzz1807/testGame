@@ -15,10 +15,15 @@ signal shootEvent;
 @onready var gun : Gun = $Gun;
 @onready var sprite : Sprite2D = $Sprite2D;
 @onready var animator : AnimationTree = $AnimationTree;
+@onready var statCanvas : CanvasLayer = $"../statCanvas";
 @export var KNOCKBACK_STRENGTH : float = 200;
 var knockbackStrength : Vector2 = Vector2.ZERO;
-var HP : int = 5;
-signal dieEvent;
+@export var HP : int = 5;
+@export var maxHP : int = 5;
+@export var power : int = 0;
+var EXP : int = 0;
+var level : int = 1;
+var maxEXP : int = 10;
 
 func _ready():
 	pass
@@ -52,8 +57,10 @@ func _process(_delta):
 			shootEvent.emit();
 
 func die() -> void:
+	statCanvas.get_child(1).text = str(level) + "\n" + "0" + "/" + str(maxHP) + "\n" + str(power) + "\n" + str(EXP) + "/" + str(maxEXP);
+	get_tree().paused = true;
+	Engine.time_scale = 0;
 	print("You died");
-	dieEvent.emit();
 
 func takeDamage(damage) ->void:
 	#print("You took damage");
@@ -78,3 +85,10 @@ func _on_area_2d_body_entered(body):
 
 func knockback(dir: Vector2) -> void:
 	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
+	
+func levelUp() -> void:
+	level += 1;
+	EXP = 0;
+	maxEXP += 5;
+	maxHP += 2;
+	power += 1;

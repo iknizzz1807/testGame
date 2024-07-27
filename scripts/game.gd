@@ -29,7 +29,6 @@ func _on_mob_timer_timeout(): # Spawn the enemy
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
-
 func _on_player_die_event():
 	# Game over
 	Engine.time_scale = 0; # Stop the entire game with no exception

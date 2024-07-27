@@ -1,17 +1,17 @@
 extends CharacterBody2D
+
 class_name Enemy
 
 @export var SPEED : float = 100.0
 @export var KNOCKBACK_STRENGTH : float = 800;
 @onready var sprite : Sprite2D = $Sprite2D;
-@export var HP : int = 100; # Change on different types of enemies
+@export var HP : int = 50; # Change on different types of enemies
 
 var knockbackStrength : Vector2 = Vector2.ZERO;
 var playerRef : Node2D;
 
 func _ready():
-	name = "Enemy";
-	playerRef = get_tree().get_first_node_in_group("player")
+	playerRef = get_tree().get_first_node_in_group("player");
 	hit();
 
 func _physics_process(delta):
@@ -21,8 +21,6 @@ func _physics_process(delta):
 	velocity += knockbackStrength;
 	knockbackStrength = Vector2.ZERO;
 	move_and_collide(velocity * delta)
-	#print(HP);
-
 
 func knockback(dir: Vector2) -> void:
 	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
@@ -38,9 +36,18 @@ func flash()->void:
 	sprite.material.set_shader_parameter("flash_value", 0);
 
 func takeDamage(damage):
+	if(HP <= 0):
+		return;
 	HP -= damage;
 	if(HP <= 0):
-		queue_free(); # Remove the enemy
+		die();
 
 func getSprite():
 	return sprite;
+	
+func die():
+	# Simulate the stats increase
+	playerRef.EXP += 2;
+	queue_free(); # Remove the enemy
+	if(playerRef.EXP == playerRef.maxEXP):
+		playerRef.levelUp();

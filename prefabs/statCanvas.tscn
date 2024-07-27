@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://lguhg4h0p80k"]
+
+[ext_resource type="Script" path="res://scripts/statCanvas.gd" id="1_p58ac"]
+
+[node name="statCanvas" type="CanvasLayer"]
+script = ExtResource("1_p58ac")
+
+[node name="statName" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 678.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 48
+text = "LV:
+HP:
+Power:
+EXP:"
+
+[node name="statNum" type="Label" parent="."]
+offset_left = 190.0
+offset_top = 15.0
+offset_right = 853.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 48
+text = "0
+0
+0
+0"
