@@ -49,5 +49,5 @@ func die():
 	# Simulate the stats increase
 	playerRef.EXP += 2;
 	queue_free(); # Remove the enemy
-	if(playerRef.EXP == playerRef.maxEXP):
+	if(playerRef.EXP >= playerRef.maxEXP):
 		playerRef.levelUp();

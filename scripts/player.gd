@@ -88,7 +88,7 @@ func knockback(dir: Vector2) -> void:
 	
 func levelUp() -> void:
 	level += 1;
-	EXP = 0;
+	EXP = EXP - maxEXP;
 	maxEXP += 5;
 	maxHP += 2;
 	power += 1;
