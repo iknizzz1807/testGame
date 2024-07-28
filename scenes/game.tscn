@@ -25,7 +25,7 @@ OFFSET_MAX_DIST = 200
 [node name="Player" parent="." instance=ExtResource("4_6y770")]
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 2.0
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]
