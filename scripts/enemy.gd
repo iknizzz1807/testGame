@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@export var SPEED : float = 100.0
-@export var KNOCKBACK_STRENGTH : float = 800;
+@export var SPEED : float = 10.0
+@export var MAX_SPEED : float = 100;
+@export var KNOCKBACK_STRENGTH : float = 1000;
 @onready var sprite : Sprite2D = $Sprite2D;
 @export var HP : int = 50; # Change on different types of enemies
 
-var knockbackStrength : Vector2 = Vector2.ZERO;
+var knockbackDirection : Vector2 = Vector2.ZERO;
 var playerRef : Node2D;
 
 func _ready():
@@ -17,13 +18,18 @@ func _ready():
 func _physics_process(delta):
 	if playerRef != null:
 		var playerDir = playerRef.position - position;
-		velocity = playerDir.normalized() * SPEED;
-	velocity += knockbackStrength;
-	knockbackStrength = Vector2.ZERO;
-	move_and_collide(velocity * delta)
+		velocity += playerDir.normalized() * SPEED;
+	velocity += knockbackDirection;
+	velocity = vector_clamp_length(velocity, 0, MAX_SPEED);
+	knockbackDirection = Vector2.ZERO;
+	move_and_collide(velocity * delta);
+	#move_and_slide();
+
+func vector_clamp_length(target: Vector2, min_length : float, max_length : float) -> Vector2:
+	return target.normalized() * clamp(target.length(), min_length, max_length);
 
 func knockback(dir: Vector2) -> void:
-	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
+	knockbackDirection += dir * KNOCKBACK_STRENGTH;
 
 func hit() -> void:
 	flash();
