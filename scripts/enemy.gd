@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Enemy
 
+
 @export var SPEED : float = 10.0
 @export var MAX_SPEED : float = 100;
 @export var KNOCKBACK_STRENGTH : float = 1000;

@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg2hg5f1sv8nj"]
+[gd_scene load_steps=15 format=3 uid="uid://bcxgkgxpybo8r"]
 
-[ext_resource type="Texture2D" uid="uid://vvl1kdfrv3ok" path="res://sprites/guns/pistol/pistol.png" id="1_epx3r"]
-[ext_resource type="Texture2D" uid="uid://bfrfrltxg1cmw" path="res://sprites/guns/pistol/pistol_shoot.png" id="2_30b1n"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_euwt7"]
+[ext_resource type="Texture2D" uid="uid://bpyub0t3n4618" path="res://sprites/guns/beretta/beretta.png" id="1_8vw8r"]
+[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_fjvtq"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"
@@ -22,11 +21,11 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3a2li"]
-states/default/node = SubResource("AnimationNodeAnimation_mgyhr")
-states/default/position = Vector2(385, 91)
+states/idle/node = SubResource("AnimationNodeAnimation_mgyhr")
+states/idle/position = Vector2(385, 91)
 states/shoot/node = SubResource("AnimationNodeAnimation_nbcwa")
 states/shoot/position = Vector2(524, 70)
-transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_1epfi"), "default", "shoot", SubResource("AnimationNodeStateMachineTransition_y73b6"), "shoot", "default", SubResource("AnimationNodeStateMachineTransition_7gimr")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1epfi"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_y73b6"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_7gimr")]
 graph_offset = Vector2(-52, -12)
 
 [sub_resource type="Animation" id="Animation_8b44q"]
@@ -41,7 +40,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_epx3r")]
+"values": [ExtResource("1_8vw8r")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -53,7 +52,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.455, -1.54)]
+"values": [Vector2(8.445, -2.595)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -90,34 +89,12 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:recoilRot")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:recoilPosY")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_pwqwi"]
-resource_name = "default"
+resource_name = "idle"
 length = 0.01
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,7 +105,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_epx3r")]
+"values": [ExtResource("1_8vw8r")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,7 +117,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.455, -1.54)]
+"values": [Vector2(8.445, -2.595)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -178,23 +155,9 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:recoilRot")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
-[sub_resource type="Animation" id="Animation_ptx5b"]
+[sub_resource type="Animation" id="Animation_olaap"]
 resource_name = "shoot"
-length = 0.36
-step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -205,7 +168,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_30b1n")]
+"values": [ExtResource("1_8vw8r")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -217,7 +180,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(17.475, -1.475)]
+"values": [Vector2(8.445, -2.595)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -229,7 +192,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -250,29 +213,17 @@ tracks/4/path = NodePath(".:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:recoilRot")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7fiq"]
 _data = {
 "RESET": SubResource("Animation_8b44q"),
-"default": SubResource("Animation_pwqwi"),
-"shoot": SubResource("Animation_ptx5b")
+"idle": SubResource("Animation_pwqwi"),
+"shoot": SubResource("Animation_olaap")
 }
 
 [sub_resource type="Animation" id="Animation_i1m7g"]
@@ -286,9 +237,9 @@ tracks/0/path = NodePath(".:recoilRot")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.0261424, -4.44862, -13.4002, -0.0483829, 0.0473623, 0.0811584, 0.236812, 5.66397, -0.0573571, -0.331537, 0.0874013, 0.18945, -3.14544, -0.0683563, -0.0839055, 0.061259, 0, 2.20651, -0.0555395, -0.0947248, 0.0418683, -0.0839055, -1.2983, -0.0358871, 0.251717, 0.0427227, 0.167811, 0.596191, -0.0410137, -0.0839055, 0.0341781, -0.167811, -0.540507, -0.0341782, 0.213131, 0.0341782, -0.213131, 0, -0.0664338, -0.130246, 0.0664338, 0.130246),
-"times": PackedFloat32Array(0, 0.0948538, 0.223205, 0.389289, 0.557788, 0.740812, 0.870817, 1.00808, 1.23396)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.0276676, -5.9092, -11.1098, -0.045324, 0.539575, 0.0616075, 9.53674e-07, 4.34911, -0.0502216, -0.207081, 0.0606662, -0.135129, -2.93443, -0.0683563, -0.0839055, 0.061259, 0, 1.67352, -0.0555395, -0.0947248, 0.0418683, -0.0839055, -0.81871, -0.0358871, 0.251717, 0.0427227, 0.167811, 0.535852, -0.0410137, -0.0839055, 0.0341781, -0.167811, 0.0148666, -0.0664338, -0.130246, 0.0329955, -0.623973),
+"times": PackedFloat32Array(0, 0.0796676, 0.24411, 0.388124, 0.603635, 0.778244, 0.926736, 1.13248)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -297,9 +248,9 @@ tracks/1/path = NodePath(".:recoilPosX")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.0264881, -0.0839054, 0.0264881, 0.0839054, -4.94521, -0.0555395, 0, 0.0555395, 0, 3.01167, -0.0487039, 0.0839053, 0.0487039, -0.0839053, -2.57709, -0.0500939, 0, 0.0447267, 0, 1.06981, -0.0606662, 0, 0.0606662, 0, -0.493145, -0.0647249, 0.104882, 0.0647249, -0.104882, 0, -0.0495583, 0.0668833, 0.0495583, -0.0668833),
-"times": PackedFloat32Array(0, 0.100227, 0.238222, 0.38711, 0.562872, 0.742264, 0.896237)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 2),
+"points": PackedFloat32Array(0, -0.0264881, -0.0839054, 0.0205069, -1.84014, -8.47719, -0.0555395, 0, 0.0461405, 0.13513, 3.19288, -0.0478494, -0.540521, 0.080508, 0.0387926, -2.24554, -0.0500939, 0, 0.0447267, 0, -2.01698, -0.0500939, 0, 0.0447267, 0, 1.62992, -0.0606662, 0, 0.0606662, 0, -0.922907, -0.0647249, 0.104882, 0.0647249, -0.104882, 0.796345, -0.0495583, 0.0668833, 0.0495583, -0.0668833, -0.0372319, -0.023556, 0.170787, 0, 0),
+"times": PackedFloat32Array(0, 0.0715627, 0.254047, 0.357162, 0.411485, 0.567134, 0.733517, 0.892744, 1.05376)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -308,9 +259,9 @@ tracks/2/path = NodePath(".:recoilPosY")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-0.0431957, -0.0294994, 0.698595, 0.0249674, -1.10176, -3.73746, -0.0378479, -0.0947247, 0.0378479, 0.0947247, 1.98243, -0.0448712, 0.0947248, 0.0448712, -0.0947248, -1.14495, -0.0378479, 0.142087, 0.0378479, -0.142087, 0.838264, -0.0386283, 0.0473624, 0.0386283, -0.0473624, -0.763566, -0.0369551, -0.20129, 0.0369551, 0.20129, 0, -0.0399457, 0.319696, 0.0399457, -0.319696),
-"times": PackedFloat32Array(0.00152071, 0.101155, 0.261463, 0.381941, 0.55625, 0.754483, 0.898031)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.0431957, -0.0294994, 0.698595, 0.0193135, 0.973501, 3.45725, -0.0378479, -0.0947247, 0.0378479, 0.0947247, -1.29935, -0.0448712, 0.0947248, 0.0448712, -0.0947248, 0.781662, -0.0386283, 0.0473624, 0.0386283, -0.0473624, -0.407487, -0.056089, 0.131288, 0.056089, -0.131288, 0.698989, -0.0408552, -0.078285, 0.0408552, 0.117427, -0.279573, -0.0384505, -0.0520985, 0.0333237, 0.104197, 0, -0.0281969, 0.223265, 0.0399457, -0.319696),
+"times": PackedFloat32Array(9.26939e-05, 0.11133, 0.287008, 0.489241, 0.691474, 0.83651, 0.972353, 1.10225)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lx8gd"]
@@ -318,18 +269,19 @@ _data = {
 "recoil": SubResource("Animation_i1m7g")
 }
 
-[node name="pistol" type="Sprite2D"]
-position = Vector2(43, -8)
+[node name="beretta" type="Sprite2D"]
+position = Vector2(15, -4)
 scale = Vector2(2, 2)
-texture = ExtResource("1_epx3r")
-offset = Vector2(2.455, -1.54)
-script = ExtResource("2_euwt7")
+texture = ExtResource("1_8vw8r")
+offset = Vector2(8.445, -2.595)
+script = ExtResource("2_fjvtq")
+recoilPosY = -0.0431957
 metadata/BulletSpawnPoint = NodePath("BulletSpawnPoint")
 metadata/Animator = NodePath("AnimationTree")
 metadata/RecoilAnimator = NodePath("RecoilAnimator")
 
 [node name="BulletSpawnPoint" type="Node2D" parent="."]
-position = Vector2(15, -5)
+position = Vector2(19, -8)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_3a2li")

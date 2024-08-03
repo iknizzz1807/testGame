@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://sprites/icon.svg"
 
+[autoload]
+
+GunGameManager="*res://scripts/gun_game_manager.gd"
+
 [input]
 
 shoot={

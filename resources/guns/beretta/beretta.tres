@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://3mbsys35lrr"]
+
+[ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_pvt0s"]
+[ext_resource type="PackedScene" uid="uid://bcxgkgxpybo8r" path="res://resources/guns/beretta/beretta.tscn" id="2_8uk7k"]
+
+[resource]
+script = ExtResource("1_pvt0s")
+sprite = ExtResource("2_8uk7k")
+automatic = false
+damage = 13.0
+fireRate = 0.14
+ammo = 10
+reloadSpeed = 1.0
+spreadAngle = 3.0
+spreadNumber = 0
+burstAmount = 0
+burstDelay = 0.0
+effects = Array[Resource]([])

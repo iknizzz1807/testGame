@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://cv1qbd46aog4m"]
+
+[ext_resource type="PackedScene" uid="uid://bb80r3bd5lc21" path="res://resources/guns/ak47/ak47.tscn" id="2_exxeg"]
+[ext_resource type="Script" path="res://scripts/gun_type.gd" id="2_yxis6"]
+
+[resource]
+script = ExtResource("2_yxis6")
+sprite = ExtResource("2_exxeg")
+automatic = true
+damage = 10.0
+fireRate = 0.08
+ammo = 30
+reloadSpeed = 0.75
+spreadAngle = 10.0
+spreadNumber = 0
+burstAmount = 0
+burstDelay = 0.0
+effects = Array[Resource]([])

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://dpp34vwl1gno5"]
+
+[ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_016ck"]
+[ext_resource type="PackedScene" uid="uid://dibx0liorj1ph" path="res://resources/guns/glock/glock.tscn" id="2_e2dcl"]
+
+[resource]
+script = ExtResource("1_016ck")
+sprite = ExtResource("2_e2dcl")
+automatic = false
+damage = 7.0
+fireRate = 0.1
+ammo = 20
+reloadSpeed = 1.0
+spreadAngle = 5.0
+spreadNumber = 0
+burstAmount = 0
+burstDelay = 0.0
+effects = Array[Resource]([])

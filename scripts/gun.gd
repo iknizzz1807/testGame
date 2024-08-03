@@ -3,12 +3,13 @@ class_name Gun;
 
 var bulletPrefab = preload("res://prefabs/bullet.tscn");
 
-@export var type : GunType;
+@export var gunType : GunType;
 
 @export var recoilRot: float = 0;
 @export var recoilPosX: float = 0;
 @export var recoilPosY: float = 0;
 
+var spreadMult : float = 0;
 var bulletSpawnPoint : Node2D;
 var sprite : Sprite2D;
 var spriteAnimator : AnimationTree;
@@ -20,7 +21,13 @@ var reloading : bool = false;
 
 
 func _ready():
-	sprite = type.sprite.instantiate();
+	if (get_parent().debugGun):
+		await get_parent().ready;
+		gunInit();
+	pass
+
+func gunInit() -> void:
+	sprite = gunType.sprite.instantiate();
 	add_child(sprite);
 	
 	bulletSpawnPoint = sprite.get_node(sprite.get_meta("BulletSpawnPoint"));
@@ -32,13 +39,10 @@ func _ready():
 	recoilAnimator = sprite.get_node(sprite.get_meta("RecoilAnimator"));
 	assert(recoilAnimator != null, name + " has no recoil animator wtf");
 	
-	ammoCounter = type.ammo;
-	pass
+	ammoCounter = gunType.ammo;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	
 	rotation = (get_global_mouse_position() - global_position).angle();
 	var sprPosOffset = sprite.posOffset;
 	if (abs(rotation_degrees) <= 90):
@@ -47,7 +51,7 @@ func _process(delta):
 	else:
 		sprite.scale.y = abs(sprite.scale.y) * -1;
 		sprPosOffset.y *= -1;
-	sprite.position = sprPosOffset + Vector2(sprite.recoilPosX, sprite.recoilPosY);
+	sprite.position = sprPosOffset + Vector2(sprite.recoilPosX, sprite.recoilPosY * sign(sprite.scale.y));
 	sprite.rotation_degrees = rotation + sprite.recoilRot * sign(sprite.scale.y);
 	if (fireRateCounter > 0):
 		fireRateCounter -= delta;
@@ -57,9 +61,38 @@ func _process(delta):
 	
 	pass
 
+func swapGun(level: int) -> void:
+	var nextGun = GunGameManager.GetGun(level);
+	if nextGun == null:
+		return;
+	for child in get_children():
+		child.queue_free();
+	gunType = nextGun;
+	gunInit();
+	pass
+
+
+func reload() -> void:
+	reloading = true;
+	spriteAnimator.set("parameters/conditions/reloading", true);
+	try_travel_animation(spriteAnimator, "reload");
+	await get_tree().create_timer(gunType.reloadSpeed).timeout;
+	ammoCounter = gunType.ammo;
+	fireRateCounter = 0;
+	reloading = false;
+
+func _on_player_shoot_event():
+	if (fireRateCounter > 0 || reloading):
+		return;
+	get_viewport().get_camera_2d().apply_shake();
+	bulletOut();
+	fireRateCounter = gunType.fireRate + gunType.burstAmount * gunType.burstDelay;
+	if (ammoCounter <= 0):
+		reload();
+
 func bulletOut() -> void:
-	# clamp: max(1, min(type.burstAmount, ammoCounter):
-	for i in range(0, clamp(type.burstAmount, 1, ammoCounter)):
+	# clamp: max(1, min(gunType.burstAmount, ammoCounter):
+	for i in range(0, clamp(gunType.burstAmount, 1, ammoCounter)):
 		if (is_instance_valid(self) == null): return;
 		spawnBullet();
 		recoilAnimator.stop(true);
@@ -68,11 +101,13 @@ func bulletOut() -> void:
 		try_travel_animation(spriteAnimator, "shoot");
 		# gun
 		ammoCounter -= 1;
-		await get_tree().create_timer(type.burstDelay).timeout;
+		await get_tree().create_timer(gunType.burstDelay).timeout;
 
 func spawnBullet() -> void:
-	for i in range(0, max(1, type.spreadNumber)):
-		var spread = randf_range(-type.spreadAngle, type.spreadAngle);
+	for i in range(0, max(1, gunType.spreadNumber)):
+		var spread = randf_range(-gunType.spreadAngle, gunType.spreadAngle);
+		if (gunType.spreadNumber <= 1):
+			spread *= max(0.4, spreadMult);
 		# Setup
 		var bullet = bulletPrefab.instantiate() as Bullet;
 		get_tree().root.add_child(bullet);
@@ -82,28 +117,9 @@ func spawnBullet() -> void:
 		bullet.look_at(get_global_mouse_position());
 		bullet.rotation_degrees += spread + sprite.rotation_degrees;
 		bullet.direction = Vector2.from_angle(bullet.rotation);
-		bullet.damage = type.damage;
-		bullet.fireRate = type.fireRate;
-		bullet.effects = type.effects;
-
-func _on_player_shoot_event():
-	if (fireRateCounter > 0 || reloading):
-		return;
-	get_viewport().get_camera_2d().apply_shake();
-	bulletOut();
-	fireRateCounter = type.fireRate + type.burstAmount * type.burstDelay;
-	if (ammoCounter <= 0):
-		reload();
-
-func reload() -> void:
-	reloading = true;
-	spriteAnimator.set("parameters/conditions/reloading", true);
-	try_travel_animation(spriteAnimator, "reload");
-	await get_tree().create_timer(type.reloadSpeed).timeout;
-	ammoCounter = type.ammo;
-	fireRateCounter = 0;
-	reloading = false;
-
+		bullet.damage = gunType.damage;
+		bullet.fireRate = gunType.fireRate;
+		bullet.effects = gunType.effects;
 
 func try_travel_animation(animator : AnimationTree, animation_name : String):
 	if (animator.has_animation(animation_name)):

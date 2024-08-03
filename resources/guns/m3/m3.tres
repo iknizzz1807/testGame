@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://bcyqlk2mnaa03"]
+
+[ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_cs7cy"]
+[ext_resource type="PackedScene" uid="uid://cyj60ls1flhv7" path="res://resources/guns/m3/m3.tscn" id="2_qjymq"]
+
+[resource]
+script = ExtResource("1_cs7cy")
+sprite = ExtResource("2_qjymq")
+automatic = false
+damage = 8.0
+fireRate = 1.2
+ammo = 8
+reloadSpeed = 2.0
+spreadAngle = 30.0
+spreadNumber = 10
+burstAmount = 0
+burstDelay = 0.0
+effects = Array[Resource]([])

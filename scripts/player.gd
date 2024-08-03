@@ -11,6 +11,11 @@ enum PlayerState
 var state : PlayerState = PlayerState.idle;
 
 signal shootEvent;
+
+
+@export_subgroup("Debug")
+@export var debugGun = false;
+@export_subgroup("Vars")
 @export var speed = 400
 @onready var gun : Gun = $Gun;
 @onready var sprite : Sprite2D = $Sprite2D;
@@ -26,6 +31,8 @@ var level : int = 1;
 var maxEXP : int = 10;
 
 func _ready():
+	GunGameManager.debugGun = debugGun;
+	gun.swapGun(0);
 	pass
 
 func get_input():
@@ -49,11 +56,13 @@ func _physics_process(_delta):
 func _process(_delta):
 	if (state != PlayerState.hit):
 		var canShoot : bool = false;
-		if (gun.type.automatic):
+		if (gun.gunType.automatic):
 			canShoot = Input.is_action_pressed("shoot");
 		else:
 			canShoot = Input.is_action_just_pressed("shoot");
+			
 		if canShoot:
+			gun.spreadMult = velocity.length() / speed;
 			shootEvent.emit();
 
 func die() -> void:
@@ -89,6 +98,7 @@ func knockback(dir: Vector2) -> void:
 func levelUp() -> void:
 	level += 1;
 	EXP = EXP - maxEXP;
+	gun.swapGun(level - 1);
 	maxEXP += 5;
 	maxHP += 2;
 	power += 1;
