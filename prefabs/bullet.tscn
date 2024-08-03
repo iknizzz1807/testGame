@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmt4m7ycxujf8"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_hiuoh"]
-[ext_resource type="Texture2D" uid="uid://d0fjf108yvlkv" path="res://sprites/bullet.svg" id="2_b1ksx"]
+[ext_resource type="Texture2D" uid="uid://bcp7qvfscsmt7" path="res://sprites/bullet.png" id="2_y75ba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jfux"]
-size = Vector2(17.125, 4)
+size = Vector2(40.75, 22)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 2
@@ -12,9 +12,10 @@ script = ExtResource("1_hiuoh")
 speed = 5000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 0.785398
-scale = Vector2(0.0188025, 0.0188025)
-texture = ExtResource("2_b1ksx")
+scale = Vector2(2, 2)
+texture = ExtResource("2_y75ba")
+hframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
