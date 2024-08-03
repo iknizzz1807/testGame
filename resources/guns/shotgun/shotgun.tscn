@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dmwnpl87caq4"]
 
 [ext_resource type="Texture2D" uid="uid://bde48kmuuq0it" path="res://sprites/guns/shotgun/shotgun.png" id="1_lm6u5"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="1_mk5kn"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="1_mk5kn"]
 [ext_resource type="Texture2D" uid="uid://d3um7wk71b0l5" path="res://sprites/guns/shotgun/shotgun_reload.png" id="2_1ff3k"]
 [ext_resource type="Texture2D" uid="uid://m1g464eevffp" path="res://sprites/guns/shotgun/shotgun_chamber_open.png" id="3_6a5dd"]
 

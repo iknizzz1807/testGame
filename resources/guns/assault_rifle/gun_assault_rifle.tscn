@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://eglst85n47p8"]
 
 [ext_resource type="Texture2D" uid="uid://dbvr5x3amlqu" path="res://sprites/guns/assault_rifle/assault_rifle.png" id="1_t0gyh"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_jek67"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_jek67"]
 [ext_resource type="Texture2D" uid="uid://c8ths28n6x50d" path="res://sprites/guns/assault_rifle/assault_rifle_reload.png" id="2_pcss3"]
 [ext_resource type="Texture2D" uid="uid://5550h4ivrigj" path="res://sprites/guns/assault_rifle/assault_rifle_shoot.png" id="4_rsoov"]
 

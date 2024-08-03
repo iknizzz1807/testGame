@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3evhbglmyn1r"]
+
+[ext_resource type="Texture2D" uid="uid://d3mykpjnyw2cq" path="res://sprites/attachments/muzzles/FlashHider.png" id="1_wampc"]
+
+[node name="FlashHider" type="Sprite2D"]
+texture = ExtResource("1_wampc")
+offset = Vector2(7, 0)

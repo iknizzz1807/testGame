@@ -1,7 +1,141 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://dpp34vwl1gno5"]
+[gd_resource type="Resource" script_class="GunType" load_steps=21 format=3 uid="uid://dpp34vwl1gno5"]
 
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_016ck"]
+[ext_resource type="PackedScene" uid="uid://bdpqqb7vd7uvq" path="res://prefabs/attachments/mags/GlockMag.tscn" id="2_cihle"]
 [ext_resource type="PackedScene" uid="uid://dibx0liorj1ph" path="res://resources/guns/glock/glock.tscn" id="2_e2dcl"]
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="2_paj37"]
+[ext_resource type="PackedScene" uid="uid://cqtp1pn2eb3m8" path="res://prefabs/attachments/GlockFullAuto.tscn" id="2_pnqxl"]
+[ext_resource type="PackedScene" uid="uid://dvt1pf4twnxvd" path="res://prefabs/attachments/sights/GlockSight.tscn" id="3_6nx2s"]
+[ext_resource type="PackedScene" uid="uid://oxpirpvk17f8" path="res://prefabs/attachments/mags/GlockExtMag.tscn" id="3_ee2sg"]
+[ext_resource type="PackedScene" uid="uid://dj0dtb5p8v4b7" path="res://prefabs/attachments/muzzles/Compensator.tscn" id="4_ait4h"]
+[ext_resource type="PackedScene" uid="uid://d0rhtqjbiaw1t" path="res://prefabs/attachments/sights/EOTECH.tscn" id="4_yjqga"]
+[ext_resource type="PackedScene" uid="uid://cy2iya632xanp" path="res://prefabs/attachments/muzzles/GlockMuzzle.tscn" id="5_2wu0i"]
+[ext_resource type="PackedScene" uid="uid://uudgbhp240pk" path="res://prefabs/attachments/sights/2X.tscn" id="5_m1ekd"]
+
+[sub_resource type="Resource" id="Resource_rqxc5"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("2_pnqxl")
+automatic = 1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_l4x0r"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("2_cihle")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_etpxr"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("3_ee2sg")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 30
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_7iaum"]
+script = ExtResource("2_paj37")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_fg580"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("5_2wu0i")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_jvf0k"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("4_ait4h")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_606i8"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("3_6nx2s")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_tdmfu"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("4_yjqga")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
+
+[sub_resource type="Resource" id="Resource_w1u7f"]
+script = ExtResource("2_paj37")
+sprite = ExtResource("5_m1ekd")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountInc = 0.0
+burstDelayInc = 0.0
+moveSpeed = 0.0
 
 [resource]
 script = ExtResource("1_016ck")
@@ -16,3 +150,7 @@ spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
 effects = Array[Resource]([])
+sights = Array[Resource]([SubResource("Resource_606i8"), SubResource("Resource_tdmfu"), SubResource("Resource_w1u7f")])
+mags = Array[ExtResource("2_paj37")]([SubResource("Resource_l4x0r"), SubResource("Resource_etpxr"), SubResource("Resource_7iaum")])
+muzzles = Array[ExtResource("2_paj37")]([SubResource("Resource_fg580"), SubResource("Resource_jvf0k")])
+fullAuto = SubResource("Resource_rqxc5")

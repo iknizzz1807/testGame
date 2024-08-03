@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqtp1pn2eb3m8"]
+
+[ext_resource type="Texture2D" uid="uid://b46ge0fb7hgyn" path="res://sprites/attachments/GlockFullAuto.png" id="1_yp37h"]
+
+[node name="GlockFullAuto" type="Sprite2D"]
+texture = ExtResource("1_yp37h")
+offset = Vector2(-1, 0)

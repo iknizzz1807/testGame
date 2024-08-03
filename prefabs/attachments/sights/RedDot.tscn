@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cia8x84oiox2y"]
+
+[ext_resource type="Texture2D" uid="uid://8cse7xsn8k0o" path="res://sprites/attachments/sights/RedDot.png" id="1_kf5ge"]
+
+[node name="RedDot" type="Sprite2D"]
+texture = ExtResource("1_kf5ge")
+offset = Vector2(0, -3)

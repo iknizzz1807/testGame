@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bb80r3bd5lc21"]
 
 [ext_resource type="Texture2D" uid="uid://cknyasofsurnw" path="res://sprites/guns/ak47/ak47.png" id="1_bacfh"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_p7pws"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_p7pws"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfxo4"]
 animation = &"idle"

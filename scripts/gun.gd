@@ -39,7 +39,29 @@ func gunInit() -> void:
 	recoilAnimator = sprite.get_node(sprite.get_meta("RecoilAnimator"));
 	assert(recoilAnimator != null, name + " has no recoil animator wtf");
 	
+	
+	var gunVars = sprite as GunVars;
+	
+	if (gunType.fullAuto != null):
+		var gunModFullAuto = gunType.fullAuto as GunMod;
+		addGunMod(gunModFullAuto, gunVars.fullAuto);
+		pass
+	
+	if (!gunType.mags.is_empty()):
+		var gunModMag = gunType.mags.pick_random() as GunMod;
+		addGunMod(gunModMag, gunVars.mag);
+	
+	if (!gunType.sights.is_empty()):
+		var gunModSight = gunType.sights.pick_random() as GunMod;
+		addGunMod(gunModSight, gunVars.sight);
+	
+	if (!gunType.muzzles.is_empty()):
+		var gunModMuzzle = gunType.muzzles.pick_random() as GunMod;
+		addGunMod(gunModMuzzle, gunVars.muzzle);
+	
 	ammoCounter = gunType.ammo;
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -59,6 +81,26 @@ func _process(delta):
 	spriteAnimator.set("parameters/conditions/reloading", false);
 	spriteAnimator.set("parameters/conditions/shooting", false);
 	
+	pass
+
+func addGunMod(mod : GunMod, marker : Marker2D) -> void:
+	if (mod.sprite != null):
+		marker.add_child(mod.sprite.instantiate());
+	if (mod.automatic != -1):
+		gunType.automatic = mod.automatic;
+	if (mod.ammoNew != 0):
+		gunType.ammo = mod.ammoNew;
+	gunType.damage *= 1 + mod.damageInc;
+	gunType.fireRate *= 1 + mod.fireRateInc;
+	gunType.reloadSpeed *= 1 + mod.reloadSpeedInc;
+	gunType.spreadAngle *= 1 + mod.spreadAngleInc;
+	if (mod.spreadNumberNew != 0):
+		gunType.spreadNumber = mod.spreadNumberNew;
+	if (mod.burstAmountNew != 0):
+		gunType.burstAmount = mod.burstAmountNew;
+	gunType.burstDelay = mod.burstDelayInc;
+	var player = get_owner() as Player;
+	player.speedInc = mod.moveSpeedInc;
 	pass
 
 func swapGun(level: int) -> void:

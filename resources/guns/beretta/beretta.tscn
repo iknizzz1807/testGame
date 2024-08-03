@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bcxgkgxpybo8r"]
 
 [ext_resource type="Texture2D" uid="uid://bpyub0t3n4618" path="res://sprites/guns/beretta/beretta.png" id="1_8vw8r"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_fjvtq"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_fjvtq"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dcjd4gypaxtfx"]
 
 [ext_resource type="Texture2D" uid="uid://cgq2bfp8ibqbe" path="res://sprites/guns/xm1014/xm1014.png" id="1_d3o73"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_4yy30"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_4yy30"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qccsu"]
 animation = &"idle"

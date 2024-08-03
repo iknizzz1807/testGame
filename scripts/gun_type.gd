@@ -13,7 +13,12 @@ class_name GunType;
 @export_range(1, 999999) var spreadNumber : int = 0;
 @export_range(1, 999999) var burstAmount : int = 0;
 @export var burstDelay : float = 0;
+@export_category("Modifications")
 @export var effects : Array[Resource];
+@export var sights : Array[GunMod];
+@export var mags : Array[GunMod];
+@export var muzzles : Array[GunMod];
+@export var fullAuto : GunMod;
 
 func _get_configuration_warning():
 	if (sprite != null):

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj0dtb5p8v4b7"]
+
+[ext_resource type="Texture2D" uid="uid://bh3nba7yopv7n" path="res://sprites/attachments/muzzles/Compensator.png" id="1_ulnnf"]
+
+[node name="Compensator" type="Sprite2D"]
+texture = ExtResource("1_ulnnf")
+offset = Vector2(7, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://b21b0ch2p7mkr"]
 
 [ext_resource type="Texture2D" uid="uid://b87eh11kh3hcn" path="res://sprites/guns/mp9/mp9.png" id="1_sqrvb"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_g65wh"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_g65wh"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"

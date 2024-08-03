@@ -23,6 +23,7 @@ signal shootEvent;
 @onready var statCanvas : CanvasLayer = $"../statCanvas";
 @export var KNOCKBACK_STRENGTH : float = 200;
 var knockbackStrength : Vector2 = Vector2.ZERO;
+var speedInc : float = 0;
 @export var HP : int = 5;
 @export var maxHP : int = 5;
 @export var power : int = 0;
@@ -37,7 +38,7 @@ func _ready():
 
 func get_input():
 	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown");
-	velocity = input_direction * speed;
+	velocity = input_direction * speed * (1 + speedInc);
 
 func _physics_process(_delta):
 	if (state != PlayerState.hit):

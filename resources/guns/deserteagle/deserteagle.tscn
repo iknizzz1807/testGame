@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://6uimgweb37ic"]
 
 [ext_resource type="Texture2D" uid="uid://bfm2awv8myqit" path="res://sprites/guns/deserteagle/deserteagle.png" id="1_7h0wv"]
-[ext_resource type="Script" path="res://scripts/gun_recoil_vars.gd" id="2_uvhhv"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_uvhhv"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"

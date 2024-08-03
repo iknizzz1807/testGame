@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvt1pf4twnxvd"]
+
+[ext_resource type="Texture2D" uid="uid://ds70h2hgu2bfb" path="res://sprites/attachments/sights/GlockSight.png" id="1_dc6vc"]
+
+[node name="GlockSight" type="Sprite2D"]
+texture = ExtResource("1_dc6vc")
+offset = Vector2(0, -3)
