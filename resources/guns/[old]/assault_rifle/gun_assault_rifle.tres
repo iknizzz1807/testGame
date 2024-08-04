@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/effects/EffectBurn.gd" id="1_iqd12"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_n6rqh"]
-[ext_resource type="PackedScene" uid="uid://eglst85n47p8" path="res://resources/guns/assault_rifle/gun_assault_rifle.tscn" id="3_xdq5u"]
+[ext_resource type="PackedScene" uid="uid://eglst85n47p8" path="res://resources/guns/[old]/assault_rifle/gun_assault_rifle.tscn" id="3_xdq5u"]
 
 [resource]
 script = ExtResource("1_n6rqh")

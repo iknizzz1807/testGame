@@ -5,14 +5,18 @@ class_name GunVars
 @export var recoilPosX : float = 0;
 @export var recoilPosY : float = 0;
 @export var posOffset : Vector2 = Vector2.ZERO;
-var sight : Marker2D;
-var muzzle : Marker2D;
-var fullAuto : Marker2D;
-var mag : Marker2D;
+var sight : Marker2D = null;
+var muzzle : Marker2D = null;
+var fullAuto : Marker2D = null;
+var mag : Marker2D = null;
 
 func _ready():
-	sight = $Sight;
-	muzzle = $Muzzle;
-	fullAuto = $FullAuto;
-	mag = $Magazine;
+	if (has_node("Sight")):
+		sight = $Sight;
+	if (has_node("Muzzle")):
+		muzzle = $Muzzle;
+	if (has_node("Magazine")):
+		mag = $Magazine;
+	if (has_node("FullAuto")):
+		fullAuto = $FullAuto;
 	posOffset = position;

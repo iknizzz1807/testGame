@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=3 format=3 uid="uid://dckhd0ecl1f15"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_e6c6b"]
+[ext_resource type="PackedScene" uid="uid://dj0dtb5p8v4b7" path="res://prefabs/attachments/muzzles/Compensator.tscn" id="2_8ggvq"]
+
+[resource]
+script = ExtResource("1_e6c6b")
+sprite = ExtResource("2_8ggvq")
+automatic = -1
+damageInc = 0.1
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = -0.12
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0

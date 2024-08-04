@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=3 format=3 uid="uid://0emo13ummffq"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_agpeg"]
+[ext_resource type="PackedScene" uid="uid://cqtp1pn2eb3m8" path="res://prefabs/attachments/GlockFullAuto.tscn" id="2_k53gy"]
+
+[resource]
+script = ExtResource("1_agpeg")
+sprite = ExtResource("2_k53gy")
+automatic = 1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0

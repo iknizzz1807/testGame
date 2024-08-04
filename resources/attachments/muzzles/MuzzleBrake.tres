@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=3 format=3 uid="uid://cu4t0n383q3mw"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_ytmde"]
+[ext_resource type="PackedScene" uid="uid://d3bsq4q3llpcy" path="res://prefabs/attachments/muzzles/MuzzleBrake.tscn" id="2_3wql3"]
+
+[resource]
+script = ExtResource("1_ytmde")
+sprite = ExtResource("2_3wql3")
+automatic = -1
+damageInc = 0.05
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = -0.08
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0

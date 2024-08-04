@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://oxpirpvk17f8"]
-
-[ext_resource type="Texture2D" uid="uid://7tvyqjgthqtg" path="res://sprites/attachments/mags/GlockExtMag.png" id="1_l1u7j"]
-
-[node name="GlockExtMag" type="Sprite2D"]
-texture = ExtResource("1_l1u7j")
-offset = Vector2(-1.5, 4.5)

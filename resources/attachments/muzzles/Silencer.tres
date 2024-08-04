@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=3 format=3 uid="uid://fwnv4f1ovtlt"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_0512k"]
+[ext_resource type="PackedScene" uid="uid://bbf3pk8g2gqtp" path="res://prefabs/attachments/muzzles/Silencer.tscn" id="2_thx41"]
+
+[resource]
+script = ExtResource("1_0512k")
+sprite = ExtResource("2_thx41")
+automatic = -1
+damageInc = -0.05
+fireRateInc = 0.0
+ammoNew = 0
+reloadSpeedInc = 0.0
+spreadAngleInc = -0.2
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0

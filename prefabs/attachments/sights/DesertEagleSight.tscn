@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c23ye8svityrp"]
+
+[ext_resource type="Texture2D" uid="uid://cpu28l16cmn2o" path="res://sprites/attachments/sights/DesertEagleSight.png" id="1_cs23g"]
+
+[node name="DesertEagleSight" type="Sprite2D"]
+texture = ExtResource("1_cs23g")
+offset = Vector2(0, -3)

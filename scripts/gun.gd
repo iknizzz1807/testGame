@@ -42,7 +42,7 @@ func gunInit() -> void:
 	
 	var gunVars = sprite as GunVars;
 	
-	if (gunType.fullAuto != null):
+	if (randi_range(0, 1) == 0 && gunType.fullAuto != null):
 		var gunModFullAuto = gunType.fullAuto as GunMod;
 		addGunMod(gunModFullAuto, gunVars.fullAuto);
 		pass
@@ -88,8 +88,7 @@ func addGunMod(mod : GunMod, marker : Marker2D) -> void:
 		marker.add_child(mod.sprite.instantiate());
 	if (mod.automatic != -1):
 		gunType.automatic = mod.automatic;
-	if (mod.ammoNew != 0):
-		gunType.ammo = mod.ammoNew;
+	gunType.ammo *= 1 + mod.ammoInc;
 	gunType.damage *= 1 + mod.damageInc;
 	gunType.fireRate *= 1 + mod.fireRateInc;
 	gunType.reloadSpeed *= 1 + mod.reloadSpeedInc;

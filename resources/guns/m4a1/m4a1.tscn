@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bmix4peijk054"]
 
 [ext_resource type="Texture2D" uid="uid://byvmpn60epudu" path="res://sprites/guns/m4a1/m4a1.png" id="1_qqt8v"]
-[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_3kgf2"]
+[ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_icgru"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfxo4"]
 animation = &"idle"
@@ -228,7 +228,6 @@ _data = {
 [sub_resource type="Animation" id="Animation_qf01v"]
 resource_name = "recoil"
 length = 1.55
-loop_mode = 1
 step = 0.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -273,7 +272,7 @@ _data = {
 scale = Vector2(2, 2)
 texture = ExtResource("1_qqt8v")
 offset = Vector2(11.51, -0.585)
-script = ExtResource("2_3kgf2")
+script = ExtResource("2_icgru")
 metadata/Animator = NodePath("AnimationTree")
 metadata/BulletSpawnPoint = NodePath("BulletSpawnPoint")
 metadata/RecoilAnimator = NodePath("RecoilAnimator")

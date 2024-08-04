@@ -1,7 +1,56 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://b4hpor8xdgaq8"]
+[gd_resource type="Resource" script_class="GunType" load_steps=15 format=3 uid="uid://b4hpor8xdgaq8"]
 
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_0cael"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_ns8ka"]
+[ext_resource type="Resource" uid="uid://dsyx31ipyndke" path="res://resources/attachments/mags/PistolExtMag.tres" id="2_41671"]
 [ext_resource type="PackedScene" uid="uid://6uimgweb37ic" path="res://resources/guns/deserteagle/deserteagle.tscn" id="2_lp2o6"]
+[ext_resource type="Resource" uid="uid://dckhd0ecl1f15" path="res://resources/attachments/muzzles/Compensator.tres" id="3_7l7a0"]
+[ext_resource type="Resource" uid="uid://cu4t0n383q3mw" path="res://resources/attachments/muzzles/MuzzleBrake.tres" id="4_gxwiq"]
+[ext_resource type="Resource" uid="uid://2bmnjjpmj6o8" path="res://resources/attachments/sights/EOTECH.tres" id="5_3hctx"]
+[ext_resource type="Resource" uid="uid://fwnv4f1ovtlt" path="res://resources/attachments/muzzles/Silencer.tres" id="5_81mbh"]
+[ext_resource type="Resource" uid="uid://dou6kisw11qxn" path="res://resources/attachments/sights/RedDot.tres" id="6_hseht"]
+[ext_resource type="PackedScene" uid="uid://c23ye8svityrp" path="res://prefabs/attachments/sights/DesertEagleSight.tscn" id="7_p00il"]
+[ext_resource type="Resource" uid="uid://mrtolyg53u0p" path="res://resources/attachments/sights/2X.tres" id="7_sud7o"]
+
+[sub_resource type="Resource" id="Resource_bto81"]
+script = ExtResource("1_0cael")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_nddq6"]
+script = ExtResource("1_0cael")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_ff5nl"]
+script = ExtResource("1_0cael")
+sprite = ExtResource("7_p00il")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
 
 [resource]
 script = ExtResource("1_ns8ka")
@@ -16,3 +65,6 @@ spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
 effects = Array[Resource]([])
+sights = Array[ExtResource("1_0cael")]([SubResource("Resource_ff5nl"), ExtResource("5_3hctx"), ExtResource("6_hseht"), ExtResource("7_sud7o")])
+mags = Array[ExtResource("1_0cael")]([SubResource("Resource_bto81"), ExtResource("2_41671")])
+muzzles = Array[ExtResource("1_0cael")]([SubResource("Resource_nddq6"), ExtResource("3_7l7a0"), ExtResource("4_gxwiq"), ExtResource("5_81mbh")])

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://be37uumcnqxp4"]
 
-[ext_resource type="PackedScene" uid="uid://bg2hg5f1sv8nj" path="res://resources/guns/pistol/pistol_animation.tscn" id="1_c4mty"]
+[ext_resource type="PackedScene" uid="uid://bg2hg5f1sv8nj" path="res://resources/guns/[old]/pistol/pistol_animation.tscn" id="1_c4mty"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_fi1qc"]
 
 [resource]

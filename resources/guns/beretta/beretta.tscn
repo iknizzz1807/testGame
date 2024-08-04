@@ -1,7 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bcxgkgxpybo8r"]
+[gd_scene load_steps=18 format=3 uid="uid://bcxgkgxpybo8r"]
 
 [ext_resource type="Texture2D" uid="uid://bpyub0t3n4618" path="res://sprites/guns/beretta/beretta.png" id="1_8vw8r"]
 [ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_fjvtq"]
+[ext_resource type="Texture2D" uid="uid://bi1wdnfp4j2nq" path="res://sprites/attachments/sights/4X.png" id="3_gy3mf"]
+[ext_resource type="Texture2D" uid="uid://cq68b5syvs0kx" path="res://sprites/attachments/muzzles/BerettaMuzzle.png" id="4_psjeo"]
+[ext_resource type="Texture2D" uid="uid://7tvyqjgthqtg" path="res://sprites/attachments/mags/GlockExtMag.png" id="5_g151s"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"
@@ -52,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8.445, -2.595)]
+"values": [Vector2(9.5, -3.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -117,7 +120,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8.445, -2.595)]
+"values": [Vector2(9.5, -3.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -180,7 +183,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8.445, -2.595)]
+"values": [Vector2(9.5, -3.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -238,8 +241,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.0276676, -5.9092, -11.1098, -0.045324, 0.539575, 0.0616075, 9.53674e-07, 4.34911, -0.0502216, -0.207081, 0.0606662, -0.135129, -2.93443, -0.0683563, -0.0839055, 0.061259, 0, 1.67352, -0.0555395, -0.0947248, 0.0418683, -0.0839055, -0.81871, -0.0358871, 0.251717, 0.0427227, 0.167811, 0.535852, -0.0410137, -0.0839055, 0.0341781, -0.167811, 0.0148666, -0.0664338, -0.130246, 0.0329955, -0.623973),
-"times": PackedFloat32Array(0, 0.0796676, 0.24411, 0.388124, 0.603635, 0.778244, 0.926736, 1.13248)
+"points": PackedFloat32Array(0, 0, 0, 0.0195866, -6.55894, -12.752, -0.0457021, -0.101525, 0.0979331, 0, 5.82717, -0.0502216, -0.207081, 0.0606662, -0.135129, -3.41165, -0.0683563, -0.0839055, 0.061259, 0, 1.67352, -0.0555395, -0.0947248, 0.0418683, -0.0839055, -0.81871, -0.0358871, 0.251717, 0.0427227, 0.167811, 0.535852, -0.0410137, -0.0839055, 0.0341781, -0.167811, 0.0148666, -0.0664338, -0.130246, 0.0329955, -0.623973),
+"times": PackedFloat32Array(0, 0.0478784, 0.250273, 0.391732, 0.603635, 0.778244, 0.926736, 1.13248)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -248,9 +251,9 @@ tracks/1/path = NodePath(".:recoilPosX")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 2),
-"points": PackedFloat32Array(0, -0.0264881, -0.0839054, 0.0205069, -1.84014, -8.47719, -0.0555395, 0, 0.0461405, 0.13513, 3.19288, -0.0478494, -0.540521, 0.080508, 0.0387926, -2.24554, -0.0500939, 0, 0.0447267, 0, -2.01698, -0.0500939, 0, 0.0447267, 0, 1.62992, -0.0606662, 0, 0.0606662, 0, -0.922907, -0.0647249, 0.104882, 0.0647249, -0.104882, 0.796345, -0.0495583, 0.0668833, 0.0495583, -0.0668833, -0.0372319, -0.023556, 0.170787, 0, 0),
-"times": PackedFloat32Array(0, 0.0715627, 0.254047, 0.357162, 0.411485, 0.567134, 0.733517, 0.892744, 1.05376)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 2),
+"points": PackedFloat32Array(0, -0.0264881, -0.0839054, 0.00652887, -2.59945, -10.9245, -0.0348206, 0.406102, 0.0461405, 0.13513, 4.40581, -0.0609362, -0.101526, 0.080508, 0.0387926, -2.29487, -0.0500939, 0, 0.0447267, 0, 1.62992, -0.0606662, 0, 0.0606662, 0, -0.922907, -0.0647249, 0.104882, 0.0647249, -0.104882, 0.796345, -0.0495583, 0.0668833, 0.0495583, -0.0668833, -0.0372319, -0.023556, 0.170787, 0, 0),
+"times": PackedFloat32Array(0, 0.052231, 0.248097, 0.398261, 0.567134, 0.733517, 0.892744, 1.05376)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -260,8 +263,8 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-0.0431957, -0.0294994, 0.698595, 0.0193135, 0.973501, 3.45725, -0.0378479, -0.0947247, 0.0378479, 0.0947247, -1.29935, -0.0448712, 0.0947248, 0.0448712, -0.0947248, 0.781662, -0.0386283, 0.0473624, 0.0386283, -0.0473624, -0.407487, -0.056089, 0.131288, 0.056089, -0.131288, 0.698989, -0.0408552, -0.078285, 0.0408552, 0.117427, -0.279573, -0.0384505, -0.0520985, 0.0333237, 0.104197, 0, -0.0281969, 0.223265, 0.0399457, -0.319696),
-"times": PackedFloat32Array(9.26939e-05, 0.11133, 0.287008, 0.489241, 0.691474, 0.83651, 0.972353, 1.10225)
+"points": PackedFloat32Array(-0.0431957, -0.0294994, 0.698595, 0.0193135, 0.973501, 5.11649, -0.0478784, 0.304576, 0.0378479, 0.0947247, -1.29935, -0.0448712, 0.0947248, 0.0448712, -0.0947248, 0.781662, -0.0386283, 0.0473624, 0.0386283, -0.0473624, -0.407487, -0.056089, 0.131288, 0.056089, -0.131288, 0.698989, -0.0408552, -0.078285, 0.0408552, 0.117427, -0.279573, -0.0384505, -0.0520985, 0.0333237, 0.104197, 0, -0.0281969, 0.223265, 0.0399457, -0.319696),
+"times": PackedFloat32Array(9.26939e-05, 0.0826991, 0.287008, 0.489241, 0.691474, 0.83651, 0.972353, 1.10225)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lx8gd"]
@@ -273,7 +276,7 @@ _data = {
 position = Vector2(15, -4)
 scale = Vector2(2, 2)
 texture = ExtResource("1_8vw8r")
-offset = Vector2(8.445, -2.595)
+offset = Vector2(9.5, -3.5)
 script = ExtResource("2_fjvtq")
 recoilPosY = -0.0431957
 metadata/BulletSpawnPoint = NodePath("BulletSpawnPoint")
@@ -297,3 +300,31 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_lx8gd")
 }
+
+[node name="Sight" type="Marker2D" parent="."]
+position = Vector2(10.5, -9.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Sight"]
+visible = false
+texture = ExtResource("3_gy3mf")
+offset = Vector2(0, -3)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(19.5, -8)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Muzzle"]
+visible = false
+position = Vector2(1, -0.5)
+texture = ExtResource("4_psjeo")
+offset = Vector2(7, 0)
+
+[node name="Magazine" type="Marker2D" parent="."]
+position = Vector2(1.5, 3.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Magazine"]
+visible = false
+texture = ExtResource("5_g151s")
+offset = Vector2(0, 4.5)

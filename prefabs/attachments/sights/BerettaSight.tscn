@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmpw55su6p4ie"]
+
+[ext_resource type="Texture2D" uid="uid://br61nso8447sg" path="res://sprites/attachments/sights/BerettaSight.png" id="1_gal43"]
+
+[node name="BerettaSight" type="Sprite2D"]
+texture = ExtResource("1_gal43")
+offset = Vector2(0, -3)

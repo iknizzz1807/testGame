@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs510s3xrmaom"]
+
+[ext_resource type="Texture2D" uid="uid://dp7mgcttxe5td" path="res://sprites/attachments/mags/BerettaMag.png" id="1_jdmih"]
+
+[node name="BerettaMag" type="Sprite2D"]
+texture = ExtResource("1_jdmih")
+offset = Vector2(-1.5, 4.5)

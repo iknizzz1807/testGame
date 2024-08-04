@@ -2,6 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bylapbqu05s15" path="res://sprites/attachments/mags/GlockMag.png" id="1_4hqsp"]
 
-[node name="GlockMag" type="Sprite2D"]
+[node name="Glockmag" type="Sprite2D"]
 texture = ExtResource("1_4hqsp")
 offset = Vector2(-1.5, 4.5)
