@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://shader/flash.gdshader" id="2_3liv7"]
 [ext_resource type="Texture2D" uid="uid://drfamii7pxoh" path="res://sprites/player/DinoSprites - vita.png" id="2_rr7v6"]
 [ext_resource type="PackedScene" uid="uid://c0f5ast5hqdga" path="res://prefabs/gun.tscn" id="3_tw1ej"]
-[ext_resource type="Resource" uid="uid://dpp34vwl1gno5" path="res://resources/guns/glock/glock.tres" id="5_6h6nt"]
+[ext_resource type="Resource" uid="uid://cv1qbd46aog4m" path="res://resources/guns/ak47/ak47.tres" id="5_pjh3o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvdph"]
 shader = ExtResource("2_3liv7")
@@ -150,7 +150,7 @@ shape = SubResource("RectangleShape2D_iwipn")
 disabled = true
 
 [node name="Gun" parent="." instance=ExtResource("3_tw1ej")]
-gunType = ExtResource("5_6h6nt")
+gunType = ExtResource("5_pjh3o")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_xx4dj")

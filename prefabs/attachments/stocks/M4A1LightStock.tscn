@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0lksbf8h7ve4"]
+
+[ext_resource type="Texture2D" uid="uid://ximggfindu8s" path="res://sprites/attachments/stocks/M4A1LightStock.png" id="1_2qf7k"]
+
+[node name="M4A1LightStock" type="Sprite2D"]
+texture = ExtResource("1_2qf7k")
+offset = Vector2(-6, 2)

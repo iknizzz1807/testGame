@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=3 format=3 uid="uid://b6dn67gml8kdr"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_yevmq"]
+[ext_resource type="PackedScene" uid="uid://c2ajhmlqpjhm" path="res://prefabs/attachments/grips/ForeGrip.tscn" id="2_xjih4"]
+
+[resource]
+script = ExtResource("1_yevmq")
+sprite = ExtResource("2_xjih4")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.2
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0

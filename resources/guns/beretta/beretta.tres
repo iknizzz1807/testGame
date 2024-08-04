@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_pvt0s"]
 [ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_q1v4d"]
 [ext_resource type="PackedScene" uid="uid://bcxgkgxpybo8r" path="res://resources/guns/beretta/beretta.tscn" id="2_8uk7k"]
-[ext_resource type="PackedScene" path="res://prefabs/attachments/mags/BerettaMag.tscn" id="2_bmmop"]
+[ext_resource type="PackedScene" uid="uid://bs510s3xrmaom" path="res://prefabs/attachments/mags/BerettaMag.tscn" id="2_bmmop"]
 [ext_resource type="Resource" uid="uid://b6xlt6i01rur3" path="res://resources/attachments/mags/PistolFastMag.tres" id="2_oyymo"]
 [ext_resource type="Resource" uid="uid://2bmnjjpmj6o8" path="res://resources/attachments/sights/EOTECH.tres" id="3_05bgl"]
 [ext_resource type="Resource" uid="uid://dsyx31ipyndke" path="res://resources/attachments/mags/PistolExtMag.tres" id="3_csvvw"]
 [ext_resource type="Resource" uid="uid://dou6kisw11qxn" path="res://resources/attachments/sights/RedDot.tres" id="4_y4cyp"]
-[ext_resource type="PackedScene" path="res://prefabs/attachments/muzzles/BerettaMuzzle.tscn" id="5_chofs"]
+[ext_resource type="PackedScene" uid="uid://cqs4b8bvgmea0" path="res://prefabs/attachments/muzzles/BerettaMuzzle.tscn" id="5_chofs"]
 [ext_resource type="Resource" uid="uid://mrtolyg53u0p" path="res://resources/attachments/sights/2X.tres" id="5_dt3p0"]
 [ext_resource type="Resource" uid="uid://dckhd0ecl1f15" path="res://resources/attachments/muzzles/Compensator.tres" id="5_tdoxh"]
 [ext_resource type="Resource" uid="uid://cu4t0n383q3mw" path="res://resources/attachments/muzzles/MuzzleBrake.tres" id="6_rkrfv"]
 [ext_resource type="Resource" uid="uid://fwnv4f1ovtlt" path="res://resources/attachments/muzzles/Silencer.tres" id="7_yeddb"]
-[ext_resource type="PackedScene" path="res://prefabs/attachments/sights/BerettaSight.tscn" id="10_jm176"]
+[ext_resource type="PackedScene" uid="uid://cmpw55su6p4ie" path="res://prefabs/attachments/sights/BerettaSight.tscn" id="10_jm176"]
 
 [sub_resource type="Resource" id="Resource_agjdl"]
 script = ExtResource("1_q1v4d")
@@ -72,4 +72,6 @@ burstDelay = 0.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("1_q1v4d")]([SubResource("Resource_km5io"), ExtResource("3_05bgl"), ExtResource("4_y4cyp"), ExtResource("5_dt3p0")])
 mags = Array[ExtResource("1_q1v4d")]([SubResource("Resource_agjdl"), ExtResource("2_oyymo"), ExtResource("3_csvvw")])
+stocks = Array[ExtResource("1_q1v4d")]([])
+grips = Array[ExtResource("1_q1v4d")]([])
 muzzles = Array[ExtResource("1_q1v4d")]([SubResource("Resource_c7ait"), ExtResource("5_tdoxh"), ExtResource("6_rkrfv"), ExtResource("7_yeddb")])

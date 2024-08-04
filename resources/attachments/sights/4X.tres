@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=3 format=3 uid="uid://bdprtcah5irbs"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_ruld5"]
+[ext_resource type="PackedScene" uid="uid://jum8xyn1u80u" path="res://prefabs/attachments/sights/4X.tscn" id="2_etmlh"]
+
+[resource]
+script = ExtResource("1_ruld5")
+sprite = ExtResource("2_etmlh")
+automatic = -1
+damageInc = 0.0
+fireRateInc = -0.1
+ammoInc = 0.0
+reloadSpeedInc = 0.2
+spreadAngleInc = -0.2
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0

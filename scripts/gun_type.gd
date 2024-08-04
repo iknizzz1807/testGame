@@ -18,6 +18,8 @@ class_name GunType;
 @export var sights : Array[GunMod];
 @export var mags : Array[GunMod];
 @export var muzzles : Array[GunMod];
+@export var stocks : Array[GunMod];
+@export var grips : Array[GunMod];
 @export var fullAuto : GunMod;
 
 func _get_configuration_warning():

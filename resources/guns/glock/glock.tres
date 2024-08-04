@@ -73,5 +73,7 @@ burstDelay = 0.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("2_paj37")]([SubResource("Resource_uojx7"), ExtResource("12_gmnd1"), ExtResource("13_87tx4"), ExtResource("14_y3psp")])
 mags = Array[ExtResource("2_paj37")]([SubResource("Resource_r3y7h"), ExtResource("4_mqoju"), ExtResource("5_ussld")])
+stocks = Array[ExtResource("2_paj37")]([])
+grips = Array[ExtResource("2_paj37")]([])
 muzzles = Array[ExtResource("2_paj37")]([SubResource("Resource_m87wk"), ExtResource("7_y7hk5"), ExtResource("8_md0q7"), ExtResource("9_i7777")])
 fullAuto = ExtResource("1_lepb3")

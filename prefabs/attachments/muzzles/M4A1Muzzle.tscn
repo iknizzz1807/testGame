@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djni5vfyaa05s"]
+
+[ext_resource type="Texture2D" uid="uid://c03dv7kbe16er" path="res://sprites/attachments/muzzles/M4A1Muzzle.png" id="1_nhhqp"]
+
+[node name="M4A1Muzzle" type="Sprite2D"]
+texture = ExtResource("1_nhhqp")
+offset = Vector2(7, 0)

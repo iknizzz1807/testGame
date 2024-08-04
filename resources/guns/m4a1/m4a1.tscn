@@ -1,7 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmix4peijk054"]
+[gd_scene load_steps=19 format=3 uid="uid://bmix4peijk054"]
 
 [ext_resource type="Texture2D" uid="uid://byvmpn60epudu" path="res://sprites/guns/m4a1/m4a1.png" id="1_qqt8v"]
 [ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_icgru"]
+[ext_resource type="Texture2D" uid="uid://diiukl4wbghov" path="res://sprites/attachments/sights/M4A1Sight.png" id="3_jxqc7"]
+[ext_resource type="Texture2D" uid="uid://c03dv7kbe16er" path="res://sprites/attachments/muzzles/M4A1Muzzle.png" id="4_06vy6"]
+[ext_resource type="Texture2D" uid="uid://ximggfindu8s" path="res://sprites/attachments/stocks/M4A1LightStock.png" id="5_bi8tr"]
+[ext_resource type="Texture2D" uid="uid://b1fo8f7uuoal8" path="res://sprites/attachments/grips/ForeGrip.png" id="6_2ei6w"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfxo4"]
 animation = &"idle"
@@ -30,6 +34,7 @@ graph_offset = Vector2(-52, -57)
 
 [sub_resource type="Animation" id="Animation_uhfc7"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,7 +57,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(11.51, -0.585)]
+"values": [Vector2(12, -2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -115,7 +120,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(11.505, -1.49)]
+"values": [Vector2(12, -2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -179,7 +184,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(11.505, -1.49)]
+"values": [Vector2(12, -2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -271,7 +276,7 @@ _data = {
 [node name="m4a1" type="Sprite2D"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_qqt8v")
-offset = Vector2(11.51, -0.585)
+offset = Vector2(12, -2)
 script = ExtResource("2_icgru")
 metadata/Animator = NodePath("AnimationTree")
 metadata/BulletSpawnPoint = NodePath("BulletSpawnPoint")
@@ -294,3 +299,39 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_bgmfh")
 }
+
+[node name="Sight" type="Marker2D" parent="."]
+position = Vector2(6.5, -7.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Sight"]
+visible = false
+texture = ExtResource("3_jxqc7")
+offset = Vector2(0, -3)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(28.5, -4.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Muzzle"]
+visible = false
+texture = ExtResource("4_06vy6")
+offset = Vector2(7, 0)
+
+[node name="Stock" type="Marker2D" parent="."]
+position = Vector2(-1.5, -3.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Stock"]
+visible = false
+texture = ExtResource("5_bi8tr")
+offset = Vector2(-6, 1.5)
+
+[node name="Grip" type="Marker2D" parent="."]
+position = Vector2(21, -1.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Grip"]
+visible = false
+texture = ExtResource("6_2ei6w")
+offset = Vector2(0.5, 3)

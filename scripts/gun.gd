@@ -58,6 +58,14 @@ func gunInit() -> void:
 	if (!gunType.muzzles.is_empty()):
 		var gunModMuzzle = gunType.muzzles.pick_random() as GunMod;
 		addGunMod(gunModMuzzle, gunVars.muzzle);
+		
+	if (!gunType.grips.is_empty()):
+		var gunModGrip = gunType.grips.pick_random() as GunMod;
+		addGunMod(gunModGrip, gunVars.grip);
+	
+	if (!gunType.stocks.is_empty()):
+		var gunModStock = gunType.stocks.pick_random() as GunMod;
+		addGunMod(gunModStock, gunVars.stock);
 	
 	ammoCounter = gunType.ammo;
 	
