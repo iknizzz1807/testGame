@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://blkfjqng2p5hy"]
+
+[ext_resource type="Texture2D" uid="uid://coeay5npw6oqc" path="res://sprites/attachments/grips/AKForeGrip.png" id="1_m1art"]
+
+[node name="ForeGrip" type="Sprite2D"]
+texture = ExtResource("1_m1art")
+offset = Vector2(0.5, 3)

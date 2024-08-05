@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ifagx0y532ey"]
+
+[ext_resource type="Texture2D" uid="uid://c6gng7t5wupmj" path="res://sprites/attachments/mags/AKDrumMag.png" id="1_cx6vx"]
+
+[node name="AK47DrumMag" type="Sprite2D"]
+texture = ExtResource("1_cx6vx")
+offset = Vector2(0.5, 5.5)

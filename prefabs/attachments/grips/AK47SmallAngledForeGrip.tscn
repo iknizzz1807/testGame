@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bywukdb626acr"]
+
+[ext_resource type="Texture2D" uid="uid://djov6c6qlk50x" path="res://sprites/attachments/grips/AKSmallAngledForeGrip.png" id="1_3jqic"]
+
+[node name="SmallAngledForeGrip" type="Sprite2D"]
+texture = ExtResource("1_3jqic")
+offset = Vector2(0.5, 3)

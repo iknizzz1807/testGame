@@ -335,3 +335,12 @@ gizmo_extents = 1.0
 visible = false
 texture = ExtResource("6_2ei6w")
 offset = Vector2(0.5, 3)
+
+[node name="Magazine" type="Marker2D" parent="."]
+position = Vector2(10.5, -0.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Magazine"]
+visible = false
+texture = ExtResource("6_2ei6w")
+offset = Vector2(0.5, 3)

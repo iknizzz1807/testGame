@@ -62,6 +62,7 @@ moveSpeedInc = 0.0
 script = ExtResource("1_016ck")
 sprite = ExtResource("2_e2dcl")
 automatic = false
+isShotgun = false
 damage = 7.0
 fireRate = 0.1
 ammo = 20

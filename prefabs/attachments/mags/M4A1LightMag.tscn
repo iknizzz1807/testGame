@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://kaodf17np30q"]
+
+[ext_resource type="Texture2D" uid="uid://c37x60lftlpp2" path="res://sprites/attachments/mags/M4A1LightMag.png" id="1_lcncw"]
+
+[node name="M4A1LightMag" type="Sprite2D"]
+texture = ExtResource("1_lcncw")
+offset = Vector2(0.5, 5.5)

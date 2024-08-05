@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://hj1y1v858epi"]
+
+[ext_resource type="Texture2D" uid="uid://j4svpi0y07oq" path="res://sprites/attachments/mags/AKNormalMag.png" id="1_v1vjf"]
+
+[node name="AK47NormalMag" type="Sprite2D"]
+texture = ExtResource("1_v1vjf")
+offset = Vector2(0.5, 5.5)

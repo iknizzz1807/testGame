@@ -1,19 +1,123 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=16 format=3 uid="uid://cv1qbd46aog4m"]
+[gd_resource type="Resource" script_class="GunType" load_steps=33 format=3 uid="uid://cv1qbd46aog4m"]
 
 [ext_resource type="Resource" uid="uid://dckhd0ecl1f15" path="res://resources/attachments/muzzles/Compensator.tres" id="1_1uysu"]
 [ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_b5l0f"]
-[ext_resource type="Resource" uid="uid://b6dn67gml8kdr" path="res://resources/attachments/grips/ForeGrip.tres" id="1_k5673"]
-[ext_resource type="Resource" uid="uid://c40svlav57a4p" path="res://resources/attachments/grips/SmallForeGrip.tres" id="2_7rd5f"]
 [ext_resource type="Resource" uid="uid://cu4t0n383q3mw" path="res://resources/attachments/muzzles/MuzzleBrake.tres" id="2_54dty"]
 [ext_resource type="PackedScene" uid="uid://bb80r3bd5lc21" path="res://resources/guns/ak47/ak47.tscn" id="2_exxeg"]
+[ext_resource type="PackedScene" uid="uid://blkfjqng2p5hy" path="res://prefabs/attachments/grips/AK47ForeGrip.tscn" id="2_gtdu2"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="2_yxis6"]
+[ext_resource type="PackedScene" uid="uid://cqgwaifoxici5" path="res://prefabs/attachments/grips/AK47SmalForeGrip.tscn" id="3_7moim"]
 [ext_resource type="Resource" uid="uid://fwnv4f1ovtlt" path="res://resources/attachments/muzzles/Silencer.tres" id="3_p6bm0"]
-[ext_resource type="Resource" uid="uid://4ilx4rrgjfh1" path="res://resources/attachments/grips/AngledForeGrip.tres" id="3_ryire"]
-[ext_resource type="Resource" uid="uid://dhc8eg7ulqxvk" path="res://resources/attachments/grips/SmallAngledForeGrip.tres" id="4_k5tol"]
+[ext_resource type="PackedScene" uid="uid://0o8kx6nrj468" path="res://prefabs/attachments/grips/AK47AngledForeGrip.tscn" id="4_h45re"]
+[ext_resource type="PackedScene" uid="uid://bywukdb626acr" path="res://prefabs/attachments/grips/AK47SmallAngledForeGrip.tscn" id="5_gm0bm"]
 [ext_resource type="Resource" uid="uid://2bmnjjpmj6o8" path="res://resources/attachments/sights/EOTECH.tres" id="5_okqi1"]
+[ext_resource type="PackedScene" uid="uid://hj1y1v858epi" path="res://prefabs/attachments/mags/AK47NormalMag.tscn" id="6_4sabd"]
 [ext_resource type="Resource" uid="uid://dou6kisw11qxn" path="res://resources/attachments/sights/RedDot.tres" id="6_30ymm"]
+[ext_resource type="PackedScene" uid="uid://ifagx0y532ey" path="res://prefabs/attachments/mags/AK47DrumMag.tscn" id="7_ar1e7"]
 [ext_resource type="Resource" uid="uid://mrtolyg53u0p" path="res://resources/attachments/sights/2X.tres" id="7_h6hyv"]
+[ext_resource type="PackedScene" uid="uid://bo4ebktrlom2y" path="res://prefabs/attachments/mags/AK47FastMag.tscn" id="8_ow005"]
 [ext_resource type="Resource" uid="uid://bdprtcah5irbs" path="res://resources/attachments/sights/4X.tres" id="8_ymodr"]
+[ext_resource type="PackedScene" uid="uid://c58kxwlfdve02" path="res://prefabs/attachments/stocks/AK47NormalStock.tscn" id="15_w7qce"]
+[ext_resource type="PackedScene" uid="uid://clt4safvnpk0v" path="res://prefabs/attachments/stocks/AK47LightStock.tscn" id="16_7ecf6"]
+[ext_resource type="PackedScene" uid="uid://2ao85wy0pn4d" path="res://prefabs/attachments/stocks/AK47HeavyStock.tscn" id="17_3fl1t"]
+
+[sub_resource type="Resource" id="Resource_xi837"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("2_gtdu2")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.2
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_oroq4"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("3_7moim")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.1
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.1
+
+[sub_resource type="Resource" id="Resource_0conw"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("4_h45re")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.1
+spreadAngleInc = 0.15
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_ah2gr"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("5_gm0bm")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.1
+spreadAngleInc = 0.1
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = -0.05
+
+[sub_resource type="Resource" id="Resource_7xh2g"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("6_4sabd")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_jrq0b"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("7_ar1e7")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 1.0
+reloadSpeedInc = 0.4
+spreadAngleInc = 0.1
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = -0.2
+
+[sub_resource type="Resource" id="Resource_dqn3l"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("8_ow005")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = -0.5
+spreadAngleInc = 0.2
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = -0.2
 
 [sub_resource type="Resource" id="Resource_eg52h"]
 script = ExtResource("1_b5l0f")
@@ -28,10 +132,66 @@ burstAmountNew = 0
 burstDelayInc = 0.0
 moveSpeedInc = 0.0
 
+[sub_resource type="Resource" id="Resource_onk3e"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("15_w7qce")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_k1ucg"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("16_7ecf6")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = -0.1
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.1
+
+[sub_resource type="Resource" id="Resource_gycc8"]
+script = ExtResource("1_b5l0f")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.1
+spreadAngleInc = 0.2
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.2
+
+[sub_resource type="Resource" id="Resource_nvfhs"]
+script = ExtResource("1_b5l0f")
+sprite = ExtResource("17_3fl1t")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.15
+spreadAngleInc = -0.35
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = -0.2
+
 [resource]
 script = ExtResource("2_yxis6")
 sprite = ExtResource("2_exxeg")
 automatic = true
+isShotgun = false
 damage = 10.0
 fireRate = 0.08
 ammo = 30
@@ -42,7 +202,7 @@ burstAmount = 0
 burstDelay = 0.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("1_b5l0f")]([ExtResource("5_okqi1"), ExtResource("6_30ymm"), ExtResource("7_h6hyv"), ExtResource("8_ymodr")])
-mags = Array[ExtResource("1_b5l0f")]([])
+mags = Array[ExtResource("1_b5l0f")]([SubResource("Resource_7xh2g"), SubResource("Resource_jrq0b"), SubResource("Resource_dqn3l")])
 muzzles = Array[ExtResource("1_b5l0f")]([SubResource("Resource_eg52h"), ExtResource("1_1uysu"), ExtResource("2_54dty"), ExtResource("3_p6bm0")])
-stocks = Array[ExtResource("1_b5l0f")]([])
-grips = Array[ExtResource("1_b5l0f")]([ExtResource("1_k5673"), ExtResource("2_7rd5f"), ExtResource("3_ryire"), ExtResource("4_k5tol")])
+stocks = Array[ExtResource("1_b5l0f")]([SubResource("Resource_onk3e"), SubResource("Resource_k1ucg"), SubResource("Resource_gycc8"), SubResource("Resource_nvfhs")])
+grips = Array[ExtResource("1_b5l0f")]([SubResource("Resource_xi837"), SubResource("Resource_oroq4"), SubResource("Resource_0conw"), SubResource("Resource_ah2gr")])

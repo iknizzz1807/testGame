@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=24 format=3 uid="uid://bqivg6wjdjlup"]
+[gd_resource type="Resource" script_class="GunType" load_steps=28 format=3 uid="uid://bqivg6wjdjlup"]
 
 [ext_resource type="Resource" uid="uid://b6dn67gml8kdr" path="res://resources/attachments/grips/ForeGrip.tres" id="1_727st"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_ifky3"]
@@ -15,9 +15,54 @@
 [ext_resource type="Resource" uid="uid://fwnv4f1ovtlt" path="res://resources/attachments/muzzles/Silencer.tres" id="5_7umrm"]
 [ext_resource type="Resource" uid="uid://dou6kisw11qxn" path="res://resources/attachments/sights/RedDot.tres" id="5_kjqrw"]
 [ext_resource type="Resource" uid="uid://mrtolyg53u0p" path="res://resources/attachments/sights/2X.tres" id="6_euxt1"]
+[ext_resource type="PackedScene" uid="uid://b0csps37kv73s" path="res://prefabs/attachments/mags/M4A1NormalMag.tscn" id="6_oqabw"]
 [ext_resource type="Resource" uid="uid://bdprtcah5irbs" path="res://resources/attachments/sights/4X.tres" id="7_3jxmm"]
-[ext_resource type="PackedScene" uid="uid://ujayxxxafa3i" path="res://prefabs/attachments/stocks/M4A1NormalStock.tscn" id="13_wphjh"]
-[ext_resource type="PackedScene" uid="uid://b0lksbf8h7ve4" path="res://prefabs/attachments/stocks/M4A1LightStock.tscn" id="14_b11ek"]
+[ext_resource type="PackedScene" uid="uid://kaodf17np30q" path="res://prefabs/attachments/mags/M4A1LightMag.tscn" id="7_gm7eq"]
+[ext_resource type="PackedScene" uid="uid://blrxfo6aanl55" path="res://prefabs/attachments/mags/M4A1DrumMag.tscn" id="8_y8lgs"]
+[ext_resource type="Resource" uid="uid://dkbda3og11jdx" path="res://resources/attachments/stocks/NoStock.tres" id="18_8mcl6"]
+[ext_resource type="Resource" uid="uid://vp414fy7txea" path="res://resources/attachments/stocks/LightStock.tres" id="21_ar50k"]
+
+[sub_resource type="Resource" id="Resource_p1m6s"]
+script = ExtResource("2_1yix2")
+sprite = ExtResource("6_oqabw")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_x1u6s"]
+script = ExtResource("2_1yix2")
+sprite = ExtResource("7_gm7eq")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = -0.5
+reloadSpeedInc = -0.4
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.2
+
+[sub_resource type="Resource" id="Resource_aeho3"]
+script = ExtResource("2_1yix2")
+sprite = ExtResource("8_y8lgs")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 1.0
+reloadSpeedInc = 0.4
+spreadAngleInc = 0.1
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = -0.2
 
 [sub_resource type="Resource" id="Resource_i5a5i"]
 script = ExtResource("2_1yix2")
@@ -47,9 +92,8 @@ burstAmountNew = 0
 burstDelayInc = 0.0
 moveSpeedInc = 0.0
 
-[sub_resource type="Resource" id="Resource_wv5uv"]
+[sub_resource type="Resource" id="Resource_ys8sy"]
 script = ExtResource("2_1yix2")
-sprite = ExtResource("13_wphjh")
 automatic = -1
 damageInc = 0.0
 fireRateInc = 0.0
@@ -61,38 +105,11 @@ burstAmountNew = 0
 burstDelayInc = 0.0
 moveSpeedInc = 0.0
 
-[sub_resource type="Resource" id="Resource_6oann"]
-script = ExtResource("2_1yix2")
-sprite = ExtResource("14_b11ek")
-automatic = -1
-damageInc = 0.0
-fireRateInc = 0.0
-ammoInc = 0.0
-reloadSpeedInc = 0.1
-spreadAngleInc = 0.3
-spreadNumberNew = 0
-burstAmountNew = 0
-burstDelayInc = 0.0
-moveSpeedInc = 0.2
-
-[sub_resource type="Resource" id="Resource_fwifc"]
-script = ExtResource("2_1yix2")
-sprite = ExtResource("14_b11ek")
-automatic = -1
-damageInc = 0.0
-fireRateInc = 0.0
-ammoInc = 0.0
-reloadSpeedInc = 0.0
-spreadAngleInc = 0.1
-spreadNumberNew = 0
-burstAmountNew = 0
-burstDelayInc = 0.0
-moveSpeedInc = 0.1
-
 [resource]
 script = ExtResource("1_ifky3")
 sprite = ExtResource("2_vohkb")
 automatic = true
+isShotgun = false
 damage = 10.0
 fireRate = 0.05
 ammo = 30
@@ -103,7 +120,7 @@ burstAmount = 0
 burstDelay = 0.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("2_1yix2")]([SubResource("Resource_e5wj4"), ExtResource("4_k6vci"), ExtResource("5_kjqrw"), ExtResource("6_euxt1"), ExtResource("7_3jxmm")])
-mags = Array[ExtResource("2_1yix2")]([])
+mags = Array[ExtResource("2_1yix2")]([SubResource("Resource_p1m6s"), SubResource("Resource_x1u6s"), SubResource("Resource_aeho3")])
 muzzles = Array[ExtResource("2_1yix2")]([SubResource("Resource_i5a5i"), ExtResource("3_32cci"), ExtResource("4_wkenh"), ExtResource("5_7umrm")])
-stocks = Array[ExtResource("2_1yix2")]([SubResource("Resource_wv5uv"), SubResource("Resource_6oann"), SubResource("Resource_fwifc")])
+stocks = Array[ExtResource("2_1yix2")]([SubResource("Resource_ys8sy"), ExtResource("18_8mcl6"), ExtResource("21_ar50k")])
 grips = Array[ExtResource("2_1yix2")]([ExtResource("1_727st"), ExtResource("2_mmwhn"), ExtResource("3_3mvhy"), ExtResource("4_rpqw8")])

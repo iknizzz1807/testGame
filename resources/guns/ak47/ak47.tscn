@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb80r3bd5lc21"]
+[gd_scene load_steps=20 format=3 uid="uid://bb80r3bd5lc21"]
 
 [ext_resource type="Texture2D" uid="uid://cknyasofsurnw" path="res://sprites/guns/ak47/ak47.png" id="1_bacfh"]
 [ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_3vvid"]
 [ext_resource type="Texture2D" uid="uid://diiukl4wbghov" path="res://sprites/attachments/sights/M4A1Sight.png" id="4_uc1d6"]
+[ext_resource type="Texture2D" uid="uid://ccyfuudp15vx6" path="res://sprites/attachments/stocks/AKNormalStock.png" id="5_jpiog"]
 [ext_resource type="Texture2D" uid="uid://bf07m7nw5expk" path="res://sprites/attachments/muzzles/Silencer.png" id="5_y8nq6"]
-[ext_resource type="Texture2D" uid="uid://ximggfindu8s" path="res://sprites/attachments/stocks/M4A1LightStock.png" id="6_3gmmp"]
+[ext_resource type="Texture2D" uid="uid://c6gng7t5wupmj" path="res://sprites/attachments/mags/AKDrumMag.png" id="7_7tyis"]
 [ext_resource type="Texture2D" uid="uid://b1fo8f7uuoal8" path="res://sprites/attachments/grips/ForeGrip.png" id="7_bpena"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfxo4"]
@@ -309,7 +310,7 @@ texture = ExtResource("4_uc1d6")
 offset = Vector2(0, -3)
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(34.5, -4.5)
+position = Vector2(34.5, -4)
 gizmo_extents = 1.0
 
 [node name="Test" type="Sprite2D" parent="Muzzle"]
@@ -318,20 +319,28 @@ texture = ExtResource("5_y8nq6")
 offset = Vector2(7, 0)
 
 [node name="Stock" type="Marker2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0.5, -3.5)
 gizmo_extents = 1.0
 
 [node name="Test" type="Sprite2D" parent="Stock"]
 visible = false
-position = Vector2(0.5, 0)
-texture = ExtResource("6_3gmmp")
-offset = Vector2(-6, 1.5)
+texture = ExtResource("5_jpiog")
+offset = Vector2(-8, 2)
 
 [node name="Grip" type="Marker2D" parent="."]
-position = Vector2(17, -2.5)
+position = Vector2(16, -2)
 gizmo_extents = 1.0
 
 [node name="Test" type="Sprite2D" parent="Grip"]
 visible = false
 texture = ExtResource("7_bpena")
 offset = Vector2(0.5, 3)
+
+[node name="Magazine" type="Marker2D" parent="."]
+position = Vector2(8.5, -1)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Magazine"]
+visible = false
+texture = ExtResource("7_7tyis")
+offset = Vector2(0.5, 5.5)

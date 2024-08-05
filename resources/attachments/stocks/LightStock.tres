@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=2 format=3 uid="uid://vp414fy7txea"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_dbav3"]
+
+[resource]
+script = ExtResource("1_dbav3")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = -0.1
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.1

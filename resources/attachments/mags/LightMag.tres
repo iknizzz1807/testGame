@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GunMod" load_steps=2 format=3 uid="uid://dvag4txegrst2"]
+
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_hamq4"]
+
+[resource]
+script = ExtResource("1_hamq4")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = -0.5
+reloadSpeedInc = -0.4
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.2

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://clt4safvnpk0v"]
+
+[ext_resource type="Texture2D" uid="uid://yhfxgfy42lii" path="res://sprites/attachments/stocks/AKLightStock.png" id="1_0e1in"]
+
+[node name="AK47LightStock" type="Sprite2D"]
+texture = ExtResource("1_0e1in")
+offset = Vector2(-8, 2.5)
