@@ -1,7 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b21b0ch2p7mkr"]
+[gd_scene load_steps=19 format=3 uid="uid://b21b0ch2p7mkr"]
 
 [ext_resource type="Texture2D" uid="uid://b87eh11kh3hcn" path="res://sprites/guns/mp9/mp9.png" id="1_sqrvb"]
 [ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_g65wh"]
+[ext_resource type="Texture2D" uid="uid://diiukl4wbghov" path="res://sprites/attachments/sights/M4A1Sight.png" id="3_vli6j"]
+[ext_resource type="Texture2D" uid="uid://c03dv7kbe16er" path="res://sprites/attachments/muzzles/M4A1Muzzle.png" id="4_f4h5m"]
+[ext_resource type="Texture2D" uid="uid://ximggfindu8s" path="res://sprites/attachments/stocks/M4A1LightStock.png" id="5_elcas"]
+[ext_resource type="Texture2D" uid="uid://b1fo8f7uuoal8" path="res://sprites/attachments/grips/ForeGrip.png" id="6_ws7nu"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"
@@ -298,3 +302,38 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_lx8gd")
 }
+
+[node name="Sight" type="Marker2D" parent="."]
+position = Vector2(3.5, -9.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Sight"]
+visible = false
+texture = ExtResource("3_vli6j")
+offset = Vector2(0, -3)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(15.5, -6.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Muzzle"]
+visible = false
+texture = ExtResource("4_f4h5m")
+offset = Vector2(7, 0)
+
+[node name="Stock" type="Marker2D" parent="."]
+position = Vector2(-4.5, -4.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Stock"]
+visible = false
+texture = ExtResource("5_elcas")
+offset = Vector2(-6, 1.5)
+
+[node name="Grip" type="Marker2D" parent="."]
+position = Vector2(10, -3.5)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Grip"]
+texture = ExtResource("6_ws7nu")
+offset = Vector2(0.5, 3)

@@ -18,7 +18,7 @@ var recoilAnimator : AnimationPlayer;
 var ammoCounter : int;
 var fireRateCounter: float = 0;
 var reloading : bool = false;
-
+var reloadTimer : SceneTreeTimer;
 
 func _ready():
 	if (get_parent().debugGun):
@@ -122,20 +122,36 @@ func swapGun(level: int) -> void:
 
 
 func reload() -> void:
-	reloading = true;
-	spriteAnimator.set("parameters/conditions/reloading", true);
-	try_travel_animation(spriteAnimator, "reload");
-	await get_tree().create_timer(gunType.reloadSpeed).timeout;
-	ammoCounter = gunType.ammo;
-	fireRateCounter = 0;
-	reloading = false;
+	if (reloading || reloadTimer != null): return;
+	if (gunType.isShotgun):
+		reloading = true;
+		while (ammoCounter < gunType.ammo && reloading):
+			# spriteAnimator.set("parameters/conditions/reloading", true);
+			# try_travel_animation(spriteAnimator, "reload");
+			reloadTimer = get_tree().create_timer(gunType.reloadSpeed);
+			await reloadTimer.timeout;
+			if (ammoCounter < gunType.ammo && reloading):
+				ammoCounter += 1;
+		reloadTimer = null;
+		reloading = false;
+	else:
+		reloading = true;
+		spriteAnimator.set("parameters/conditions/reloading", true);
+		try_travel_animation(spriteAnimator, "reload");
+		await get_tree().create_timer(gunType.reloadSpeed).timeout;
+		ammoCounter = gunType.ammo;
+		fireRateCounter = 0;
+		reloading = false;
 
 func _on_player_shoot_event():
+	if (reloading && gunType.isShotgun && ammoCounter > 0):
+		reloading = false;
 	if (fireRateCounter > 0 || reloading):
 		return;
-	get_viewport().get_camera_2d().apply_shake();
-	bulletOut();
-	fireRateCounter = gunType.fireRate + gunType.burstAmount * gunType.burstDelay;
+	if (ammoCounter > 0):
+		get_viewport().get_camera_2d().apply_shake();
+		bulletOut();
+		fireRateCounter = gunType.fireRate + gunType.burstAmount * gunType.burstDelay;
 	if (ammoCounter <= 0):
 		reload();
 

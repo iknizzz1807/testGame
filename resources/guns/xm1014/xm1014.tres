@@ -1,18 +1,101 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://134f1lj1027l"]
+[gd_resource type="Resource" script_class="GunType" load_steps=20 format=3 uid="uid://134f1lj1027l"]
 
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_c114n"]
+[ext_resource type="Resource" uid="uid://b6dn67gml8kdr" path="res://resources/attachments/grips/ForeGrip.tres" id="1_emfn4"]
 [ext_resource type="PackedScene" uid="uid://dcjd4gypaxtfx" path="res://resources/guns/xm1014/xm1014.tscn" id="2_160vc"]
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="2_kw17l"]
+[ext_resource type="Resource" uid="uid://c40svlav57a4p" path="res://resources/attachments/grips/SmallForeGrip.tres" id="2_l40bl"]
+[ext_resource type="Resource" uid="uid://2bmnjjpmj6o8" path="res://resources/attachments/sights/EOTECH.tres" id="3_1snox"]
+[ext_resource type="Resource" uid="uid://4ilx4rrgjfh1" path="res://resources/attachments/grips/AngledForeGrip.tres" id="3_aqwja"]
+[ext_resource type="Resource" uid="uid://dou6kisw11qxn" path="res://resources/attachments/sights/RedDot.tres" id="4_o5afe"]
+[ext_resource type="Resource" uid="uid://dhc8eg7ulqxvk" path="res://resources/attachments/grips/SmallAngledForeGrip.tres" id="4_u484u"]
+[ext_resource type="Resource" uid="uid://mrtolyg53u0p" path="res://resources/attachments/sights/2X.tres" id="5_5feq5"]
+[ext_resource type="Resource" uid="uid://bdprtcah5irbs" path="res://resources/attachments/sights/4X.tres" id="6_g0om5"]
+[ext_resource type="Resource" uid="uid://dckhd0ecl1f15" path="res://resources/attachments/muzzles/Compensator.tres" id="6_jdp7n"]
+[ext_resource type="Resource" uid="uid://cu4t0n383q3mw" path="res://resources/attachments/muzzles/MuzzleBrake.tres" id="7_mitvv"]
+[ext_resource type="Resource" uid="uid://fwnv4f1ovtlt" path="res://resources/attachments/muzzles/Silencer.tres" id="8_baaoh"]
+
+[sub_resource type="Resource" id="Resource_ulsj2"]
+script = ExtResource("2_kw17l")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.2
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_uj1oq"]
+script = ExtResource("2_kw17l")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.5
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_ntmjc"]
+script = ExtResource("2_kw17l")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_l5m4x"]
+script = ExtResource("2_kw17l")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_xafva"]
+script = ExtResource("2_kw17l")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
 
 [resource]
 script = ExtResource("1_c114n")
 sprite = ExtResource("2_160vc")
 automatic = true
+isShotgun = true
 damage = 8.0
 fireRate = 0.4
 ammo = 8
-reloadSpeed = 2.0
+reloadSpeed = 0.6
 spreadAngle = 30.0
 spreadNumber = 10
 burstAmount = 0
 burstDelay = 0.0
 effects = Array[Resource]([])
+sights = Array[ExtResource("2_kw17l")]([SubResource("Resource_l5m4x"), ExtResource("3_1snox"), ExtResource("4_o5afe"), ExtResource("5_5feq5"), ExtResource("6_g0om5")])
+mags = Array[ExtResource("2_kw17l")]([SubResource("Resource_ulsj2"), SubResource("Resource_uj1oq")])
+muzzles = Array[ExtResource("2_kw17l")]([SubResource("Resource_ntmjc"), ExtResource("6_jdp7n"), ExtResource("7_mitvv"), ExtResource("8_baaoh")])
+stocks = Array[ExtResource("2_kw17l")]([SubResource("Resource_xafva")])
+grips = Array[ExtResource("2_kw17l")]([ExtResource("1_emfn4"), ExtResource("2_l40bl"), ExtResource("3_aqwja"), ExtResource("4_u484u")])

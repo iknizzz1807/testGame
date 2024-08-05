@@ -5,6 +5,7 @@ class_name GunType;
 @export var sprite: PackedScene;
 @export_category("Properties")
 @export var automatic : bool = false;
+@export var isShotgun : bool = false;
 @export var damage: float = 0;
 @export var fireRate : float = 0.02;
 @export var ammo : int = 30;

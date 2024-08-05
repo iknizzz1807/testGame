@@ -14,7 +14,8 @@ theme_override_font_sizes/font_size = 48
 text = "LV:
 HP:
 Power:
-EXP:"
+EXP:
+Ammo:"
 
 [node name="statNum" type="Label" parent="."]
 offset_left = 190.0

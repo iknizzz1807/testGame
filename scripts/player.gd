@@ -61,7 +61,8 @@ func _process(_delta):
 			canShoot = Input.is_action_pressed("shoot");
 		else:
 			canShoot = Input.is_action_just_pressed("shoot");
-			
+		if (Input.is_action_just_pressed("reload")):
+			gun.reload();
 		if canShoot:
 			gun.spreadMult = velocity.length() / speed;
 			shootEvent.emit();

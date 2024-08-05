@@ -1,12 +1,50 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=3 format=3 uid="uid://dxhbd4t27byu"]
+[gd_resource type="Resource" script_class="GunType" load_steps=16 format=3 uid="uid://dxhbd4t27byu"]
 
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_bgea0"]
+[ext_resource type="Resource" uid="uid://b6dn67gml8kdr" path="res://resources/attachments/grips/ForeGrip.tres" id="1_bt3bs"]
+[ext_resource type="Resource" uid="uid://c40svlav57a4p" path="res://resources/attachments/grips/SmallForeGrip.tres" id="2_j0eh6"]
+[ext_resource type="Script" path="res://scripts/gun_mod.gd" id="2_lf6s2"]
 [ext_resource type="PackedScene" uid="uid://b21b0ch2p7mkr" path="res://resources/guns/mp9/mp9.tscn" id="2_rjfhu"]
+[ext_resource type="Resource" uid="uid://4ilx4rrgjfh1" path="res://resources/attachments/grips/AngledForeGrip.tres" id="3_8lylt"]
+[ext_resource type="Resource" uid="uid://2bmnjjpmj6o8" path="res://resources/attachments/sights/EOTECH.tres" id="3_43gj3"]
+[ext_resource type="Resource" uid="uid://dou6kisw11qxn" path="res://resources/attachments/sights/RedDot.tres" id="4_fdal0"]
+[ext_resource type="Resource" uid="uid://dhc8eg7ulqxvk" path="res://resources/attachments/grips/SmallAngledForeGrip.tres" id="4_ks81s"]
+[ext_resource type="Resource" uid="uid://mrtolyg53u0p" path="res://resources/attachments/sights/2X.tres" id="5_6e07s"]
+[ext_resource type="Resource" uid="uid://dckhd0ecl1f15" path="res://resources/attachments/muzzles/Compensator.tres" id="6_vcv15"]
+[ext_resource type="Resource" uid="uid://cu4t0n383q3mw" path="res://resources/attachments/muzzles/MuzzleBrake.tres" id="7_vd56s"]
+[ext_resource type="Resource" uid="uid://fwnv4f1ovtlt" path="res://resources/attachments/muzzles/Silencer.tres" id="8_m1m68"]
+
+[sub_resource type="Resource" id="Resource_b18dj"]
+script = ExtResource("2_lf6s2")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
+
+[sub_resource type="Resource" id="Resource_ocoqh"]
+script = ExtResource("2_lf6s2")
+automatic = -1
+damageInc = 0.0
+fireRateInc = 0.0
+ammoInc = 0.0
+reloadSpeedInc = 0.0
+spreadAngleInc = 0.0
+spreadNumberNew = 0
+burstAmountNew = 0
+burstDelayInc = 0.0
+moveSpeedInc = 0.0
 
 [resource]
 script = ExtResource("1_bgea0")
 sprite = ExtResource("2_rjfhu")
 automatic = true
+isShotgun = false
 damage = 9.0
 fireRate = 0.04
 ammo = 30
@@ -16,3 +54,8 @@ spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
 effects = Array[Resource]([])
+sights = Array[ExtResource("2_lf6s2")]([SubResource("Resource_ocoqh"), ExtResource("3_43gj3"), ExtResource("4_fdal0"), ExtResource("5_6e07s")])
+mags = Array[ExtResource("2_lf6s2")]([])
+muzzles = Array[ExtResource("2_lf6s2")]([SubResource("Resource_b18dj"), ExtResource("6_vcv15"), ExtResource("7_vd56s"), ExtResource("8_m1m68")])
+stocks = Array[ExtResource("2_lf6s2")]([])
+grips = Array[ExtResource("2_lf6s2")]([ExtResource("1_bt3bs"), ExtResource("2_j0eh6"), ExtResource("3_8lylt"), ExtResource("4_ks81s")])
