@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(1, 4):
+	for i in range(1, 5):
 		spawn_mob();
 	pass # Replace with function body.
 
@@ -19,6 +19,10 @@ func _on_mob_timer_timeout(): # Spawn the enemy
 	spawn_mob();
 	
 func spawn_mob() -> void:
+	if $MobTimer.wait_time < 1:
+		$MobTimer.wait_time = 0.5;
+	else:
+		$MobTimer.wait_time = 4.0/$Player.level;
 	var mob = mob_scene.instantiate();
 	# Choose a random location on Path2D.
 	var mob_spawn_location = $Path2D/PathFollow2D;
