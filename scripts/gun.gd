@@ -18,6 +18,7 @@ var recoilAnimator : AnimationPlayer;
 var ammoCounter : int;
 var fireRateCounter: float = 0;
 var reloading : bool = false;
+var casingPos : Marker2D;
 var reloadTimer : SceneTreeTimer;
 
 func _ready():
@@ -41,6 +42,7 @@ func gunInit() -> void:
 	
 	
 	var gunVars = sprite as GunVars;
+	casingPos = gunVars.casing;
 	
 	if (randi_range(0, 1) == 0 && gunType.fullAuto != null):
 		var gunModFullAuto = gunType.fullAuto as GunMod;
@@ -166,6 +168,11 @@ func bulletOut() -> void:
 		try_travel_animation(spriteAnimator, "shoot");
 		# gun
 		ammoCounter -= 1;
+		if (casingPos != null):
+			var casing = gunType.casing.instantiate();
+			casing.global_position = casingPos.global_position;
+			casing.scale.x *= sign(sprite.scale.y);
+			get_tree().root.add_child(casing);
 		await get_tree().create_timer(gunType.burstDelay).timeout;
 
 func spawnBullet() -> void:

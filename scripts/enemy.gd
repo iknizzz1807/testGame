@@ -2,38 +2,57 @@ extends CharacterBody2D
 
 class_name Enemy
 
+enum EnemyState
+{
+	idle,
+	running,
+	hit
+}
 
+var state : EnemyState = EnemyState.idle;
 @export var SPEED : float = 10.0
 @export var MAX_SPEED : float = 100;
+@export var KNOCKBACK_TIME : float = 0.2;
 @export var KNOCKBACK_STRENGTH : float = 1000;
+@export var KNOCKBACK_FRICTION : float = 100;
 @onready var sprite : Sprite2D = $Sprite2D;
 @export var HP : int = 50; # Change on different types of enemies
+var tmpTimer : SceneTreeTimer;
+var knockbackTimer : float = 0;
+
 
 var knockbackDirection : Vector2 = Vector2.ZERO;
 var playerRef : Node2D;
 
 func _ready():
 	playerRef = get_tree().get_first_node_in_group("player");
-	hit();
 
 func _physics_process(delta):
-	if playerRef != null:
-		var playerDir = playerRef.position - position;
-		velocity += playerDir.normalized() * SPEED;
-	velocity += knockbackDirection;
-	velocity = vector_clamp_length(velocity, 0, MAX_SPEED);
-	knockbackDirection = Vector2.ZERO;
-	move_and_collide(velocity * delta);
-	#move_and_slide();
+	match state:
+		EnemyState.hit:
+			velocity *= 0.7;
+			sprite.flip_h = velocity.x > 0;
+			var collider = move_and_collide(velocity * delta);
+			if (collider != null):
+				velocity = velocity.slide(collider.get_normal());
+			if (velocity.length_squared() > 0):
+				knockbackTimer -= delta;
+			if (knockbackTimer <= 0):
+				state = EnemyState.idle;
+		_:
+			if (playerRef != null):
+				var playerDir = playerRef.position - position;
+				velocity += playerDir.normalized() * SPEED;
+			if (velocity.length_squared() > 0):
+				state = EnemyState.running;
+			else:
+				state = EnemyState.idle;
+			velocity = velocity.limit_length(MAX_SPEED);
+			sprite.flip_h = velocity.x <= 0;
+			move_and_collide(velocity * delta);
 
 func vector_clamp_length(target: Vector2, min_length : float, max_length : float) -> Vector2:
 	return target.normalized() * clamp(target.length(), min_length, max_length);
-
-func knockback(dir: Vector2) -> void:
-	knockbackDirection += dir * KNOCKBACK_STRENGTH;
-
-func hit() -> void:
-	flash();
 
 func flash()->void:
 	sprite.material.set_shader_parameter("flash_color", Color.WHITE);
@@ -42,16 +61,19 @@ func flash()->void:
 	sprite.material.set_shader_parameter("flash_color", Color.WHITE);
 	sprite.material.set_shader_parameter("flash_value", 0);
 
-func takeDamage(damage):
+func hit(damage: float, knockbackDir: Vector2):
 	if(HP <= 0):
 		return;
 	HP -= damage;
+	flash();
+	state = EnemyState.hit;
+	knockbackTimer = KNOCKBACK_TIME;
+	knockbackDirection += knockbackDir.normalized() * KNOCKBACK_STRENGTH;
+	velocity = knockbackDir.normalized() * KNOCKBACK_STRENGTH;
+	knockbackDirection = Vector2.ZERO;
 	if(HP <= 0):
 		die();
 
-func getSprite():
-	return sprite;
-	
 func die():
 	# Simulate the stats increase
 	playerRef.EXP += 2;

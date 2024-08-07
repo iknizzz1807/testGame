@@ -21,10 +21,12 @@ frame = 1
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_1jfux")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="."]
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_1jfux")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="HitArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]

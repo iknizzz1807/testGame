@@ -29,6 +29,6 @@ func spawn_mob() -> void:
 	mob.position = mob_spawn_location.position;
 	# Add some randomness to the direction.
 	direction += randf_range(-PI / 4, PI / 4);
-	mob.rotation = direction;
+	#mob.rotation = direction;
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob);

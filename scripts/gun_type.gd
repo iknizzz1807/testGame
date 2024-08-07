@@ -3,6 +3,7 @@ class_name GunType;
 
 @export_category("Setup")
 @export var sprite: PackedScene;
+@export var casing: PackedScene;
 @export_category("Properties")
 @export var automatic : bool = false;
 @export var isShotgun : bool = false;

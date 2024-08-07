@@ -42,7 +42,7 @@ func get_input():
 
 func _physics_process(_delta):
 	if (state != PlayerState.hit):
-		if (sign(velocity.length()) > 0):
+		if (velocity.length() > 0):
 			state = PlayerState.run;
 		else:
 			state = PlayerState.idle;
@@ -84,15 +84,6 @@ func flash()->void:
 	await get_tree().create_timer(0.1).timeout;
 	sprite.material.set_shader_parameter("flash_value", 0);
 
-func _on_area_2d_body_entered(body):
-	if (body != null) and (body is Enemy):
-		flash();
-		state = PlayerState.hit;
-		animator.get("parameters/playback").travel("hit");
-		knockback((position - body.position));
-		takeDamage(1); # Change this
-		await get_tree().create_timer(0.4).timeout;
-		state = PlayerState.idle;
 
 func knockback(dir: Vector2) -> void:
 	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
@@ -104,3 +95,13 @@ func levelUp() -> void:
 	maxEXP += 5;
 	maxHP += 2;
 	power += 1;
+
+func _on_area_2d_body_entered(body):
+	if (body != null) and (body is Enemy):
+		flash();
+		state = PlayerState.hit;
+		animator.get("parameters/playback").travel("hit");
+		knockback((position - body.position));
+		takeDamage(1); # Change this
+		await get_tree().create_timer(0.4).timeout;
+		state = PlayerState.idle;

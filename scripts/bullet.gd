@@ -13,6 +13,7 @@ var player : Node2D;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rotation_degrees = 0;
 	player = get_tree().get_first_node_in_group("player");
 	pass # Replace with function body.
 
@@ -26,14 +27,14 @@ func _physics_process(delta):
 	global_position += velocity;
 	pass
 
-func _on_area_2d_body_entered(body):
-	#print("collider")
-	if (body != null) and (body is Enemy):
-		body.knockback(direction);
+
+func _on_area_2d_area_entered(area):
+	print("collider")
+	if (area != null) and (area.get_parent() is Enemy):
 		for effect in effects:
 			var effectNode : Effect = Effect.new();
 			effectNode.set_script(effect);
-			body.add_child(effectNode);
-		body.hit();
-		body.takeDamage(damage + player.power);
+			area.add_child(effectNode);
+		area.get_parent().hit(damage + player.power, direction);
 		queue_free(); # Remove the bullet
+	pass # Replace with function body.
