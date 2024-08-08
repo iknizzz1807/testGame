@@ -310,6 +310,15 @@ visible = false
 texture = ExtResource("3_gvvmm")
 offset = Vector2(0, -3)
 
+[node name="Casing" type="Marker2D" parent="."]
+position = Vector2(10, -9)
+gizmo_extents = 1.0
+
+[node name="Test" type="Sprite2D" parent="Casing"]
+visible = false
+texture = ExtResource("3_gvvmm")
+offset = Vector2(0, -3)
+
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(21.5, -8.5)
 gizmo_extents = 1.0

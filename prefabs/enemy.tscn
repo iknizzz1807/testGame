@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bpmyml0l0oxys"]
+[gd_scene load_steps=24 format=3 uid="uid://bpmyml0l0oxys"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_u5mtw"]
 [ext_resource type="Shader" path="res://shader/flash.gdshader" id="2_le52c"]
 [ext_resource type="Texture2D" uid="uid://cwq41njlke0eb" path="res://sprites/enemy/Enemy1.png" id="3_e3oda"]
+[ext_resource type="Texture2D" uid="uid://b3ihioacw7hlk" path="res://sprites/guns/knife/knife3.png" id="4_nf54q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kafah"]
 resource_local_to_scene = true
@@ -40,7 +41,7 @@ advance_expression = "state == EnemyState.hit"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tn2q2"]
 advance_mode = 2
-advance_expression = "state == EnemyState.hit;"
+advance_expression = "state == EnemyState.idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_flbye"]
 advance_mode = 2
@@ -93,6 +94,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_p7bku"]
 resource_name = "idle"
+length = 0.01
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,6 +147,11 @@ material = SubResource("ShaderMaterial_kafah")
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_e3oda")
 hframes = 8
+
+[node name="Knife" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(6, -8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_nf54q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 19.5)

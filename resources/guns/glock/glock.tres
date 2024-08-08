@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="GunType" load_steps=20 format=3 uid="uid://dpp34vwl1gno5"]
 
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_016ck"]
+[ext_resource type="Texture2D" uid="uid://bcl40mwrsue45" path="res://sprites/particles/PistolCasing.png" id="1_iifkj"]
 [ext_resource type="Resource" uid="uid://0emo13ummffq" path="res://resources/attachments/GlockFullAuto.tres" id="1_lepb3"]
-[ext_resource type="PackedScene" uid="uid://7kbwb81f6ubf" path="res://prefabs/casing.tscn" id="1_skwm1"]
 [ext_resource type="PackedScene" uid="uid://bdpqqb7vd7uvq" path="res://prefabs/attachments/mags/GlockMag.tscn" id="2_cihle"]
 [ext_resource type="PackedScene" uid="uid://dibx0liorj1ph" path="res://resources/guns/glock/glock.tscn" id="2_e2dcl"]
 [ext_resource type="Script" path="res://scripts/gun_mod.gd" id="2_paj37"]
@@ -62,7 +62,7 @@ moveSpeedInc = 0.0
 [resource]
 script = ExtResource("1_016ck")
 sprite = ExtResource("2_e2dcl")
-casing = ExtResource("1_skwm1")
+casing = ExtResource("1_iifkj")
 automatic = false
 isShotgun = false
 damage = 7.0
@@ -73,6 +73,7 @@ spreadAngle = 5.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
+pushbackStrength = 200.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("2_paj37")]([SubResource("Resource_uojx7"), ExtResource("12_gmnd1"), ExtResource("13_87tx4"), ExtResource("14_y3psp")])
 mags = Array[ExtResource("2_paj37")]([SubResource("Resource_r3y7h"), ExtResource("4_mqoju"), ExtResource("5_ussld")])

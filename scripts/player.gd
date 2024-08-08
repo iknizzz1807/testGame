@@ -16,56 +16,62 @@ signal shootEvent;
 @export_subgroup("Debug")
 @export var debugGun = false;
 @export_subgroup("Vars")
-@export var speed = 400
+@export var speed : float = 400;
+@export var KNOCKBACK_STRENGTH : float = 800;
+@export var MOVE_FRICTION : float = 30;
+@export var HP : int = 5;
+@export var maxHP : int = 5;
+@export var power : int = 0;
+
+var canShoot : bool = false;
+var knockbackStrength : Vector2 = Vector2.ZERO;
+var speedInc : float = 0;
+var EXP : int = 0;
+var level : int = 1;
+var maxEXP : int = 10;
+var knockbackFriction : float = MOVE_FRICTION;
+
 @onready var gun : Gun = $Gun;
 @onready var sprite : Sprite2D = $Sprite2D;
 @onready var animator : AnimationTree = $AnimationTree;
 @onready var statCanvas : CanvasLayer = $"../statCanvas";
-@export var KNOCKBACK_STRENGTH : float = 200;
-var knockbackStrength : Vector2 = Vector2.ZERO;
-var speedInc : float = 0;
-@export var HP : int = 5;
-@export var maxHP : int = 5;
-@export var power : int = 0;
-var EXP : int = 0;
-var level : int = 1;
-var maxEXP : int = 10;
 
 func _ready():
 	GunGameManager.debugGun = debugGun;
 	gun.swapGun(0);
 	pass
 
-func get_input():
-	var input_direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown");
-	velocity = input_direction * speed * (1 + speedInc);
+# Process Input
+func _process(_delta):
+	gun.aimDir = get_global_mouse_position() - global_position;
+	if (gun.gunType.automatic):
+		canShoot = Input.is_action_pressed("shoot");
+	else:
+		canShoot = Input.is_action_just_pressed("shoot");
+	if (Input.is_action_just_pressed("reload")):
+		gun.reload();
 
 func _physics_process(_delta):
+	var input_direction = \
+		Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown").normalized();
 	if (state != PlayerState.hit):
 		if (velocity.length() > 0):
 			state = PlayerState.run;
 		else:
 			state = PlayerState.idle;
-		if (velocity != Vector2.ZERO):
-			sprite.flip_h = velocity.x < 0;
-		get_input();
-	velocity += knockbackStrength;
-	knockbackStrength = Vector2.ZERO;
-	move_and_collide(velocity * _delta);
+		if (gun.aimDir != Vector2.ZERO):
+			sprite.flip_h = gun.aimDir.x < 0;
+		velocity += input_direction * speed * (1 + speedInc);
+	velocity = velocity.move_toward(Vector2.ZERO, MOVE_FRICTION + 20);
+	velocity = velocity.limit_length(speed);
+	move_and_collide((velocity + knockbackStrength) * _delta);
+	knockbackStrength = knockbackStrength.move_toward(Vector2.ZERO, knockbackFriction);
+	
+	
+	if canShoot:
+		gun.spreadMult = velocity.length() / speed;
+		shootEvent.emit();
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if (state != PlayerState.hit):
-		var canShoot : bool = false;
-		if (gun.gunType.automatic):
-			canShoot = Input.is_action_pressed("shoot");
-		else:
-			canShoot = Input.is_action_just_pressed("shoot");
-		if (Input.is_action_just_pressed("reload")):
-			gun.reload();
-		if canShoot:
-			gun.spreadMult = velocity.length() / speed;
-			shootEvent.emit();
 
 func die() -> void:
 	statCanvas.get_child(1).text = str(level) + "\n" + "0" + "/" + str(maxHP) + "\n" + str(power) + "\n" + str(EXP) + "/" + str(maxEXP);
@@ -85,8 +91,9 @@ func flash()->void:
 	sprite.material.set_shader_parameter("flash_value", 0);
 
 
-func knockback(dir: Vector2) -> void:
-	knockbackStrength += dir.normalized() * KNOCKBACK_STRENGTH;
+func knockback(dir: Vector2, magnitude : float, friction : float = MOVE_FRICTION) -> void:
+	knockbackStrength += dir.normalized() * magnitude;
+	knockbackFriction = friction;
 	
 func levelUp() -> void:
 	level += 1;
@@ -97,11 +104,11 @@ func levelUp() -> void:
 	power += 1;
 
 func _on_area_2d_body_entered(body):
-	if (body != null) and (body is Enemy):
+	if (body != null) and (body is Enemy) and (state != PlayerState.hit):
 		flash();
 		state = PlayerState.hit;
 		animator.get("parameters/playback").travel("hit");
-		knockback((position - body.position));
+		knockback((position - body.position), KNOCKBACK_STRENGTH);
 		takeDamage(1); # Change this
 		await get_tree().create_timer(0.4).timeout;
 		state = PlayerState.idle;

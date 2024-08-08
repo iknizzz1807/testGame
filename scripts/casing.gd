@@ -9,12 +9,13 @@ extends Sprite2D
 #@export var angle : float = 30;
 @export_range(0, 1) var friction : float = 0.7;
 #var velocity : Vector2 = Vector2.ONE;
-@export var killTime : float = 4;
+@export var killTime : float = 3;
 var killTimer = killTime;
 var vsp = vspMax * 0.6;
 
 func _ready():
 	speed *= -sign(scale.x);
+	shadowHeight += randf_range(-1, 1) * 10;
 	speed *= randf_range(0.7, 1.4);
 	vspMax *= randf_range(0.7, 1.4);
 

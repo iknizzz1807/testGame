@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=18 format=3 uid="uid://3mbsys35lrr"]
+[gd_resource type="Resource" script_class="GunType" load_steps=19 format=3 uid="uid://3mbsys35lrr"]
 
+[ext_resource type="Texture2D" uid="uid://bcl40mwrsue45" path="res://sprites/particles/PistolCasing.png" id="1_etets"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_pvt0s"]
 [ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_q1v4d"]
 [ext_resource type="PackedScene" uid="uid://bcxgkgxpybo8r" path="res://resources/guns/beretta/beretta.tscn" id="2_8uk7k"]
@@ -60,6 +61,7 @@ moveSpeedInc = 0.0
 [resource]
 script = ExtResource("1_pvt0s")
 sprite = ExtResource("2_8uk7k")
+casing = ExtResource("1_etets")
 automatic = false
 isShotgun = false
 damage = 13.0
@@ -70,6 +72,7 @@ spreadAngle = 3.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
+pushbackStrength = 200.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("1_q1v4d")]([SubResource("Resource_km5io"), ExtResource("3_05bgl"), ExtResource("4_y4cyp"), ExtResource("5_dt3p0")])
 mags = Array[ExtResource("1_q1v4d")]([SubResource("Resource_agjdl"), ExtResource("2_oyymo"), ExtResource("3_csvvw")])

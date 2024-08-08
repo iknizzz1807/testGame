@@ -2,6 +2,7 @@ extends Node2D
 class_name Gun;
 
 var bulletPrefab = preload("res://prefabs/bullet.tscn");
+var casingPrefab = preload("res://prefabs/casing.tscn");
 
 @export var gunType : GunType;
 
@@ -14,6 +15,8 @@ var bulletSpawnPoint : Node2D;
 var sprite : Sprite2D;
 var spriteAnimator : AnimationTree;
 var recoilAnimator : AnimationPlayer;
+var parent : CharacterBody2D;
+var aimDir : Vector2;
 
 var ammoCounter : int;
 var fireRateCounter: float = 0;
@@ -25,6 +28,7 @@ func _ready():
 	if (get_parent().debugGun):
 		await get_parent().ready;
 		gunInit();
+	parent = get_parent();
 	pass
 
 func gunInit() -> void:
@@ -39,7 +43,6 @@ func gunInit() -> void:
 	
 	recoilAnimator = sprite.get_node(sprite.get_meta("RecoilAnimator"));
 	assert(recoilAnimator != null, name + " has no recoil animator wtf");
-	
 	
 	var gunVars = sprite as GunVars;
 	casingPos = gunVars.casing;
@@ -75,7 +78,7 @@ func gunInit() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotation = (get_global_mouse_position() - global_position).angle();
+	rotation = aimDir.angle();
 	var sprPosOffset = sprite.posOffset;
 	if (abs(rotation_degrees) <= 90):
 		sprite.scale.y = abs(sprite.scale.y) * 1;
@@ -84,7 +87,7 @@ func _process(delta):
 		sprite.scale.y = abs(sprite.scale.y) * -1;
 		sprPosOffset.y *= -1;
 	sprite.position = sprPosOffset + Vector2(sprite.recoilPosX, sprite.recoilPosY * sign(sprite.scale.y));
-	sprite.rotation_degrees = rotation + sprite.recoilRot * sign(sprite.scale.y);
+	sprite.rotation_degrees =  sprite.recoilRot * sign(sprite.scale.y);
 	if (fireRateCounter > 0):
 		fireRateCounter -= delta;
 	
@@ -150,8 +153,9 @@ func _on_player_shoot_event():
 		reloading = false;
 	if (fireRateCounter > 0 || reloading):
 		return;
+	owner
 	if (ammoCounter > 0):
-		get_viewport().get_camera_2d().apply_shake();
+		Global.shake_camera(aimDir);
 		bulletOut();
 		fireRateCounter = gunType.fireRate + gunType.burstAmount * gunType.burstDelay;
 	if (ammoCounter <= 0):
@@ -168,8 +172,10 @@ func bulletOut() -> void:
 		try_travel_animation(spriteAnimator, "shoot");
 		# gun
 		ammoCounter -= 1;
+		parent.knockback(-aimDir, gunType.knockbackStrength, gunType.knockbackFriction);
 		if (casingPos != null):
-			var casing = gunType.casing.instantiate();
+			var casing : Sprite2D = casingPrefab.instantiate();
+			casing.texture = gunType.casing;
 			casing.global_position = casingPos.global_position;
 			casing.scale.x *= sign(sprite.scale.y);
 			get_tree().root.add_child(casing);
@@ -186,7 +192,7 @@ func spawnBullet() -> void:
 		
 		bullet.global_position = bulletSpawnPoint.global_position;
 		
-		bullet.look_at(get_global_mouse_position());
+		bullet.rotation = aimDir.angle();
 		bullet.rotation_degrees += spread + sprite.rotation_degrees;
 		bullet.direction = Vector2.from_angle(bullet.rotation);
 		bullet.damage = gunType.damage;

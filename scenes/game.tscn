@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1ifro1d7axiu"]
+[gd_scene load_steps=8 format=3 uid="uid://b1ifro1d7axiu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_h2utm"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_x3oay"]
 [ext_resource type="PackedScene" uid="uid://bpmyml0l0oxys" path="res://prefabs/enemy.tscn" id="3_qr7hq"]
 [ext_resource type="PackedScene" uid="uid://b8thr11yjtsdy" path="res://prefabs/player.tscn" id="4_6y770"]
 [ext_resource type="PackedScene" uid="uid://d0ky26sp1weyh" path="res://prefabs/statCanvas.tscn" id="5_jcwhe"]
+[ext_resource type="Texture2D" uid="uid://by3ruxtjmsqsq" path="res://sprites/attachments/mags/M4A1DrumMag.png" id="6_0gjte"]
 
 [sub_resource type="Curve2D" id="Curve2D_21631"]
 _data = {
@@ -36,5 +37,10 @@ position = Vector2(-623, -379)
 rotation = -0.00490593
 
 [node name="statCanvas" parent="." instance=ExtResource("5_jcwhe")]
+
+[node name="M4a1DrumMag" type="Sprite2D" parent="."]
+position = Vector2(-88, 11)
+scale = Vector2(1.83521, 8.52314)
+texture = ExtResource("6_0gjte")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

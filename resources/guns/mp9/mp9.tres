@@ -53,6 +53,7 @@ spreadAngle = 12.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
+pushbackStrength = 100.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("2_lf6s2")]([SubResource("Resource_ocoqh"), ExtResource("3_43gj3"), ExtResource("4_fdal0"), ExtResource("5_6e07s")])
 mags = Array[ExtResource("2_lf6s2")]([])

@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var randomStrength: float = 5.0;
+@export var randomStrength: float = 20.0;
 @export var shakeFade: float = 10.0;
 @export var OFFSET_MAX_DIST = 10;
 
@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new();
 var shakeStrength: float = 0.0;
 var player : Player;
 var shakeOffset: Vector2;
+var shakeDir : Vector2 = Vector2.ZERO;
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player") as Player;
@@ -18,6 +19,7 @@ func _ready():
 func _process(delta):
 	if shakeStrength > 0:
 		shakeStrength = lerpf(shakeStrength, 0, shakeFade * delta);
+		print(shakeStrength);
 		shakeOffset = randomOffset();
 		
 	var target: Vector2 = Vector2.ZERO;
@@ -46,9 +48,12 @@ func get_mouse_position_in_viewport() -> Vector2:
 	mousePos /= get_viewport_rect().size;
 	return mousePos;
 
-func apply_shake():
+func apply_shake(dir : Vector2 = Vector2.ZERO):
 	shakeStrength = randomStrength;
+	shakeDir = dir.normalized();
 
 func randomOffset() -> Vector2:
-	return Vector2(rng.randf_range(-shakeStrength, shakeStrength),
-	 rng.randf_range(-shakeStrength, shakeStrength));
+	if (shakeDir == Vector2.ZERO):
+		return Vector2(rng.randf_range(-shakeStrength, shakeStrength),
+			rng.randf_range(-shakeStrength, shakeStrength));
+	return shakeDir * rng.randf_range(-shakeStrength, shakeStrength);

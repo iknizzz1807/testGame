@@ -3,7 +3,7 @@ class_name GunType;
 
 @export_category("Setup")
 @export var sprite: PackedScene;
-@export var casing: PackedScene;
+@export var casing: Texture2D;
 @export_category("Properties")
 @export var automatic : bool = false;
 @export var isShotgun : bool = false;
@@ -15,6 +15,8 @@ class_name GunType;
 @export_range(1, 999999) var spreadNumber : int = 0;
 @export_range(1, 999999) var burstAmount : int = 0;
 @export var burstDelay : float = 0;
+@export var knockbackStrength : float = 4;
+@export var knockbackFriction : float = 80;
 @export_category("Modifications")
 @export var effects : Array[Resource];
 @export var sights : Array[GunMod];

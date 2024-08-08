@@ -16,6 +16,7 @@ var state : EnemyState = EnemyState.idle;
 @export var KNOCKBACK_STRENGTH : float = 1000;
 @export var KNOCKBACK_FRICTION : float = 100;
 @onready var sprite : Sprite2D = $Sprite2D;
+@onready var knife : Sprite2D = $Sprite2D/Knife;
 @export var HP : int = 50; # Change on different types of enemies
 var tmpTimer : SceneTreeTimer;
 var knockbackTimer : float = 0;
@@ -31,7 +32,10 @@ func _physics_process(delta):
 	match state:
 		EnemyState.hit:
 			velocity *= 0.7;
-			sprite.flip_h = velocity.x > 0;
+			if velocity.x < 0:
+				sprite.scale.x = abs(sprite.scale.x) * 1;
+			else:
+				sprite.scale.x = abs(sprite.scale.x) * -1;
 			var collider = move_and_collide(velocity * delta);
 			if (collider != null):
 				velocity = velocity.slide(collider.get_normal());
@@ -48,7 +52,10 @@ func _physics_process(delta):
 			else:
 				state = EnemyState.idle;
 			velocity = velocity.limit_length(MAX_SPEED);
-			sprite.flip_h = velocity.x <= 0;
+			if velocity.x > 0:
+				sprite.scale.x = abs(sprite.scale.x) * 1;
+			else:
+				sprite.scale.x = abs(sprite.scale.x) * -1;
 			move_and_collide(velocity * delta);
 
 func vector_clamp_length(target: Vector2, min_length : float, max_length : float) -> Vector2:
@@ -67,10 +74,11 @@ func hit(damage: float, knockbackDir: Vector2):
 	HP -= damage;
 	flash();
 	state = EnemyState.hit;
+	Global.stop_time(0.05, 0.005);
 	knockbackTimer = KNOCKBACK_TIME;
-	knockbackDirection += knockbackDir.normalized() * KNOCKBACK_STRENGTH;
+	#knockbackDirection += knockbackDir.normalized() * KNOCKBACK_STRENGTH;
 	velocity = knockbackDir.normalized() * KNOCKBACK_STRENGTH;
-	knockbackDirection = Vector2.ZERO;
+	#knockbackDirection = Vector2.ZERO;
 	if(HP <= 0):
 		die();
 

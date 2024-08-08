@@ -36,5 +36,5 @@ func _on_area_2d_area_entered(area):
 			effectNode.set_script(effect);
 			area.add_child(effectNode);
 		area.get_parent().hit(damage + player.power, direction);
-		queue_free(); # Remove the bullet
+		call_deferred("queue_free"); # Remove the bullet
 	pass # Replace with function body.

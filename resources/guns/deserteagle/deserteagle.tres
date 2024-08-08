@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=15 format=3 uid="uid://b4hpor8xdgaq8"]
+[gd_resource type="Resource" script_class="GunType" load_steps=16 format=3 uid="uid://b4hpor8xdgaq8"]
 
 [ext_resource type="Script" path="res://scripts/gun_mod.gd" id="1_0cael"]
+[ext_resource type="Texture2D" uid="uid://bcl40mwrsue45" path="res://sprites/particles/PistolCasing.png" id="1_407ct"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_ns8ka"]
 [ext_resource type="Resource" uid="uid://dsyx31ipyndke" path="res://resources/attachments/mags/PistolExtMag.tres" id="2_41671"]
 [ext_resource type="PackedScene" uid="uid://6uimgweb37ic" path="res://resources/guns/deserteagle/deserteagle.tscn" id="2_lp2o6"]
@@ -55,6 +56,7 @@ moveSpeedInc = 0.0
 [resource]
 script = ExtResource("1_ns8ka")
 sprite = ExtResource("2_lp2o6")
+casing = ExtResource("1_407ct")
 automatic = false
 isShotgun = false
 damage = 30.0
@@ -65,6 +67,7 @@ spreadAngle = 15.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
+pushbackStrength = 600.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("1_0cael")]([SubResource("Resource_ff5nl"), ExtResource("5_3hctx"), ExtResource("6_hseht"), ExtResource("7_sud7o")])
 mags = Array[ExtResource("1_0cael")]([SubResource("Resource_bto81"), ExtResource("2_41671")])

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GunType" load_steps=28 format=3 uid="uid://bqivg6wjdjlup"]
+[gd_resource type="Resource" script_class="GunType" load_steps=29 format=3 uid="uid://bqivg6wjdjlup"]
 
 [ext_resource type="Resource" uid="uid://b6dn67gml8kdr" path="res://resources/attachments/grips/ForeGrip.tres" id="1_727st"]
 [ext_resource type="Script" path="res://scripts/gun_type.gd" id="1_ifky3"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://kaodf17np30q" path="res://prefabs/attachments/mags/M4A1LightMag.tscn" id="7_gm7eq"]
 [ext_resource type="PackedScene" uid="uid://blrxfo6aanl55" path="res://prefabs/attachments/mags/M4A1DrumMag.tscn" id="8_y8lgs"]
 [ext_resource type="Resource" uid="uid://dkbda3og11jdx" path="res://resources/attachments/stocks/NoStock.tres" id="18_8mcl6"]
+[ext_resource type="PackedScene" uid="uid://ujayxxxafa3i" path="res://prefabs/attachments/stocks/M4A1NormalStock.tscn" id="20_qt7au"]
 [ext_resource type="Resource" uid="uid://vp414fy7txea" path="res://resources/attachments/stocks/LightStock.tres" id="21_ar50k"]
 
 [sub_resource type="Resource" id="Resource_p1m6s"]
@@ -94,6 +95,7 @@ moveSpeedInc = 0.0
 
 [sub_resource type="Resource" id="Resource_ys8sy"]
 script = ExtResource("2_1yix2")
+sprite = ExtResource("20_qt7au")
 automatic = -1
 damageInc = 0.0
 fireRateInc = 0.0
@@ -118,6 +120,8 @@ spreadAngle = 10.0
 spreadNumber = 0
 burstAmount = 0
 burstDelay = 0.0
+knockbackStrength = 150.0
+knockbackFriction = 40.0
 effects = Array[Resource]([])
 sights = Array[ExtResource("2_1yix2")]([SubResource("Resource_e5wj4"), ExtResource("4_k6vci"), ExtResource("5_kjqrw"), ExtResource("6_euxt1"), ExtResource("7_3jxmm")])
 mags = Array[ExtResource("2_1yix2")]([SubResource("Resource_p1m6s"), SubResource("Resource_x1u6s"), SubResource("Resource_aeho3")])
