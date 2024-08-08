@@ -30,7 +30,7 @@ states/idle/position = Vector2(348, 82)
 states/shoot/node = SubResource("AnimationNodeAnimation_nbcwa")
 states/shoot/position = Vector2(524, 70)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3x6n6"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_f2o16"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_hbca6")]
-graph_offset = Vector2(-79, -7)
+graph_offset = Vector2(-45, -57)
 
 [sub_resource type="Animation" id="Animation_8b44q"]
 length = 0.001
@@ -162,6 +162,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_olaap"]
 resource_name = "shoot"
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -221,6 +222,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawnCasing"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7fiq"]

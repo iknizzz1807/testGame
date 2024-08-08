@@ -12,6 +12,7 @@ var muzzle : Marker2D = null;
 var stock : Marker2D = null;
 var grip : Marker2D = null;
 var fullAuto : Marker2D = null;
+var par;
 
 func _ready():
 	if (has_node("Casing")):
@@ -29,3 +30,7 @@ func _ready():
 	if (has_node("FullAuto")):
 		fullAuto = $FullAuto;
 	posOffset = position;
+	par = get_parent();
+
+func spawnCasing() -> void:
+	par.spawnCasing();

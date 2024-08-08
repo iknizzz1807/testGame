@@ -15,7 +15,7 @@ var bulletSpawnPoint : Node2D;
 var sprite : Sprite2D;
 var spriteAnimator : AnimationTree;
 var recoilAnimator : AnimationPlayer;
-var parent : CharacterBody2D;
+var parent : Player;
 var aimDir : Vector2;
 
 var ammoCounter : int;
@@ -28,7 +28,9 @@ func _ready():
 	if (get_parent().debugGun):
 		await get_parent().ready;
 		gunInit();
-	parent = get_parent();
+		gunModTier(10);
+	if (get_parent() is Player):
+		parent = get_parent();
 	pass
 
 func gunInit() -> void:
@@ -43,38 +45,7 @@ func gunInit() -> void:
 	
 	recoilAnimator = sprite.get_node(sprite.get_meta("RecoilAnimator"));
 	assert(recoilAnimator != null, name + " has no recoil animator wtf");
-	
-	var gunVars = sprite as GunVars;
-	casingPos = gunVars.casing;
-	
-	if (randi_range(0, 1) == 0 && gunType.fullAuto != null):
-		var gunModFullAuto = gunType.fullAuto as GunMod;
-		addGunMod(gunModFullAuto, gunVars.fullAuto);
-		pass
-	
-	if (!gunType.mags.is_empty()):
-		var gunModMag = gunType.mags.pick_random() as GunMod;
-		addGunMod(gunModMag, gunVars.mag);
-	
-	if (!gunType.sights.is_empty()):
-		var gunModSight = gunType.sights.pick_random() as GunMod;
-		addGunMod(gunModSight, gunVars.sight);
-	
-	if (!gunType.muzzles.is_empty()):
-		var gunModMuzzle = gunType.muzzles.pick_random() as GunMod;
-		addGunMod(gunModMuzzle, gunVars.muzzle);
-		
-	if (!gunType.grips.is_empty()):
-		var gunModGrip = gunType.grips.pick_random() as GunMod;
-		addGunMod(gunModGrip, gunVars.grip);
-	
-	if (!gunType.stocks.is_empty()):
-		var gunModStock = gunType.stocks.pick_random() as GunMod;
-		addGunMod(gunModStock, gunVars.stock);
-	
 	ammoCounter = gunType.ammo;
-	
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -95,6 +66,57 @@ func _process(delta):
 	spriteAnimator.set("parameters/conditions/shooting", false);
 	
 	pass
+
+func gunModTier(level : int) -> void:
+	var gunVars = sprite as GunVars;
+	casingPos = gunVars.casing;
+	
+	if (level / GunGameManager.guns.size() >= 1):
+		if (randi_range(0, 1) == 0 && gunType.fullAuto != null):
+			var gunModFullAuto = gunType.fullAuto as GunMod;
+			addGunMod(gunModFullAuto, gunVars.fullAuto);
+		
+		if (!gunType.mags.is_empty()):
+			var gunModMag = gunType.mags.pick_random() as GunMod;
+			addGunMod(gunModMag, gunVars.mag);
+	else:
+		if (!gunType.mags.is_empty()):
+			var gunModMag = gunType.mags[0] as GunMod;
+			addGunMod(gunModMag, gunVars.mag);
+	
+	if (level / GunGameManager.guns.size() >= 2):
+		if (!gunType.sights.is_empty()):
+			var gunModSight = gunType.sights.pick_random() as GunMod;
+			addGunMod(gunModSight, gunVars.sight);
+	else:
+		if (!gunType.sights.is_empty()):
+			var gunModSight = gunType.sights[0] as GunMod;
+			addGunMod(gunModSight, gunVars.sight);
+	
+	if (level / GunGameManager.guns.size() >= 3):
+		if (!gunType.muzzles.is_empty()):
+			var gunModMuzzle = gunType.muzzles.pick_random() as GunMod;
+			addGunMod(gunModMuzzle, gunVars.muzzle);
+	else:
+		if (!gunType.muzzles.is_empty()):
+			var gunModMuzzle = gunType.muzzles[0] as GunMod;
+			addGunMod(gunModMuzzle, gunVars.muzzle);
+	
+	if (level / GunGameManager.guns.size() >= 4):
+		if (!gunType.stocks.is_empty()):
+			var gunModStock = gunType.stocks.pick_random() as GunMod;
+			addGunMod(gunModStock, gunVars.stock);
+	else:
+		if (!gunType.stocks.is_empty()):
+			var gunModStock = gunType.stocks[0] as GunMod;
+			addGunMod(gunModStock, gunVars.stock);
+	
+	
+	if (level / GunGameManager.guns.size() >= 5):
+		if (!gunType.grips.is_empty()):
+			var gunModGrip = gunType.grips.pick_random() as GunMod;
+			addGunMod(gunModGrip, gunVars.grip);
+	
 
 func addGunMod(mod : GunMod, marker : Marker2D) -> void:
 	if (mod.sprite != null):
@@ -123,6 +145,7 @@ func swapGun(level: int) -> void:
 		child.queue_free();
 	gunType = nextGun;
 	gunInit();
+	gunModTier(level);
 	pass
 
 
@@ -173,13 +196,15 @@ func bulletOut() -> void:
 		# gun
 		ammoCounter -= 1;
 		parent.knockback(-aimDir, gunType.knockbackStrength, gunType.knockbackFriction);
-		if (casingPos != null):
-			var casing : Sprite2D = casingPrefab.instantiate();
-			casing.texture = gunType.casing;
-			casing.global_position = casingPos.global_position;
-			casing.scale.x *= sign(sprite.scale.y);
-			get_tree().root.add_child(casing);
 		await get_tree().create_timer(gunType.burstDelay).timeout;
+
+func spawnCasing() -> void:
+	if (casingPos != null):
+		var casing : Sprite2D = casingPrefab.instantiate();
+		casing.texture = gunType.casing;
+		casing.global_position = casingPos.global_position;
+		casing.scale.x *= sign(sprite.scale.y);
+		get_tree().root.add_child(casing);
 
 func spawnBullet() -> void:
 	for i in range(0, max(1, gunType.spreadNumber)):
@@ -201,5 +226,6 @@ func spawnBullet() -> void:
 
 func try_travel_animation(animator : AnimationTree, animation_name : String):
 	if (animator.has_animation(animation_name)):
+		animator.get("parameters/playback").stop();
 		animator.get("parameters/playback").travel(animation_name);
 	pass

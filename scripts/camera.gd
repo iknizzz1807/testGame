@@ -1,7 +1,7 @@
 extends Camera2D
 
-@export var randomStrength: float = 20.0;
-@export var shakeFade: float = 10.0;
+@export var randomStrength: float = 30.0;
+@export var shakeFade: float = 12.0;
 @export var OFFSET_MAX_DIST = 10;
 
 var rng = RandomNumberGenerator.new();
@@ -19,7 +19,6 @@ func _ready():
 func _process(delta):
 	if shakeStrength > 0:
 		shakeStrength = lerpf(shakeStrength, 0, shakeFade * delta);
-		print(shakeStrength);
 		shakeOffset = randomOffset();
 		
 	var target: Vector2 = Vector2.ZERO;

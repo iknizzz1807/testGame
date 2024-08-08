@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1ifro1d7axiu"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ifro1d7axiu"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_h2utm"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_x3oay"]
 [ext_resource type="PackedScene" uid="uid://bpmyml0l0oxys" path="res://prefabs/enemy.tscn" id="3_qr7hq"]
+[ext_resource type="Script" path="res://scripts/mod_spawner.gd" id="3_rs2gm"]
 [ext_resource type="PackedScene" uid="uid://b8thr11yjtsdy" path="res://prefabs/player.tscn" id="4_6y770"]
 [ext_resource type="PackedScene" uid="uid://d0ky26sp1weyh" path="res://prefabs/statCanvas.tscn" id="5_jcwhe"]
-[ext_resource type="Texture2D" uid="uid://by3ruxtjmsqsq" path="res://sprites/attachments/mags/M4A1DrumMag.png" id="6_0gjte"]
 
 [sub_resource type="Curve2D" id="Curve2D_21631"]
 _data = {
@@ -14,8 +13,6 @@ _data = {
 point_count = 5
 
 [node name="game" type="Node2D"]
-script = ExtResource("1_h2utm")
-mob_scene = ExtResource("3_qr7hq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 40.0
@@ -28,6 +25,11 @@ OFFSET_MAX_DIST = 200
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+script = ExtResource("3_rs2gm")
+mob_scene = ExtResource("3_qr7hq")
+spawnSize = Vector2(100, 100)
+
+[node name="Line2D" type="Line2D" parent="MobTimer"]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_21631")
@@ -38,9 +40,4 @@ rotation = -0.00490593
 
 [node name="statCanvas" parent="." instance=ExtResource("5_jcwhe")]
 
-[node name="M4a1DrumMag" type="Sprite2D" parent="."]
-position = Vector2(-88, 11)
-scale = Vector2(1.83521, 8.52314)
-texture = ExtResource("6_0gjte")
-
-[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="MobTimer" to="MobTimer" method="_on_timeout"]

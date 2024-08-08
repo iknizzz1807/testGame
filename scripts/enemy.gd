@@ -10,8 +10,8 @@ enum EnemyState
 }
 
 var state : EnemyState = EnemyState.idle;
-@export var SPEED : float = 10.0
-@export var MAX_SPEED : float = 100;
+@export var SPEED : float = 30.0;
+@export var MAX_SPEED : float = 200;
 @export var KNOCKBACK_TIME : float = 0.2;
 @export var KNOCKBACK_STRENGTH : float = 1000;
 @export var KNOCKBACK_FRICTION : float = 100;
@@ -19,7 +19,7 @@ var state : EnemyState = EnemyState.idle;
 @onready var knife : Sprite2D = $Sprite2D/Knife;
 @export var HP : int = 50; # Change on different types of enemies
 var tmpTimer : SceneTreeTimer;
-var knockbackTimer : float = 0;
+var knockbackTimer : float = 0.4;
 
 
 var knockbackDirection : Vector2 = Vector2.ZERO;
@@ -29,6 +29,8 @@ func _ready():
 	playerRef = get_tree().get_first_node_in_group("player");
 
 func _physics_process(delta):
+	if(HP <= 0):
+		die();
 	match state:
 		EnemyState.hit:
 			velocity *= 0.7;
@@ -39,8 +41,7 @@ func _physics_process(delta):
 			var collider = move_and_collide(velocity * delta);
 			if (collider != null):
 				velocity = velocity.slide(collider.get_normal());
-			if (velocity.length_squared() > 0):
-				knockbackTimer -= delta;
+			knockbackTimer -= delta;
 			if (knockbackTimer <= 0):
 				state = EnemyState.idle;
 		_:
@@ -74,7 +75,7 @@ func hit(damage: float, knockbackDir: Vector2):
 	HP -= damage;
 	flash();
 	state = EnemyState.hit;
-	Global.stop_time(0.05, 0.005);
+	Global.stop_time(0.06, 0.005);
 	knockbackTimer = KNOCKBACK_TIME;
 	#knockbackDirection += knockbackDir.normalized() * KNOCKBACK_STRENGTH;
 	velocity = knockbackDir.normalized() * KNOCKBACK_STRENGTH;
