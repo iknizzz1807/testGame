@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bcxgkgxpybo8r"]
+[gd_scene load_steps=19 format=3 uid="uid://bcxgkgxpybo8r"]
 
 [ext_resource type="Texture2D" uid="uid://bpyub0t3n4618" path="res://sprites/guns/beretta/beretta.png" id="1_8vw8r"]
 [ext_resource type="Script" path="res://scripts/gun_vars.gd" id="2_fjvtq"]
+[ext_resource type="Texture2D" uid="uid://d2em5yfyah1ef" path="res://sprites/guns/beretta/beretta-shoot.png" id="3_6dn1d"]
 [ext_resource type="Texture2D" uid="uid://bi1wdnfp4j2nq" path="res://sprites/attachments/sights/4X.png" id="3_gy3mf"]
 [ext_resource type="Texture2D" uid="uid://cq68b5syvs0kx" path="res://sprites/attachments/muzzles/BerettaMuzzle.png" id="4_psjeo"]
-[ext_resource type="Texture2D" uid="uid://7tvyqjgthqtg" path="res://sprites/attachments/mags/GlockExtMag.png" id="5_g151s"]
+[ext_resource type="Texture2D" uid="uid://dp7mgcttxe5td" path="res://sprites/attachments/mags/BerettaMag.png" id="6_7aa74"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgyhr"]
 animation = &"default"
@@ -93,6 +94,42 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10.5, -9.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Muzzle:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19.5, -8)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Magazine:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 3.5)]
+}
 
 [sub_resource type="Animation" id="Animation_pwqwi"]
 resource_name = "idle"
@@ -161,6 +198,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_olaap"]
 resource_name = "shoot"
+length = 0.252
+step = 0.028
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -171,7 +210,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_8vw8r")]
+"values": [ExtResource("3_6dn1d")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -195,7 +234,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [9]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -216,10 +255,10 @@ tracks/4/path = NodePath(".:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.028, 0.056, 0.084, 0.112, 0.14, 0.168, 0.196, 0.224),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
@@ -234,6 +273,42 @@ tracks/5/keys = {
 "args": [],
 "method": &"spawnCasing"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sight:position")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.028, 0.056, 0.084, 0.112, 0.14, 0.168, 0.196, 0.224),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10.5, -9.5), Vector2(8.5, -9.5), Vector2(5.5, -8.5), Vector2(1.5, -7.5), Vector2(0.5, -7.5), Vector2(3.5, -7.5), Vector2(5.5, -9.5), Vector2(9.5, -9.5), Vector2(10.5, -9.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Muzzle:position")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.028, 0.056, 0.084, 0.112, 0.14, 0.168, 0.196, 0.224),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(19.5, -8), Vector2(18.5, -9.5), Vector2(16.5, -8.5), Vector2(16.5, -8.5), Vector2(15.5, -8.5), Vector2(16.5, -8.5), Vector2(19.5, -9.5), Vector2(19.5, -9.5), Vector2(20.5, -8.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Magazine:position")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.028, 0.056, 0.084, 0.112, 0.14, 0.168, 0.196, 0.224),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 3.5), Vector2(0.5, 3.5), Vector2(-0.5, 4.5), Vector2(-1.5, 5.5), Vector2(-1.5, 5.5), Vector2(0.5, 4.5), Vector2(1.5, 3.5), Vector2(1.5, 3.5), Vector2(1.5, 3.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7fiq"]
@@ -339,7 +414,6 @@ gizmo_extents = 1.0
 
 [node name="Test" type="Sprite2D" parent="Muzzle"]
 visible = false
-position = Vector2(1, -0.5)
 texture = ExtResource("4_psjeo")
 offset = Vector2(7, 0)
 
@@ -348,6 +422,5 @@ position = Vector2(1.5, 3.5)
 gizmo_extents = 1.0
 
 [node name="Test" type="Sprite2D" parent="Magazine"]
-visible = false
-texture = ExtResource("5_g151s")
-offset = Vector2(0, 4.5)
+texture = ExtResource("6_7aa74")
+offset = Vector2(-1.5, 4.5)

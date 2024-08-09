@@ -67,11 +67,24 @@ func _process(delta):
 	
 	pass
 
+func swapGun(level: int) -> void:
+	var nextGun = GunGameManager.GetGun(level);
+	if nextGun == null:
+		return;
+	for child in get_children():
+		child.queue_free();
+	gunType = nextGun.duplicate();
+	gunInit();
+	gunModTier(level);
+	ammoCounter = gunType.ammo;
+	pass
+
 func gunModTier(level : int) -> void:
 	var gunVars = sprite as GunVars;
 	casingPos = gunVars.casing;
+	var player : Player = get_parent();
 	
-	if (level / GunGameManager.guns.size() >= 1):
+	if (level / GunGameManager.guns.size() >= 1 || player.debugGun):
 		if (randi_range(0, 1) == 0 && gunType.fullAuto != null):
 			var gunModFullAuto = gunType.fullAuto as GunMod;
 			addGunMod(gunModFullAuto, gunVars.fullAuto);
@@ -84,7 +97,7 @@ func gunModTier(level : int) -> void:
 			var gunModMag = gunType.mags[0] as GunMod;
 			addGunMod(gunModMag, gunVars.mag);
 	
-	if (level / GunGameManager.guns.size() >= 2):
+	if (level / GunGameManager.guns.size() >= 2 || player.debugGun):
 		if (!gunType.sights.is_empty()):
 			var gunModSight = gunType.sights.pick_random() as GunMod;
 			addGunMod(gunModSight, gunVars.sight);
@@ -93,7 +106,7 @@ func gunModTier(level : int) -> void:
 			var gunModSight = gunType.sights[0] as GunMod;
 			addGunMod(gunModSight, gunVars.sight);
 	
-	if (level / GunGameManager.guns.size() >= 3):
+	if (level / GunGameManager.guns.size() >= 3 || player.debugGun):
 		if (!gunType.muzzles.is_empty()):
 			var gunModMuzzle = gunType.muzzles.pick_random() as GunMod;
 			addGunMod(gunModMuzzle, gunVars.muzzle);
@@ -102,7 +115,7 @@ func gunModTier(level : int) -> void:
 			var gunModMuzzle = gunType.muzzles[0] as GunMod;
 			addGunMod(gunModMuzzle, gunVars.muzzle);
 	
-	if (level / GunGameManager.guns.size() >= 4):
+	if (level / GunGameManager.guns.size() >= 4 || player.debugGun):
 		if (!gunType.stocks.is_empty()):
 			var gunModStock = gunType.stocks.pick_random() as GunMod;
 			addGunMod(gunModStock, gunVars.stock);
@@ -112,7 +125,7 @@ func gunModTier(level : int) -> void:
 			addGunMod(gunModStock, gunVars.stock);
 	
 	
-	if (level / GunGameManager.guns.size() >= 5):
+	if (level / GunGameManager.guns.size() >= 5 || player.debugGun):
 		if (!gunType.grips.is_empty()):
 			var gunModGrip = gunType.grips.pick_random() as GunMod;
 			addGunMod(gunModGrip, gunVars.grip);
@@ -124,6 +137,7 @@ func addGunMod(mod : GunMod, marker : Marker2D) -> void:
 	if (mod.automatic != -1):
 		gunType.automatic = mod.automatic;
 	gunType.ammo *= 1 + mod.ammoInc;
+	ammoCounter = gunType.ammo;
 	gunType.damage *= 1 + mod.damageInc;
 	gunType.fireRate *= 1 + mod.fireRateInc;
 	gunType.reloadSpeed *= 1 + mod.reloadSpeedInc;
@@ -137,16 +151,6 @@ func addGunMod(mod : GunMod, marker : Marker2D) -> void:
 	player.speedInc = mod.moveSpeedInc;
 	pass
 
-func swapGun(level: int) -> void:
-	var nextGun = GunGameManager.GetGun(level);
-	if nextGun == null:
-		return;
-	for child in get_children():
-		child.queue_free();
-	gunType = nextGun;
-	gunInit();
-	gunModTier(level);
-	pass
 
 
 func reload() -> void:
@@ -165,7 +169,7 @@ func reload() -> void:
 	else:
 		reloading = true;
 		spriteAnimator.set("parameters/conditions/reloading", true);
-		try_travel_animation(spriteAnimator, "reload");
+		try_play_animation(spriteAnimator, "reload");
 		await get_tree().create_timer(gunType.reloadSpeed).timeout;
 		ammoCounter = gunType.ammo;
 		fireRateCounter = 0;
@@ -192,7 +196,7 @@ func bulletOut() -> void:
 		recoilAnimator.stop(true);
 		recoilAnimator.play("recoil");
 		spriteAnimator.set("parameters/conditions/shooting", true);
-		try_travel_animation(spriteAnimator, "shoot");
+		try_play_animation(spriteAnimator, "shoot");
 		# gun
 		ammoCounter -= 1;
 		parent.knockback(-aimDir, gunType.knockbackStrength, gunType.knockbackFriction);
@@ -224,8 +228,8 @@ func spawnBullet() -> void:
 		bullet.fireRate = gunType.fireRate;
 		bullet.effects = gunType.effects;
 
-func try_travel_animation(animator : AnimationTree, animation_name : String):
+func try_play_animation(animator : AnimationTree, animation_name : String):
 	if (animator.has_animation(animation_name)):
-		animator.get("parameters/playback").stop();
-		animator.get("parameters/playback").travel(animation_name);
+		#animator.get("parameters/playback").stop();
+		animator.get("parameters/playback").start(animation_name, true);
 	pass

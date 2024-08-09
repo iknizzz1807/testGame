@@ -57,7 +57,10 @@ func _physics_process(delta):
 				sprite.scale.x = abs(sprite.scale.x) * 1;
 			else:
 				sprite.scale.x = abs(sprite.scale.x) * -1;
-			move_and_collide(velocity * delta);
+			
+			if (get_slide_collision_count() > 0):
+				velocity = velocity.slide(get_slide_collision(0).get_normal());
+			move_and_collide(velocity  * delta);
 
 func vector_clamp_length(target: Vector2, min_length : float, max_length : float) -> Vector2:
 	return target.normalized() * clamp(target.length(), min_length, max_length);
